@@ -48,7 +48,7 @@
 	// Display latitude and longitude as the mouse moves
 	map.on('mousemove', function (e) {
 		const coords = e.lngLat; // Get the coordinates
-		document.getElementById('coordinates').innerHTML = `Lat: ${coords.lat.toFixed(5)}, Lon: ${coords.lng.toFixed(5)}`; // Update the coordinates display
+    	document.getElementById('coordinates').innerHTML = `Lat: <span style="color: blue;">${coords.lat.toFixed(5)}</span>, Lon: <span style="color: blue;">${coords.lng.toFixed(5)}</span>`; // Update the coordinates display
 	});
 
 
