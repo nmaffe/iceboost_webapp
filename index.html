@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>IceBoost map</title>
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
+	<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+	<style>
+		body { margin: 0; padding: 0; }
+		#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+		#left-panel {
+			position: absolute;
+			top: 10px; /* Adjust this value to create a gap below the coordinates */
+			left: 10px;
+			width: 10%;
+			height: 300px; /* Specify a fixed height in pixels */
+			background-color: rgba(255, 255, 255, 0.5);
+			padding: 10px;
+			font-family: Arial, sans-serif;
+			font-size: 12px;
+		}
+		#coordinates { position: absolute; bottom: 30px; left: 10px; background-color: white; padding: 5px; font-family: Arial, sans-serif; font-size: 12px; }
+	</style>
+</head>
+
+<body>
+<div id="map"></div>
+<div id="left-panel">
+	<img src="logo_iceboost.svg" alt="ICEBOOST logo" style="max-width: 100%;">
+	<h4>Gradient-Boosted Regression Tree ensemble for ice thickness retrieval of the world's glaciers</h4>
+</div>
+<div id="coordinates">Lat: N/A, Lon: N/A</div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoibWFmZmU4OSIsImEiOiJjbTExZXM4bmEwcmFkMmtxMnlleDE2aWo2In0.E6BiHnnixuupE5Zpx9FS8g';
+	const map = new mapboxgl.Map({
+		container: 'map', // container ID
+		style: 'mapbox://styles/maffe89/cm2wh6ece00in01pw42nsbsxq',
+		center: [-16, 64], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+		zoom: 4 // starting zoom
+	});
+
+	// Add zoom and rotation controls to the map.
+	map.addControl(new mapboxgl.NavigationControl());
+
+	// Display latitude and longitude as the mouse moves
+	map.on('mousemove', function (e) {
+		const coords = e.lngLat; // Get the coordinates
+		document.getElementById('coordinates').innerHTML = `Lat: ${coords.lat.toFixed(5)}, Lon: ${coords.lng.toFixed(5)}`; // Update the coordinates display
+	});
+
+	const tileFolders = ['RGI60-06.00416', 'RGI60-06.00475']; // Add additional folders as needed
+
+	map.on('load', function () {
+        tileFolders.forEach(folderName => {
+            const sourceId = `${folderName}-tiles`;
+            const layerId = `${folderName}-tiles-layer`;
+
+            // Add each raster tile source
+            map.addSource(sourceId, {
+                'type': 'raster',
+                'tiles': [
+                    `http://localhost:8000/tiles/${folderName}/{z}/{x}/{y}.png`
+                ],
+                'tileSize': 256,
+                'scheme': 'tms'
+            });
+
+            // Add each raster layer
+            map.addLayer({
+                'id': layerId,
+                'type': 'raster',
+                'source': sourceId,
+                'paint': {
+                    'raster-opacity': 1 // Adjust as needed
+                }
+            });
+        });
+    });
+
+</script>
+
+</body>
+</html>
