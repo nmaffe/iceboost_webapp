@@ -49,8 +49,55 @@
 		document.getElementById('coordinates').innerHTML = `Lat: ${coords.lat.toFixed(5)}, Lon: ${coords.lng.toFixed(5)}`; // Update the coordinates display
 	});
 
-	const tileFolders = ['RGI60-06.00416', 'RGI60-06.00475']; // Add additional folders as needed
+	//const tileFolders = ['RGI60-06.00416', 'RGI60-06.00475']; // Add additional folders as needed
 
+	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
+	const tilesPath = 'tiles'; // Your folder path
+
+	async function getTileFolders() {
+		const response = await fetch(`https://api.github.com/repos/${githubRepo}/contents/${tilesPath}`);
+		if (!response.ok) {
+			throw new Error('Failed to fetch tile folders');
+		}
+		const data = await response.json();
+
+		// Filter the folders from the response
+		return data.filter(item => item.type === 'dir').map(item => item.name);
+	}
+
+	map.on('load', async function () {
+		try {
+			const tileFolders = await getTileFolders(); // Fetch the folders dynamically
+			tileFolders.forEach(folderName => {
+				const sourceId = `${folderName}-tiles`;
+				const layerId = `${folderName}-tiles-layer`;
+
+				// Add each raster tile source
+				map.addSource(sourceId, {
+					'type': 'raster',
+					'tiles': [
+						`https://nmaffe.github.io/iceboost_webapp/tiles/${folderName}/{z}/{x}/{y}.png`
+					],
+					'tileSize': 256,
+					'scheme': 'tms'
+				});
+
+				// Add each raster layer
+				map.addLayer({
+					'id': layerId,
+					'type': 'raster',
+					'source': sourceId,
+					'paint': {
+						'raster-opacity': 1 // Adjust as needed
+					}
+				});
+			});
+		} catch (error) {
+			console.error(error);
+		}
+	});
+
+	<!--
 	map.on('load', function () {
         tileFolders.forEach(folderName => {
             const sourceId = `${folderName}-tiles`;
@@ -79,6 +126,7 @@
             });
         });
     });
+	-->
 
 </script>
 
