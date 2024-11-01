@@ -20,6 +20,42 @@
 			font-family: Arial, sans-serif;
 			font-size: 12px;
 		}
+
+		#colorbar-container {
+			position: absolute;
+			bottom: 30px;
+			right: 10px;
+			width: 20px;
+			height: 300px;
+			background: linear-gradient(to top,
+				rgb(0, 0, 128),       /* Dark Blue */
+				rgb(0, 0, 255),       /* Blue */
+				rgb(0, 255, 255),     /* Cyan */
+				rgb(255, 255, 0),     /* Yellow */
+				rgb(255, 127, 0),     /* Orange */
+				rgb(139, 0, 0)        /* Dark Red */
+			);
+			border: 1px solid black;
+		}
+
+		#colorbar-labels {
+			position: absolute;
+			bottom: 30px;
+			right: 40px;
+			height: 305px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			font-family: Arial, sans-serif;
+			font-weight: bold;
+			font-size: 20px;
+			color: lightblue;
+		}
+
+		#colorbar-labels span {
+			text-align: right;
+		}
+
 		#coordinates {
 			position: absolute;
 			bottom: 30px;
@@ -32,6 +68,7 @@
 			font-size: 20px;
 			font-weight: bold;
 		}
+
 	</style>
 </head>
 
@@ -40,6 +77,21 @@
 <div id="left-panel">
 	<img src="logo_iceboost.svg" alt="ICEBOOST logo" style="max-width: 100%;">
 	<h4>Gradient-Boosted Regression Tree ensemble for ice thickness retrieval of the world's glaciers</h4>
+</div>
+<!-- Vertical colorbar for ice thickness -->
+<div id="colorbar-container"></div>
+<div id="colorbar-labels">
+	<span>1000</span>
+	<span>900</span>
+	<span>800</span>
+	<span>700</span>
+	<span>600</span>
+	<span>500</span>
+	<span>400</span>
+	<span>300</span>
+	<span>200</span>
+	<span>100</span>
+	<span>0</span>
 </div>
 <div id="coordinates">Lat: N/A, Lon: N/A</div>
 <script>
