@@ -114,7 +114,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: red;
+			color: black;
 			//font-size: 20px;
 			//font-size: 2vw; /* 2% of the viewport width */
 			font-size: clamp(12px, 2vw, 18px); // This will keep the font size between 12px and 18px, scaling with the viewport width but not going smaller than 12px or larger than 18px.
@@ -129,11 +129,6 @@
 <div id="left-panel">
 	<img src="logo_iceboost.svg" alt="ICEBOOST logo" style="max-width: 100%;">
 	<h4>Gradient-Boosted Regression Tree ensemble for ice thickness retrieval of the world's glaciers</h4>
-	<p>Select Tile Source:</p>
-    <input type="radio" id="rgi62" name="tileSource" value="RGI62" checked>
-    <label for="rgi62">RGI62</label><br>
-    <input type="radio" id="rgi70g" name="tileSource" value="RGI70G">
-    <label for="rgi70g">RGI70G</label>
 </div>
 <!-- Vertical colorbar for ice thickness -->
 <div id="colorbar-container">
@@ -180,7 +175,7 @@
 
 
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
-	const tilesPath = 'tiles/RGI62'; // Default path
+	const tilesPath = 'tiles/RGI62'; // Your folder path
 
 	async function getTileFolders() {
 		const response = await fetch(`https://api.github.com/repos/${githubRepo}/contents/${tilesPath}`);
@@ -193,24 +188,22 @@
 		return data.filter(item => item.type === 'dir').map(item => item.name);
 	}
 
-	async function loadTiles() {
+	map.on('load', async function () {
 		try {
-			const tileFolders = await getTileFolders();
+			const tileFolders = await getTileFolders(); // Fetch the folders dynamically
+			console.log(tileFolders); // Debugging: Check the retrieved folders
 			tileFolders.forEach(folderName => {
 				const sourceId = `${folderName}-tiles`;
 				const layerId = `${folderName}-tiles-layer`;
-
-				// Remove existing sources and layers to avoid duplicates
-				if (map.getSource(sourceId)) {
-					map.removeLayer(layerId);
-					map.removeSource(sourceId);
-				}
 
 				// Add each raster tile source
 				map.addSource(sourceId, {
 					'type': 'raster',
 					'tiles': [
-						`https://nmaffe.github.io/iceboost_webapp/${tilesPath}/${folderName}/{z}/{x}/{y}.png`
+						`https://nmaffe.github.io/iceboost_webapp/tiles/RGI62/${folderName}/{z}/{x}/{y}.png`
+						//`https://as3-iceboost-tiles.s3.amazonaws.com/tiles/${folderName}/{z}/{x}/{y}.png`
+                    	//`http://localhost:8000/tiles/${folderName}/{z}/{x}/{y}.png`
+
 					],
 					'tileSize': 256,
 					'scheme': 'tms'
@@ -229,20 +222,6 @@
 		} catch (error) {
 			console.error(error);
 		}
-	}
-
-	// Initialize the map with RGI62 tiles
-	map.on('load', loadTiles);
-
-	// Button event listeners
-	document.getElementById('rgi62-btn').addEventListener('click', () => {
-		tilesPath = 'tiles/RGI62';
-		loadTiles();
-	});
-
-	document.getElementById('rgi70g-btn').addEventListener('click', () => {
-		tilesPath = 'tiles/RGI70G';
-		loadTiles();
 	});
 
 </script>
