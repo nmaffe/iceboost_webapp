@@ -23,10 +23,15 @@
 
 		#colorbar-container {
 			position: absolute;
-			bottom: 30px;
-			right: 10px;
-			width: 20px;
-			height: 300px;
+			bottom: 60px;
+			right: 40px;
+			display: flex; /* Enable flexbox */
+			align-items: center; /* Center items vertically */
+		}
+
+		#colorbar {
+			width: 40px; /* Width of the colorbar */
+			height: 300px; /* Height of the colorbar */
 			background: linear-gradient(to top,
 				rgb(0, 0, 127), rgb(0, 0, 132), rgb(0, 0, 136), rgb(0, 0, 141), rgb(0, 0, 145), rgb(0, 0, 150),
 				rgb(0, 0, 154), rgb(0, 0, 159), rgb(0, 0, 163), rgb(0, 0, 168), rgb(0, 0, 172), rgb(0, 0, 177),
@@ -70,15 +75,24 @@
 				rgb(222, 0, 0), rgb(218, 0, 0), rgb(213, 0, 0), rgb(209, 0, 0), rgb(204, 0, 0), rgb(200, 0, 0),
 				rgb(195, 0, 0), rgb(191, 0, 0), rgb(186, 0, 0), rgb(182, 0, 0), rgb(177, 0, 0), rgb(172, 0, 0),
 				rgb(168, 0, 0), rgb(163, 0, 0), rgb(159, 0, 0), rgb(154, 0, 0), rgb(150, 0, 0), rgb(145, 0, 0),
-				rgb(141, 0, 0), rgb(136, 0, 0), rgb(132, 0, 0), rgb(127, 0, 0)
-			);
-			border: 1px solid black;
+				rgb(141, 0, 0), rgb(136, 0, 0), rgb(132, 0, 0), rgb(127, 0, 0));
+			border: 1px solid black; /* Optional border */
+		}
+
+		#colorbar-title {
+			writing-mode: vertical-rl; /* Make text vertical */
+			transform: rotate(180deg); /* Rotate text to make it readable */
+			font-family: Arial, sans-serif;
+			font-weight: bold;
+			font-size: 20px; /* Adjust size as needed */
+			color: lightblue; /* Change to your preferred color */
+			margin-left: 10px; /* Space between title and colorbar */
 		}
 
 		#colorbar-labels {
 			position: absolute;
-			bottom: 30px;
-			right: 40px;
+			bottom: 60px;
+			right: 110px;
 			height: 305px;
 			display: flex;
 			flex-direction: column;
@@ -116,9 +130,12 @@
 	<h4>Gradient-Boosted Regression Tree ensemble for ice thickness retrieval of the world's glaciers</h4>
 </div>
 <!-- Vertical colorbar for ice thickness -->
-<div id="colorbar-container"></div>
+<div id="colorbar-container">
+	<div id="colorbar"></div> <!-- Colorbar background as a div -->
+	<div id="colorbar-title">Ice thickness (m)</div> <!-- Colorbar Axis Title -->
+</div>
 <div id="colorbar-labels">
-	<span>1000</span>
+	<span>1000+</span>
 	<span>900</span>
 	<span>800</span>
 	<span>700</span>
