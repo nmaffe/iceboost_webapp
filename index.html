@@ -109,7 +109,7 @@
 
 		#coordinates {
 			position: absolute;
-			bottom: 30px;
+			bottom: 70px;
 			left: 10px;
 			/*background-color: white;*/
 			padding: 5px;
@@ -117,7 +117,7 @@
 			sans-serif;
 			color: lightblue;
 			font-size: 20px;
-			font-weight: bold;
+			font-weight: normal;
 		}
 
 	</style>
@@ -153,11 +153,15 @@
 	const map = new mapboxgl.Map({
 		container: 'map', // container ID
 		//style: 'mapbox://styles/maffe89/cm2wh6ece00in01pw42nsbsxq',
-		style: 'mapbox://styles/mapbox/satellite-v9',
+		style: 'mapbox://styles/mapbox/light-v11',
+		//style: 'mapbox://styles/mapbox/satellite-v9',
 		center: [-16, 64], // starting position [lng, lat]. Note that lat must be set between -90 and 90
 		zoom: 4, // starting zoom
 		projection: 'globe' // Enable globe projection
 	});
+
+	// Add a scale bar to a map
+	map.addControl(new mapboxgl.ScaleControl({position: 'bottom-left'}));
 
 	// Add zoom and rotation controls to the map.
 	map.addControl(new mapboxgl.NavigationControl());
