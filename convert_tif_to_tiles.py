@@ -30,6 +30,9 @@ def convert_tif_to_tiles(input_tif, output_directory):
         # Clean up the temporary file
         os.remove(temp_tif_path)
 
+    # todo: Generate a Folder List File: Create a JSON file (or another format)
+    #  containing all folder names, such as tile_folders.json, to be put in the amazon S3 bucket.
+
 if __name__ == "__main__":
     input_tif = "/media/maffe/nvme/iceboost_global_deploy/RGI70G/rgi11/mapbox/RGI2000-v7.0-G-11-02596_Mapbox.tif"
     glacier_name = input_tif.split('/')[-1].replace('.tif', '').replace('_Mapbox', '')

@@ -176,6 +176,9 @@
 
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
 	const tilesPath = 'tiles/RGI62'; // Your folder path
+	const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles';
+	const folders = ['RGI60-06.00416', 'RGI60-06.00475'];
+
 
 	async function getTileFolders() {
 		const response = await fetch(`https://api.github.com/repos/${githubRepo}/contents/${tilesPath}`);
@@ -188,6 +191,35 @@
 		return data.filter(item => item.type === 'dir').map(item => item.name);
 	}
 
+	// Load specified folders as tile sources
+	map.on('load', function () {
+		folders.forEach(folderName => {
+			const sourceId = `${folderName}-tiles`;
+			const layerId = `${folderName}-tiles-layer`;
+
+			// Add each raster tile source from S3
+			map.addSource(sourceId, {
+				'type': 'raster',
+				'tiles': [
+					`${s3BucketURL}/${folderName}/{z}/{x}/{y}.png`
+				],
+				'tileSize': 256,
+				'scheme': 'tms'
+			});
+
+			// Add each raster layer
+			map.addLayer({
+				'id': layerId,
+				'type': 'raster',
+				'source': sourceId,
+				'paint': {
+					'raster-opacity': 0.6 // Adjust as needed
+				}
+			});
+		});
+	});
+
+	/*
 	map.on('load', async function () {
 		try {
 			const tileFolders = await getTileFolders(); // Fetch the folders dynamically
@@ -223,6 +255,7 @@
 			console.error(error);
 		}
 	});
+	*/
 
 </script>
 
