@@ -28,7 +28,7 @@ def convert_tif_to_tiles(input_tif, output_directory):
         os.remove(temp_tif_path)
 
 if __name__ == "__main__":
-    input_tif = "/media/maffe/nvme/iceboost_global_deploy/rgi6/mapbox/RGI60-06.00416_Mapbox.tif"
+    input_tif = "/media/maffe/nvme/iceboost_global_deploy/rgi11/mapbox/RGI60-11.01450_Mapbox.tif"
     glacier_name = input_tif.split('/')[-1].replace('.tif', '').replace('_Mapbox', '')
-    output_dir = f"/home/maffe/PycharmProjects/map_glaciers/tiles/{glacier_name}/"
+    output_dir = f"/home/maffe/PycharmProjects/iceboost_webapp/tiles/{glacier_name}/"
     convert_tif_to_tiles(input_tif, output_dir)
