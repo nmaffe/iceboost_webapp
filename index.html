@@ -188,8 +188,8 @@
 		const parser = new DOMParser();
 		const xmlDoc = parser.parseFromString(text, "text/xml");
 		const folders = Array.from(xmlDoc.getElementsByTagName('Key'))
-			.map(key => key.textContent.replace(/\/$/, ''))
-			.filter(key => key.includes('/'));
+			.map(key => key.textContent.replace(/\/$/, '')) // Remove trailing slash
+			.filter(key => key.includes('/')); // Only folders
 
 		return folders; // Return the list of folder names
 	}
