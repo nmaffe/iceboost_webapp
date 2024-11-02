@@ -19,6 +19,7 @@ def convert_tif_to_tiles(input_tif, output_directory):
         # Step 2: Run gdal2tiles on the result of gdal_translate
         #todo: -x necessary to avoid producing empty tiles?
         #todo: best zoom level ?
+        #todo: avoid creating html with ---webviewer none
 
         tiles_command = ['gdal2tiles.py', '-z', '5-10', '-v', '-r', 'bilinear', temp_tif_path, output_directory]
         subprocess.run(tiles_command, check=True)

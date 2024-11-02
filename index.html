@@ -115,9 +115,7 @@
 			padding: 5px;
 			font-family: Arial, sans-serif;
 			color: yellow;
-			//font-size: 20px;
-			//font-size: 2vw; /* 2% of the viewport width */
-			font-size: clamp(12px, 2vw, 18px); // This will keep the font size between 12px and 18px, scaling with the viewport width but not going smaller than 12px or larger than 18px.
+			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
 
@@ -177,7 +175,7 @@
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
 	const tilesPath = 'tiles/RGI62'; // Your folder path
 	const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
-	const folders = ['RGI60-06.00416', 'RGI60-06.00475'];
+	const folders = ['RGI60-06.00416', 'RGI60-06.00475', 'RGI60-11.01450'];
 
 
 	async function getTileFolders() {
