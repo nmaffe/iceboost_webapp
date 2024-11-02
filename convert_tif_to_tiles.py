@@ -17,6 +17,9 @@ def convert_tif_to_tiles(input_tif, output_directory):
         subprocess.run(translate_command, check=True)
 
         # Step 2: Run gdal2tiles on the result of gdal_translate
+        #todo: -x necessary to avoid producing empty tiles?
+        #todo: best zoom level ?
+
         tiles_command = ['gdal2tiles.py', '-z', '5-10', '-v', '-r', 'bilinear', temp_tif_path, output_directory]
         subprocess.run(tiles_command, check=True)
 
@@ -28,7 +31,7 @@ def convert_tif_to_tiles(input_tif, output_directory):
         os.remove(temp_tif_path)
 
 if __name__ == "__main__":
-    input_tif = "/media/maffe/nvme/iceboost_global_deploy/rgi11/mapbox/RGI60-11.01450_Mapbox.tif"
+    input_tif = "/media/maffe/nvme/iceboost_global_deploy/RGI70G/rgi11/mapbox/RGI2000-v7.0-G-11-02596_Mapbox.tif"
     glacier_name = input_tif.split('/')[-1].replace('.tif', '').replace('_Mapbox', '')
-    output_dir = f"/home/maffe/PycharmProjects/iceboost_webapp/tiles/RGI62/{glacier_name}/"
+    output_dir = f"/home/maffe/PycharmProjects/iceboost_webapp/tiles/RGI70G/{glacier_name}/"
     convert_tif_to_tiles(input_tif, output_dir)
