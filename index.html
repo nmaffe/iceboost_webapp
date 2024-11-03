@@ -6,6 +6,7 @@
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 	<link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/rbush/3.0.1/rbush.min.js"></script>
 	<style>
 		body { margin: 0; padding: 0; }
 		#map { position: absolute; top: 0; bottom: 0; width: 100%; }
@@ -114,7 +115,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: blue;
+			color: yellow;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -178,6 +179,7 @@
 	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62_with_centers.json`; // Path to your JSON file
 
 	let glaciers; // Declare glaciers outside the fetch so it can be accessed in moveend
+	const rbushIndex = new RBush(); // Initialize RBush
 
 	// Fetch the tile folder information
 	fetch(tileFoldersUrl)
@@ -189,19 +191,31 @@
 		})
 		.then(data => {
 			glaciers = data.glaciers; // Store the glaciers array for later use
-			loadTiles(glaciers); // Call the function to load tiles
+			createSpatialIndex(glaciers); // Create the spatial index
+			loadTiles(); // Load tiles based on the initial bounds
 		})
 		.catch(error => {
 			console.error('Fetch error:', error);
 		});
 
-	function loadTiles(glaciers) {
-		// Get the current map bounds
-		const bounds = map.getBounds(); // Get current bounds (LngLatBounds)
+	function createSpatialIndex(glaciers) {
+		const items = glaciers.map(glacier => {
+			const [lng, lat] = glacier.center;
+			return {
+				minX: lng,
+				minY: lat,
+				maxX: lng,
+				maxY: lat,
+				id: glacier.id // Store glacier ID for reference
+			};
+		});
+		rbushIndex.load(items); // Load items into the RBush index
+	}
 
-		// Convert bounds to an array of coordinates
-		const sw = bounds.getSouthWest(); // Southwest corner
-		const ne = bounds.getNorthEast(); // Northeast corner
+	function loadTiles() {
+		const bounds = map.getBounds();
+		const sw = bounds.getSouthWest();
+		const ne = bounds.getNorthEast();
 
 		// Clear existing layers and sources
 		glaciers.forEach(glacier => {
@@ -219,40 +233,37 @@
 			}
 		});
 
-		// Loop through each glacier and check if its center is within the bounds
-		glaciers.forEach(glacier => {
-			const [lng, lat] = glacier.center; // Access the glacier center coordinates
+		// Query the RBush index to find glaciers within the current bounds
+		const foundGlaciers = rbushIndex.search({
+			minX: sw.lng,
+			minY: sw.lat,
+			maxX: ne.lng,
+			maxY: ne.lat
+		});
 
-			// Check if the glacier's center is within the current bounds
-			const isWithinBounds = (
-				lng >= sw.lng && lng <= ne.lng && // Longitude check
-				lat >= sw.lat && lat <= ne.lat // Latitude check
-			);
+		foundGlaciers.forEach(glacier => {
+			const sourceId = `${glacier.id}-tiles`;
+			const layerId = `${glacier.id}-tiles-layer`;
 
-			if (isWithinBounds) {
-				const sourceId = `${glacier.id}-tiles`;
-				const layerId = `${glacier.id}-tiles-layer`;
+			// Add each raster tile source from S3
+			map.addSource(sourceId, {
+				'type': 'raster',
+				'tiles': [
+					`${s3BucketURL}/${glacier.id}/{z}/{x}/{y}.png`
+				],
+				'tileSize': 256,
+				'scheme': 'tms'
+			});
 
-				// Add each raster tile source from S3
-				map.addSource(sourceId, {
-					'type': 'raster',
-					'tiles': [
-						`${s3BucketURL}/${glacier.id}/{z}/{x}/{y}.png`
-					],
-					'tileSize': 256,
-					'scheme': 'tms'
-				});
-
-				// Add each raster layer
-				map.addLayer({
-					'id': layerId,
-					'type': 'raster',
-					'source': sourceId,
-					'paint': {
-						'raster-opacity': 0.6 // Adjust as needed
-					}
-				});
-			}
+			// Add each raster layer
+			map.addLayer({
+				'id': layerId,
+				'type': 'raster',
+				'source': sourceId,
+				'paint': {
+					'raster-opacity': 0.6 // Adjust as needed
+				}
+			});
 		});
 	}
 
@@ -261,7 +272,7 @@
 	map.on('moveend', () => {
 		clearTimeout(debounceTimer);
 		debounceTimer = setTimeout(() => {
-			loadTiles(glaciers); // Reload tiles based on the new map bounds
+			loadTiles(); // Reload tiles based on the new map bounds
 		}, 2000); // Wait 2 seconds after movement ends
 	});
 
