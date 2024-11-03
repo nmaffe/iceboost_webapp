@@ -115,7 +115,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: black;
+			color: green;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -176,7 +176,7 @@
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
 	const tilesPath = 'tiles/RGI62'; // Your folder path
 	const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
-	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62_with_centers.json`; // Path to your JSON file
+	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62_with_bboxes.json`; // Path to your JSON file
 
 	let glaciers; // Declare glaciers outside the fetch so it can be accessed in moveend
 	const rbushIndex = new RBush(); // Initialize RBush
@@ -200,12 +200,12 @@
 
 	function createSpatialIndex(glaciers) {
 		const items = glaciers.map(glacier => {
-			const [lng, lat] = glacier.center;
+			const [minX, minY, maxX, maxY] = glacier.bbox;
 			return {
-				minX: lng,
-				minY: lat,
-				maxX: lng,
-				maxY: lat,
+				minX: minX,
+				minY: minY,
+				maxX: maxX,
+				maxY: maxY,
 				id: glacier.id // Store glacier ID for reference
 			};
 		});

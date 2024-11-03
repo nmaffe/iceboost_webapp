@@ -45,8 +45,8 @@ for rgi in np.arange(1, 20):
             'center': rounded_center  # Convert tuple to list for JSON serialization
         }
 
-        if ((id == 'RGI60-06.00416') or (id == 'RGI60-06.00475') or (id == 'RGI60-11.01450')):
-            all_world_glaciers.append(glacier_entry)
+        #if ((id == 'RGI60-06.00416') or (id == 'RGI60-06.00475') or (id == 'RGI60-11.01450')):
+        all_world_glaciers.append(glacier_entry)
 
 
 print(f"Fetched all glacier names: {len(all_world_glaciers)}")
