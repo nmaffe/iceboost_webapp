@@ -194,29 +194,47 @@
 		});
 
 	function loadTiles(glaciers) {
+		// Get the current map bounds
+		const bounds = map.getBounds(); // Get current bounds (LngLatBounds)
+
+		// Convert bounds to an array of coordinates
+		const sw = bounds.getSouthWest(); // Southwest corner
+		const ne = bounds.getNorthEast(); // Northeast corner
+
+		// Loop through each glacier and check if its bbox is within the bounds
 		glaciers.forEach(glacier => {
-			const sourceId = `${glacier.id}-tiles`;
-			const layerId = `${glacier.id}-tiles-layer`;
+			const [minLng, minLat, maxLng, maxLat] = glacier.bbox;
 
-			// Add each raster tile source from S3
-			map.addSource(sourceId, {
-				'type': 'raster',
-				'tiles': [
-					`${s3BucketURL}/${glacier.id}/{z}/{x}/{y}.png`
-				],
-				'tileSize': 256,
-				'scheme': 'tms'
-			});
+			// Check if the glacier's bbox intersects with the current bounds
+			const isWithinBounds = (
+				minLng <= ne.lng && maxLng >= sw.lng && // Longitude check
+				minLat <= ne.lat && maxLat >= sw.lat // Latitude check
+			);
 
-			// Add each raster layer
-			map.addLayer({
-				'id': layerId,
-				'type': 'raster',
-				'source': sourceId,
-				'paint': {
-					'raster-opacity': 0.6 // Adjust as needed
-				}
-			});
+			if (isWithinBounds) {
+				const sourceId = `${glacier.id}-tiles`;
+				const layerId = `${glacier.id}-tiles-layer`;
+
+				// Add each raster tile source from S3
+				map.addSource(sourceId, {
+					'type': 'raster',
+					'tiles': [
+						`${s3BucketURL}/${glacier.id}/{z}/{x}/{y}.png`
+					],
+					'tileSize': 256,
+					'scheme': 'tms'
+				});
+
+				// Add each raster layer
+				map.addLayer({
+					'id': layerId,
+					'type': 'raster',
+					'source': sourceId,
+					'paint': {
+						'raster-opacity': 0.6 // Adjust as needed
+					}
+				});
+			}
 		});
 	}
 
