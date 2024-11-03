@@ -114,7 +114,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: blue;
+			color: red;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -237,6 +237,13 @@
 			}
 		});
 	}
+
+	// Optional: Add an event listener to load tiles on map move or zoom
+	map.on('moveend', () => {
+		// Clear existing tiles or layers if needed, then reload based on the new bounds
+		// (You might want to implement a function to remove layers and sources here)
+		loadTiles(glaciers); // Reload tiles based on the new map bounds
+	});
 
 </script>
 
