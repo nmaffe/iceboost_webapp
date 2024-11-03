@@ -114,7 +114,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: green;
+			color: blue;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -175,53 +175,51 @@
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
 	const tilesPath = 'tiles/RGI62'; // Your folder path
 	const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
-	//const folders = ['RGI60-06.00416', 'RGI60-06.00475', 'RGI60-11.01450'];
+	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62.json`; // Path to your JSON file
 
-	async function getTileFolders() {
-		const response = await fetch(s3BucketURL); // Fetch the S3 bucket contents
-		if (!response.ok) {
-			throw new Error('Failed to fetch tile folders');
-		}
-		const text = await response.text(); // Get the response as text
+	// Fetch the tile folder information
+    fetch(tileFoldersUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch tile folders');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const folders = data.folders; // Access the folders array from the JSON response
+            loadTiles(folders); // Call the function to load tiles
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+        });
 
-		// Parse the response to get folder names
-		const parser = new DOMParser();
-		const xmlDoc = parser.parseFromString(text, "text/xml");
-		const folders = Array.from(xmlDoc.getElementsByTagName('Key'))
-			.map(key => key.textContent.replace(/\/$/, '')) // Remove trailing slash
-			.filter(key => key.includes('/')); // Only folders
+	// Function to load specified folders as tile sources
+    function loadTiles(folders) {
+        folders.forEach(folderName => {
+            const sourceId = `${folderName}-tiles`;
+            const layerId = `${folderName}-tiles-layer`;
 
-		return folders; // Return the list of folder names
-	}
+            // Add each raster tile source from S3
+            map.addSource(sourceId, {
+                'type': 'raster',
+                'tiles': [
+                    `${s3BucketURL}/${folderName}/{z}/{x}/{y}.png`
+                ],
+                'tileSize': 256,
+                'scheme': 'tms'
+            });
 
-	// Load specified folders as tile sources
-	map.on('load', async function () {
-		const folders = await getTileFolders(); // Get the folder names from S3
-		folders.forEach(folderName => {
-			const sourceId = `${folderName}-tiles`;
-			const layerId = `${folderName}-tiles-layer`;
-
-			// Add each raster tile source from S3
-			map.addSource(sourceId, {
-				'type': 'raster',
-				'tiles': [
-					`${s3BucketURL}/${folderName}/{z}/{x}/{y}.png`
-				],
-				'tileSize': 256,
-				'scheme': 'tms'
-			});
-
-			// Add each raster layer
-			map.addLayer({
-				'id': layerId,
-				'type': 'raster',
-				'source': sourceId,
-				'paint': {
-					'raster-opacity': 0.6 // Adjust as needed
-				}
-			});
-		});
-	});
+            // Add each raster layer
+            map.addLayer({
+                'id': layerId,
+                'type': 'raster',
+                'source': sourceId,
+                'paint': {
+                    'raster-opacity': 0.6 // Adjust as needed
+                }
+            });
+        });
+    }
 
 </script>
 
