@@ -115,7 +115,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: black;
+			color: blue;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -233,6 +233,9 @@
 			}
 		});
 
+		console.log('Total Glaciers:', glaciers.length);
+
+		/*
 		// Query the RBush index to find glaciers within the current bounds
 		const foundGlaciers = rbushIndex.search({
 			minX: sw.lng,
@@ -264,7 +267,7 @@
 					'raster-opacity': 0.6 // Adjust as needed
 				}
 			});
-		});
+		}); */
 	}
 
 	let debounceTimer;
