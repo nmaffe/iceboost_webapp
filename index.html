@@ -114,7 +114,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: green;
+			color: black;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -177,6 +177,8 @@
 	const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
 	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62_with_bboxes.json`; // Path to your JSON file
 
+	let glaciers; // Declare glaciers outside the fetch so it can be accessed in moveend
+
 	// Fetch the tile folder information
 	fetch(tileFoldersUrl)
 		.then(response => {
@@ -186,7 +188,7 @@
 			return response.json();
 		})
 		.then(data => {
-			const glaciers = data.glaciers; // Access the glaciers array from the JSON response
+			glaciers = data.glaciers; // Store the glaciers array for later use
 			loadTiles(glaciers); // Call the function to load tiles
 		})
 		.catch(error => {
@@ -200,6 +202,22 @@
 		// Convert bounds to an array of coordinates
 		const sw = bounds.getSouthWest(); // Southwest corner
 		const ne = bounds.getNorthEast(); // Northeast corner
+
+		// Clear existing layers and sources
+		glaciers.forEach(glacier => {
+			const sourceId = `${glacier.id}-tiles`;
+			const layerId = `${glacier.id}-tiles-layer`;
+
+			// Remove layer if it exists
+			if (map.getLayer(layerId)) {
+				map.removeLayer(layerId);
+			}
+
+			// Remove source if it exists
+			if (map.getSource(sourceId)) {
+				map.removeSource(sourceId);
+			}
+		});
 
 		// Loop through each glacier and check if its bbox is within the bounds
 		glaciers.forEach(glacier => {
@@ -238,10 +256,8 @@
 		});
 	}
 
-	// Optional: Add an event listener to load tiles on map move or zoom
+	// Add an event listener to load tiles on map move or zoom
 	map.on('moveend', () => {
-		// Clear existing tiles or layers if needed, then reload based on the new bounds
-		// (You might want to implement a function to remove layers and sources here)
 		loadTiles(glaciers); // Reload tiles based on the new map bounds
 	});
 
