@@ -114,7 +114,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: blue;
+			color: red;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -193,33 +193,44 @@
             console.error('Fetch error:', error);
         });
 
-	// Function to load specified folders as tile sources
-    function loadTiles(folders) {
-        folders.forEach(folderName => {
-            const sourceId = `${folderName}-tiles`;
-            const layerId = `${folderName}-tiles-layer`;
+	function loadTiles(folders) {
+		folders.forEach(folderName => {
+			const sourceId = `${folderName}-tiles`;
+			const layerId = `${folderName}-tiles-layer`;
 
-            // Add each raster tile source from S3
-            map.addSource(sourceId, {
-                'type': 'raster',
-                'tiles': [
-                    `${s3BucketURL}/${folderName}/{z}/{x}/{y}.png`
-                ],
-                'tileSize': 256,
-                'scheme': 'tms'
-            });
+			// Check if the folder exists before trying to add it as a source
+			fetch(`${s3BucketURL}/${folderName}/`) // Attempt to access the folder
+				.then(response => {
+					if (!response.ok) {
+						console.warn(`Folder ${folderName} not found. Skipping...`);
+						return; // Skip loading this folder
+					}
 
-            // Add each raster layer
-            map.addLayer({
-                'id': layerId,
-                'type': 'raster',
-                'source': sourceId,
-                'paint': {
-                    'raster-opacity': 0.6 // Adjust as needed
-                }
-            });
-        });
-    }
+					// If the folder exists, add the raster tile source
+					map.addSource(sourceId, {
+						'type': 'raster',
+						'tiles': [
+							`${s3BucketURL}/${folderName}/{z}/{x}/{y}.png`
+						],
+						'tileSize': 256,
+						'scheme': 'tms'
+					});
+
+					// Add the layer if the source was added successfully
+					map.addLayer({
+						'id': layerId,
+						'type': 'raster',
+						'source': sourceId,
+						'paint': {
+							'raster-opacity': 0.6 // Adjust as needed
+						}
+					});
+				})
+				.catch(error => {
+					console.error(`Error loading tiles for ${folderName}:`, error);
+				});
+		});
+	}
 
 </script>
 
