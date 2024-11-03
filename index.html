@@ -256,9 +256,13 @@
 		});
 	}
 
-	// Add an event listener to load tiles on map move or zoom
+	let debounceTimer;
+
 	map.on('moveend', () => {
-		loadTiles(glaciers); // Reload tiles based on the new map bounds
+		clearTimeout(debounceTimer);
+		debounceTimer = setTimeout(() => {
+			loadTiles(glaciers); // Reload tiles based on the new map bounds
+		}, 2000); // Wait 2 seconds after movement ends
 	});
 
 </script>
