@@ -27,14 +27,22 @@ for rgi in np.arange(1, 20):
         id = row[name_column_id]
         geom = row['geometry']
         bbox = geom.bounds
+        cenLon, cenLat = geom.centroid.x, geom.centroid.y
 
         # Round the bounding box values to the desired number of decimal places
         rounded_bbox = [round(coord, decimal_places) for coord in bbox]
+        rounded_center = [round(coord, decimal_places) for coord in (cenLon, cenLat)]
+
+        #print(cenLon, cenLat)
+        #print(rounded_bbox)
+        #print(rounded_center)
+        #input('wait')
 
         # Create a dictionary entry for this glacier
         glacier_entry = {
             'id': id,
-            'bbox': rounded_bbox  # Convert tuple to list for JSON serialization
+            #'bbox': rounded_bbox  # Convert tuple to list for JSON serialization
+            'center': rounded_center  # Convert tuple to list for JSON serialization
         }
 
         if ((id == 'RGI60-06.00416') or (id == 'RGI60-06.00475') or (id == 'RGI60-11.01450')):
@@ -47,7 +55,7 @@ print(f"Fetched all glacier names: {len(all_world_glaciers)}")
 output_json = {"glaciers": all_world_glaciers}
 
 # Specify the path to save the JSON file
-json_file_path = f'tileFolders_RGI{version}_with_bboxes.json'
+json_file_path = f'tileFolders_RGI{version}_with_centers.json'
 
 
 # Write the data to a JSON file

@@ -114,7 +114,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: green;
+			color: blue;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -175,7 +175,7 @@
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
 	const tilesPath = 'tiles/RGI62'; // Your folder path
 	const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
-	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62_with_bboxes.json`; // Path to your JSON file
+	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62_with_centers.json`; // Path to your JSON file
 
 	let glaciers; // Declare glaciers outside the fetch so it can be accessed in moveend
 
@@ -219,14 +219,14 @@
 			}
 		});
 
-		// Loop through each glacier and check if its bbox is within the bounds
+		// Loop through each glacier and check if its center is within the bounds
 		glaciers.forEach(glacier => {
-			const [minLng, minLat, maxLng, maxLat] = glacier.bbox;
+			const [lng, lat] = glacier.center; // Access the glacier center coordinates
 
-			// Check if the glacier's bbox intersects with the current bounds
+			// Check if the glacier's center is within the current bounds
 			const isWithinBounds = (
-				minLng <= ne.lng && maxLng >= sw.lng && // Longitude check
-				minLat <= ne.lat && maxLat >= sw.lat // Latitude check
+				lng >= sw.lng && lng <= ne.lng && // Longitude check
+				lat >= sw.lat && lat <= ne.lat // Latitude check
 			);
 
 			if (isWithinBounds) {
@@ -262,7 +262,7 @@
 		clearTimeout(debounceTimer);
 		debounceTimer = setTimeout(() => {
 			loadTiles(glaciers); // Reload tiles based on the new map bounds
-		}, 4000); // Wait 2 seconds after movement ends
+		}, 2000); // Wait 2 seconds after movement ends
 	});
 
 </script>
