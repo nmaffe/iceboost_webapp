@@ -178,57 +178,45 @@
 	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62.json`; // Path to your JSON file
 
 	// Fetch the tile folder information
-    fetch(tileFoldersUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to fetch tile folders');
-            }
-            return response.json();
-        })
-        .then(data => {
-            const folders = data.folders; // Access the folders array from the JSON response
-            loadTiles(folders); // Call the function to load tiles
-        })
-        .catch(error => {
-            console.error('Fetch error:', error);
-        });
+	fetch(tileFoldersUrl)
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('Failed to fetch tile folders');
+			}
+			return response.json();
+		})
+		.then(data => {
+			const folders = data.folders; // Access the folders array from the JSON response
+			loadTiles(folders); // Call the function to load tiles
+		})
+		.catch(error => {
+			console.error('Fetch error:', error);
+		});
 
 	function loadTiles(folders) {
 		folders.forEach(folderName => {
 			const sourceId = `${folderName}-tiles`;
 			const layerId = `${folderName}-tiles-layer`;
 
-			// Check if the folder exists before trying to add it as a source
-			fetch(`${s3BucketURL}/${folderName}/`) // Attempt to access the folder
-				.then(response => {
-					if (!response.ok) {
-						console.warn(`Folder ${folderName} not found. Skipping...`);
-						return; // Skip loading this folder
-					}
+			// Add each raster tile source from S3
+			map.addSource(sourceId, {
+				'type': 'raster',
+				'tiles': [
+					`${s3BucketURL}/${folderName}/{z}/{x}/{y}.png`
+				],
+				'tileSize': 256,
+				'scheme': 'tms'
+			});
 
-					// If the folder exists, add the raster tile source
-					map.addSource(sourceId, {
-						'type': 'raster',
-						'tiles': [
-							`${s3BucketURL}/${folderName}/{z}/{x}/{y}.png`
-						],
-						'tileSize': 256,
-						'scheme': 'tms'
-					});
-
-					// Add the layer if the source was added successfully
-					map.addLayer({
-						'id': layerId,
-						'type': 'raster',
-						'source': sourceId,
-						'paint': {
-							'raster-opacity': 0.6 // Adjust as needed
-						}
-					});
-				})
-				.catch(error => {
-					console.error(`Error loading tiles for ${folderName}:`, error);
-				});
+			// Add each raster layer
+			map.addLayer({
+				'id': layerId,
+				'type': 'raster',
+				'source': sourceId,
+				'paint': {
+					'raster-opacity': 0.6 // Adjust as needed
+				}
+			});
 		});
 	}
 
