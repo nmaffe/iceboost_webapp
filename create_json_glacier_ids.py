@@ -12,6 +12,7 @@ if version == '62': name_column_id = 'RGIId'
 elif version == '70G': name_column_id = 'rgi_id'
 
 all_world_glaciers = []
+decimal_places = 4
 
 for rgi in np.arange(1, 20):
     print(rgi)
@@ -22,22 +23,36 @@ for rgi in np.arange(1, 20):
     FILE_RGI_SHP = utils.get_rgi_region_file(rgi, version=version)
     rgi_glaciers = gpd.read_file(FILE_RGI_SHP, engine='pyogrio')
 
-    all_world_glaciers.extend(rgi_glaciers[name_column_id].tolist())
+    for idx, row in rgi_glaciers.iterrows():
+        id = row[name_column_id]
+        geom = row['geometry']
+        bbox = geom.bounds
+
+        # Round the bounding box values to the desired number of decimal places
+        rounded_bbox = [round(coord, decimal_places) for coord in bbox]
+
+        # Create a dictionary entry for this glacier
+        glacier_entry = {
+            'id': id,
+            'bbox': rounded_bbox  # Convert tuple to list for JSON serialization
+        }
+
+        if ((id == 'RGI60-06.00416') or (id == 'RGI60-06.00475') or (id == 'RRGI60-11.01450')):
+            all_world_glaciers.append(glacier_entry)
+    #all_world_glaciers.extend(rgi_glaciers[name_column_id].tolist())
 
 
 print(f"Fetched all glacier names: {len(all_world_glaciers)}")
 
-# Create a comma-separated string of glacier IDs
-all_world_glaciers_str = ', '.join(all_world_glaciers)
-
 # Create a dictionary to hold the glacier IDs
-data = {"folders": all_world_glaciers}
+output_json = {"glaciers": all_world_glaciers}
 
 # Specify the path to save the JSON file
-json_file_path = f'tileFolders_RGI{version}.json'
+json_file_path = f'tileFolders_RGI{version}_with_bboxes.json'
+
 
 # Write the data to a JSON file
 with open(json_file_path, 'w') as json_file:
-    json.dump(data, json_file, indent=4)
+    json.dump(output_json, json_file)
 
 print(f"Version {version}: JSON file {json_file_path} created successfully.")

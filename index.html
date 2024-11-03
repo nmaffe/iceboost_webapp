@@ -175,7 +175,7 @@
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
 	const tilesPath = 'tiles/RGI62'; // Your folder path
 	const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
-	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62.json`; // Path to your JSON file
+	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62_with_bboxes.json`; // Path to your JSON file
 
 	// Fetch the tile folder information
 	fetch(tileFoldersUrl)
@@ -186,23 +186,23 @@
 			return response.json();
 		})
 		.then(data => {
-			const folders = data.folders; // Access the folders array from the JSON response
-			loadTiles(folders); // Call the function to load tiles
+			const glaciers = data.glaciers; // Access the glaciers array from the JSON response
+			loadTiles(glaciers); // Call the function to load tiles
 		})
 		.catch(error => {
 			console.error('Fetch error:', error);
 		});
 
-	function loadTiles(folders) {
-		folders.forEach(folderName => {
-			const sourceId = `${folderName}-tiles`;
-			const layerId = `${folderName}-tiles-layer`;
+	function loadTiles(glaciers) {
+		glaciers.forEach(glacier => {
+			const sourceId = `${glacier.id}-tiles`;
+			const layerId = `${glacier.id}-tiles-layer`;
 
 			// Add each raster tile source from S3
 			map.addSource(sourceId, {
 				'type': 'raster',
 				'tiles': [
-					`${s3BucketURL}/${folderName}/{z}/{x}/{y}.png`
+					`${s3BucketURL}/${glacier.id}/{z}/{x}/{y}.png`
 				],
 				'tileSize': 256,
 				'scheme': 'tms'
