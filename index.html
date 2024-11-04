@@ -115,7 +115,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: black;
+			color: green;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -125,6 +125,9 @@
 
 <body>
 <div id="map"></div>
+<div id="loading" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255, 255, 255, 0.8); padding: 10px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); z-index: 1000;">
+    Loading tiles...
+</div>
 <div id="left-panel">
 	<img src="logo_iceboost.svg" alt="ICEBOOST logo" style="max-width: 100%;">
 	<h4>Gradient-Boosted Regression Tree ensemble for ice thickness retrieval of the world's glaciers</h4>
@@ -181,6 +184,8 @@
 	let glaciers; // Declare glaciers outside the fetch so it can be accessed in moveend
 	const rbushIndex = new RBush(); // Initialize RBush
 
+	document.getElementById('loading').style.display = 'block'; // Show loading indicator
+
 	// Fetch the tile folder information
 	fetch(tileFoldersUrl)
 		.then(response => {
@@ -193,9 +198,11 @@
 			glaciers = data.glaciers; // Store the glaciers array for later use
 			createSpatialIndex(glaciers); // Create the spatial index
 			loadTiles(); // Load tiles based on the initial bounds
+			document.getElementById('loading').style.display = 'none'; // Hide loading indicator
 		})
 		.catch(error => {
 			console.error('Fetch error:', error);
+			document.getElementById('loading').style.display = 'none'; // Hide loading indicator on error
 		});
 
 	function createSpatialIndex(glaciers) {
