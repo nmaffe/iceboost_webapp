@@ -115,18 +115,33 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: black;
+			color: blue;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
+
+		.loader {
+			border: 8px solid rgba(255, 255, 255, 0.3); /* Light border */
+			border-top: 8px solid #0074d9; /* Darker color for the spinner */
+			border-radius: 50%;
+			width: 50px; /* Size of the spinner */
+			height: 50px; /* Size of the spinner */
+			animation: spin 1s linear infinite; /* Animation properties */
+		}
+
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+}
 
 	</style>
 </head>
 
 <body>
 <div id="map"></div>
-<div id="loading" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255, 255, 255, 0.8); padding: 10px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); z-index: 1000;">
-    Loading tiles...
+<div id="loading" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
+    <div class="loader"></div>
+    <p style="text-align: center; margin-top: 10px;">Loading tiles...</p>
 </div>
 <div id="left-panel">
 	<img src="logo_iceboost.svg" alt="ICEBOOST logo" style="max-width: 100%;">
