@@ -1,4 +1,4 @@
-import os, json
+import os, json, gzip
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -59,13 +59,11 @@ print(f"Fetched all glacier names: {len(all_world_glaciers)}")
 output_json = {"glaciers": all_world_glaciers}
 
 # Specify the path to save the JSON file
-json_file_path = f'tileFolders_RGI{version}_with_bbox.json'
-
-#todo: add gzip compression here?
+json_file_path = f'tileFolders_RGI{version}_with_bbox.json.gz'
 
 
-# Write the data to a JSON file
-with open(json_file_path, 'w') as json_file:
+# Write the data to a gzipped JSON file
+with gzip.open(json_file_path, 'wt', encoding='utf-8') as json_file:
     json.dump(output_json, json_file)
 
-print(f"Version {version}: JSON file {json_file_path} created successfully.")
+print(f"Version {version}: Gzipped JSON file {json_file_path} created successfully.")
