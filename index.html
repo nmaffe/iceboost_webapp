@@ -115,7 +115,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: green;
+			color: black;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -251,27 +251,33 @@
 				const sourceId = `${glacier.id}-tiles`;
 				const layerId = `${glacier.id}-tiles-layer`;
 
-				// Add each raster tile source from S3
-				map.addSource(sourceId, {
-					'type': 'raster',
-					'tiles': [
-						`${s3BucketURL}/${glacier.id}/{z}/{x}/{y}.png`
-					],
-					'tileSize': 256,
-					'scheme': 'tms'
-				});
-				console.log(`Source added: ${sourceId}`);
+				// Check if the source already exists
+				if (!map.getSource(sourceId)) {
+					// Add each raster tile source from S3
+					map.addSource(sourceId, {
+						'type': 'raster',
+						'tiles': [
+							`${s3BucketURL}/${glacier.id}/{z}/{x}/{y}.png`
+						],
+						'tileSize': 256,
+						'scheme': 'tms'
+					});
+					console.log(`Source added: ${sourceId}`);
+				}
 
-				// Add each raster layer
-				map.addLayer({
-					'id': layerId,
-					'type': 'raster',
-					'source': sourceId,
-					'paint': {
-						'raster-opacity': 0.6 // Adjust as needed
-					}
-				});
-				console.log(`Layer added: ${layerId}`);
+				// Check if the layer already exists
+				if (!map.getLayer(layerId)) {
+					// Add each raster layer
+					map.addLayer({
+						'id': layerId,
+						'type': 'raster',
+						'source': sourceId,
+						'paint': {
+							'raster-opacity': 0.6 // Adjust as needed
+						}
+					});
+					console.log(`Layer added: ${layerId}`);
+				}
 			}
 		});
 	}
