@@ -1,4 +1,4 @@
-import json
+import os, json
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -33,6 +33,9 @@ for rgi in np.arange(1, 20):
         rounded_bbox = [round(coord, decimal_places) for coord in bbox]
         rounded_center = [round(coord, decimal_places) for coord in (cenLon, cenLat)]
 
+        is_tile = os.path.isdir(f"tiles/RGI{version}/{id}")
+
+
         #print(cenLon, cenLat)
         #print(rounded_bbox)
         #print(rounded_center)
@@ -41,8 +44,9 @@ for rgi in np.arange(1, 20):
         # Create a dictionary entry for this glacier
         glacier_entry = {
             'id': id,
-            #'bbox': rounded_bbox  # Convert tuple to list for JSON serialization
-            'center': rounded_center  # Convert tuple to list for JSON serialization
+            'bbox': rounded_bbox,  # Convert tuple to list for JSON serialization
+            #'center': rounded_center  # Convert tuple to list for JSON serialization
+            "is_tile": is_tile
         }
 
         #if ((id == 'RGI60-06.00416') or (id == 'RGI60-06.00475') or (id == 'RGI60-11.01450')):
@@ -55,7 +59,7 @@ print(f"Fetched all glacier names: {len(all_world_glaciers)}")
 output_json = {"glaciers": all_world_glaciers}
 
 # Specify the path to save the JSON file
-json_file_path = f'tileFolders_RGI{version}_with_centers.json'
+json_file_path = f'tileFolders_RGI{version}_with_bbox.json'
 
 
 # Write the data to a JSON file

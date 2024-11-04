@@ -233,9 +233,6 @@
 			}
 		});
 
-		console.log('Total Glaciers:', glaciers.length);
-
-		/*
 		// Query the RBush index to find glaciers within the current bounds
 		const foundGlaciers = rbushIndex.search({
 			minX: sw.lng,
@@ -244,30 +241,38 @@
 			maxY: ne.lat
 		});
 
+		//console.log('Found glacier IDs:', foundGlaciers.map(glacier => glacier.id));
+
+
+		// Loop through found glaciers
 		foundGlaciers.forEach(glacier => {
-			const sourceId = `${glacier.id}-tiles`;
-			const layerId = `${glacier.id}-tiles-layer`;
+			const glacierData = glaciers.find(g => g.id === glacier.id);
 
-			// Add each raster tile source from S3
-			map.addSource(sourceId, {
-				'type': 'raster',
-				'tiles': [
-					`${s3BucketURL}/${glacier.id}/{z}/{x}/{y}.png`
-				],
-				'tileSize': 256,
-				'scheme': 'tms'
-			});
+			if (glacierData && glacierData.is_tile) {
+				const sourceId = `${glacier.id}-tiles`;
+				const layerId = `${glacier.id}-tiles-layer`;
 
-			// Add each raster layer
-			map.addLayer({
-				'id': layerId,
-				'type': 'raster',
-				'source': sourceId,
-				'paint': {
-					'raster-opacity': 0.6 // Adjust as needed
-				}
-			});
-		}); */
+				// Add each raster tile source from S3
+				map.addSource(sourceId, {
+					'type': 'raster',
+					'tiles': [
+						`${s3BucketURL}/${glacier.id}/{z}/{x}/{y}.png`
+					],
+					'tileSize': 256,
+					'scheme': 'tms'
+				});
+
+				// Add each raster layer
+				map.addLayer({
+					'id': layerId,
+					'type': 'raster',
+					'source': sourceId,
+					'paint': {
+						'raster-opacity': 0.6 // Adjust as needed
+					}
+				});
+			}
+		});
 	}
 
 	let debounceTimer;
