@@ -16,7 +16,7 @@
 			left: 10px;
 			width: 20%;
 			height: 50%;
-			background-color: rgba(0, 0, 0, 0.7);
+			background-color: rgba(0, 0, 255, 0.2);
 			padding: 10px;
 			font-family: Arial, sans-serif;
 			font-size: 12px;
@@ -117,7 +117,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: black;
+			color: blue;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -181,7 +181,6 @@
 		//style: 'mapbox://styles/mapbox/satellite-v9',
 		center: [-16, 64], // starting position [lng, lat]. Note that lat must be set between -90 and 90
 		zoom: 6, // starting zoom
-		projection: 'globe' // Enable globe projection
 	});
 
 	// Add a scale bar to a map
@@ -243,22 +242,6 @@
 		const sw = bounds.getSouthWest();
 		const ne = bounds.getNorthEast();
 
-		// Clear existing layers and sources
-		glaciers.forEach(glacier => {
-			const sourceId = `${glacier.id}-tiles`;
-			const layerId = `${glacier.id}-tiles-layer`;
-
-			// Remove layer if it exists
-			if (map.getLayer(layerId)) {
-				map.removeLayer(layerId);
-			}
-
-			// Remove source if it exists
-			if (map.getSource(sourceId)) {
-				map.removeSource(sourceId);
-			}
-		});
-
 		// Query the RBush index to find glaciers within the current bounds
 		const foundGlaciers = rbushIndex.search({
 			minX: sw.lng,
@@ -269,10 +252,30 @@
 
 		console.log('Found glacier IDs:', foundGlaciers.map(glacier => glacier.id));
 
-		// Create a lookup for glacier data for faster access
-		const glacierDataMap = new Map(glaciers.map(g => [g.id, g]));
+		// Convert found glaciers to a set for quick lookup
+        const foundGlacierIds = new Set(foundGlaciers.map(glacier => glacier.id));
 
-		// Loop through found glaciers (this is very long)
+		// Remove layers and sources that are no longer in view
+		glaciers.forEach(glacier => {
+			const sourceId = `${glacier.id}-tiles`;
+			const layerId = `${glacier.id}-tiles-layer`;
+
+			// Remove layers and sources that are no longer in view
+            if (!foundGlacierIds.has(glacier.id)) {
+                if (map.getLayer(layerId)) {
+                    map.removeLayer(layerId);
+                }
+                if (map.getSource(sourceId)) {
+                    map.removeSource(sourceId);
+                }
+            }
+        });
+
+
+		// Create a lookup for glacier data for faster access
+        const glacierDataMap = new Map(glaciers.map(g => [g.id, g]));
+
+		// Add only the necessary sources and layers that are in the view
 		foundGlaciers.forEach(glacier => {
 			const glacierData = glacierDataMap.get(glacier.id);
 
@@ -280,33 +283,31 @@
 				const sourceId = `${glacier.id}-tiles`;
 				const layerId = `${glacier.id}-tiles-layer`;
 
-				// Check if the source already exists
-				if (!map.getSource(sourceId)) {
-					// Add each raster tile source from S3
-					map.addSource(sourceId, {
-						'type': 'raster',
-						'tiles': [
-							`${s3BucketURL}/${glacier.id}/{z}/{x}/{y}.png`
-						],
-						'tileSize': 256,
-						'scheme': 'tms'
-					});
-					console.log(`Source added: ${sourceId}`);
-				}
+				// Add source only if it does not exist
+                if (!map.getSource(sourceId)) {
+                    map.addSource(sourceId, {
+                        'type': 'raster',
+                        'tiles': [
+                            `${s3BucketURL}/${glacier.id}/{z}/{x}/{y}.png`
+                        ],
+                        'tileSize': 256,
+                        'scheme': 'tms'
+                    });
+                    console.log(`Source added: ${sourceId}`);
+                }
 
-				// Check if the layer already exists
-				if (!map.getLayer(layerId)) {
-					// Add each raster layer
-					map.addLayer({
-						'id': layerId,
-						'type': 'raster',
-						'source': sourceId,
-						'paint': {
-							'raster-opacity': 0.6 // Adjust as needed
-						}
-					});
-					console.log(`Layer added: ${layerId}`);
-				}
+				// Add layer only if it does not exist
+                if (!map.getLayer(layerId)) {
+                    map.addLayer({
+                        'id': layerId,
+                        'type': 'raster',
+                        'source': sourceId,
+                        'paint': {
+                            'raster-opacity': 0.6 // Adjust as needed
+                        }
+                    });
+                    console.log(`Layer added: ${layerId}`);
+                }
 			}
 		});
 
