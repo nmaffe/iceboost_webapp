@@ -61,6 +61,8 @@ output_json = {"glaciers": all_world_glaciers}
 # Specify the path to save the JSON file
 json_file_path = f'tileFolders_RGI{version}_with_bbox.json'
 
+#todo: add gzip compression here?
+
 
 # Write the data to a JSON file
 with open(json_file_path, 'w') as json_file:
