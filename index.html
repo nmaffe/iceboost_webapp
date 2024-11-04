@@ -115,7 +115,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: blue;
+			color: black;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -194,14 +194,14 @@
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
 	const tilesPath = 'tiles/RGI62'; // Your folder path
 	const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
-	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62_with_bbox.json`; // Path to your JSON file
+	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
 
 	let glaciers; // Declare glaciers outside the fetch so it can be accessed in moveend
 	const rbushIndex = new RBush(); // Initialize RBush
 
 	document.getElementById('loading').style.display = 'block'; // Show loading indicator
 
-	// Fetch the tile folder information
+	// Fetch the tile folder information (loads the JSON file)
 	fetch(tileFoldersUrl)
 		.then(response => {
 			if (!response.ok) {
@@ -314,7 +314,7 @@
 		clearTimeout(debounceTimer);
 		debounceTimer = setTimeout(() => {
 			loadTiles(); // Reload tiles based on the new map bounds
-		}, 2000); // Wait 2 seconds after movement ends
+		}, 1000); // Wait 1 seconds after movement ends
 	});
 
 </script>
