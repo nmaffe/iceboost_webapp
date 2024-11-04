@@ -24,15 +24,18 @@
 
 		#colorbar-container {
 			position: absolute;
-			bottom: 60px;
-			right: 40px;
-			display: flex; /* Enable flexbox */
-			align-items: center; /* Center items vertically */
+			bottom: 5vh; /* Set distance from the bottom of the screen (10% from the bottom) */
+			right: 1vw; /* Set distance from the right of the screen (5% from the right) */
+			width: 7vw; /* Set width as a percentage of the viewport width */
+			height: 25vh; /* Set height as a percentage of the viewport height */
+			display: flex;
+			flex-direction: row;
+			background-color: none;
 		}
 
 		#colorbar {
-			width: 30px; /* Width of the colorbar */
-			height: 300px; /* Height of the colorbar */
+			width: 20%; /* Width of the colorbar */
+			height: 100%; /* Full height of the container */
 			background: linear-gradient(to top,
 				rgb(0, 0, 127), rgb(0, 0, 132), rgb(0, 0, 136), rgb(0, 0, 141), rgb(0, 0, 145), rgb(0, 0, 150),
 				rgb(0, 0, 154), rgb(0, 0, 159), rgb(0, 0, 163), rgb(0, 0, 168), rgb(0, 0, 172), rgb(0, 0, 177),
@@ -80,29 +83,32 @@
 			border: 1px solid black; /* Optional border */
 		}
 
-		#colorbar-title {
-			writing-mode: vertical-rl; /* Make text vertical */
-			transform: rotate(180deg); /* Rotate text to make it readable */
-			font-family: Arial, sans-serif;
-			font-weight: bold;
-			font-size: 20px; /* Adjust size as needed */
-			color: lightblue; /* Change to your preferred color */
-			margin-left: 10px; /* Space between title and colorbar */
+		#side-labels {
+			display: flex;
+			flex-direction: row; /* Arrange labels and title in a row */
+			align-items: center; /* Align items vertically centered */
+			margin-left: 10px; /* Space between colorbar and labels */
 		}
 
 		#colorbar-labels {
-			position: absolute;
-			bottom: 60px;
-			right: 110px;
-			height: 305px;
+			height: 100%;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
 			font-family: Arial, sans-serif;
 			font-weight: normal;
-			font-size: 20px;
+			font-size: 0.8vw; /* Responsive font size based on viewport width */
 			color: black;
-			text-align: right;
+			text-align: left;
+		}
+
+		#colorbar-title {
+			writing-mode: vertical-rl;
+			transform: rotate(180deg);
+			font-family: Arial, sans-serif;
+			font-weight: normal;
+			font-size: 1.5vw;
+			color: black;
 		}
 
 
@@ -147,23 +153,27 @@
 </div>
 <!-- Vertical colorbar for ice thickness -->
 <div id="colorbar-container">
-	<div id="colorbar"></div> <!-- Colorbar background as a div -->
-	<div id="colorbar-title">Ice thickness (m)</div> <!-- Colorbar Axis Title -->
-</div>
-<div id="colorbar-labels">
-	<span>1000+</span>
-	<span>900</span>
-	<span>800</span>
-	<span>700</span>
-	<span>600</span>
-	<span>500</span>
-	<span>400</span>
-	<span>300</span>
-	<span>200</span>
-	<span>100</span>
-	<span>0</span>
+    <div id="colorbar"></div> <!-- Vertical colorbar gradient -->
+    <div id="side-labels">
+        <div id="colorbar-labels">
+            <span>1000+</span>
+            <span>900</span>
+            <span>800</span>
+            <span>700</span>
+            <span>600</span>
+            <span>500</span>
+            <span>400</span>
+            <span>300</span>
+            <span>200</span>
+            <span>100</span>
+            <span>0</span>
+        </div>
+        <div id="colorbar-title">Ice thickness (m)</div>
+    </div>
 </div>
 <div id="coordinates">Lat: N/A, Lon: N/A</div>
+
+<!--
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoibWFmZmU4OSIsImEiOiJjbTExZXM4bmEwcmFkMmtxMnlleDE2aWo2In0.E6BiHnnixuupE5Zpx9FS8g';
 	const map = new mapboxgl.Map({
@@ -316,6 +326,6 @@
 	});
 
 </script>
-
+-->
 </body>
 </html>
