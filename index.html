@@ -97,8 +97,9 @@
 			justify-content: space-between;
 			font-family: Arial, sans-serif;
 			font-weight: normal;
-			font-size: 0.8vw; /* Responsive font size based on viewport width */
-			color: black;
+			font-size: clamp(12px, 0.8vw, 18px);
+			//font-size: 0.8vw; /* Responsive font size based on viewport width */
+			color: red;
 			text-align: left;
 		}
 
@@ -106,9 +107,7 @@
 			writing-mode: vertical-rl;
 			transform: rotate(180deg);
 			font-family: Arial, sans-serif;
-			font-weight: normal;
 			font-size: clamp(12px, 1.5vw, 18px);
-			//font-size: 1.5vw;
 			color: black;
 		}
 
