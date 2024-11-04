@@ -194,7 +194,7 @@
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
 	const tilesPath = 'tiles/RGI62'; // Your folder path
 	const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
-	const tileFoldersUrl = `${s3BucketURL}/tileFolders_RGI62_with_bbox.json`; // Path to your JSON file
+	const jsonFileUrl = `${s3BucketURL}/tileFolders_RGI62_with_bbox.json`; // Path to your JSON file
 
 	let glaciers; // Declare glaciers outside the fetch so it can be accessed in moveend
 	const rbushIndex = new RBush(); // Initialize RBush
@@ -202,7 +202,7 @@
 	document.getElementById('loading').style.display = 'block'; // Show loading indicator
 
 	// Fetch the tile folder information (loads the JSON file)
-	fetch(tileFoldersUrl)
+	fetch(jsonFileUrl)
 		.then(response => {
 			if (!response.ok) {
 				throw new Error('Failed to fetch tile folders');
