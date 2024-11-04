@@ -25,7 +25,6 @@
 		#colorbar-container {
 			position: absolute;
 			bottom: 5vh; /* Set distance from the bottom of the screen (10% from the bottom) */
-			//right: 1vw; /* Set distance from the right of the screen (5% from the right) */
 			right: clamp(40px, 1vw, 50px);
 			width: 7vw; /* Set width as a percentage of the viewport width */
 			height: 25vh; /* Set height as a percentage of the viewport height */
@@ -35,8 +34,7 @@
 		}
 
 		#colorbar {
-			//width: 20%; /* Width of the colorbar */
-			width: clamp(20px, 20%, 100px);
+			width: 20%; /* Width of the colorbar */
 			height: 100%; /* Full height of the container */
 			background: linear-gradient(to top,
 				rgb(0, 0, 127), rgb(0, 0, 132), rgb(0, 0, 136), rgb(0, 0, 141), rgb(0, 0, 145), rgb(0, 0, 150),
@@ -100,7 +98,6 @@
 			font-family: Arial, sans-serif;
 			font-weight: normal;
 			font-size: clamp(12px, 0.8vw, 18px);
-			//font-size: 0.8vw; /* Responsive font size based on viewport width */
 			color: black;
 			text-align: left;
 		}
@@ -174,7 +171,7 @@
 </div>
 <div id="coordinates">Lat: N/A, Lon: N/A</div>
 
-<!--
+
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoibWFmZmU4OSIsImEiOiJjbTExZXM4bmEwcmFkMmtxMnlleDE2aWo2In0.E6BiHnnixuupE5Zpx9FS8g';
 	const map = new mapboxgl.Map({
@@ -183,7 +180,7 @@
 		style: 'mapbox://styles/mapbox/light-v11',
 		//style: 'mapbox://styles/mapbox/satellite-v9',
 		center: [-16, 64], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-		zoom: 4, // starting zoom
+		zoom: 6, // starting zoom
 		projection: 'globe' // Enable globe projection
 	});
 
@@ -208,7 +205,6 @@
 	let glaciers; // Declare glaciers outside the fetch so it can be accessed in moveend
 	const rbushIndex = new RBush(); // Initialize RBush
 
-	document.getElementById('loading').style.display = 'block'; // Show loading indicator
 
 	// Fetch the tile folder information (loads the JSON file)
 	fetch(jsonFileUrl)
@@ -221,12 +217,9 @@
 		.then(data => {
 			glaciers = data.glaciers; // Store the glaciers array for later use
 			createSpatialIndex(glaciers); // Create the spatial index
-			loadTiles(); // Load tiles based on the initial bounds
-			document.getElementById('loading').style.display = 'none'; // Hide loading indicator
 		})
 		.catch(error => {
 			console.error('Fetch error:', error);
-			document.getElementById('loading').style.display = 'none'; // Hide loading indicator on error
 		});
 
 	function createSpatialIndex(glaciers) {
@@ -318,15 +311,43 @@
 	}
 
 	let debounceTimer;
+	let tilesRendered = false;
 
-	map.on('moveend', () => {
+	// Set up the initial state when the map is loaded
+	map.on('load', () => {
+		console.log("Map has fully loaded.");
+		loadTiles(); // Load tiles immediately after the map is loaded
+		tilesRendered = true; // Set the flag to true since the initial tiles are loaded
+	});
+
+	// Reset the flag when the map starts moving or zooming
+	map.on('zoomstart', () => {
+		tilesRendered = false; // Reset flag since the map is changing
+	});
+
+	map.on('movestart', () => {
+		tilesRendered = false; // Reset flag since the map is changing
+	});
+
+	// Use 'idle' to determine when the map has finished moving/zooming
+	map.on('idle', () => {
+		if (tilesRendered) {
+			console.log("Map is idle and tiles are already rendered.");
+			return; // No need to load tiles again
+		}
+
+		// Wait for 2 seconds before calling loadTiles
 		clearTimeout(debounceTimer);
 		debounceTimer = setTimeout(() => {
-			loadTiles(); // Reload tiles based on the new map bounds
-		}, 2000); // Wait 2 seconds after movement ends
+			if (map.isStyleLoaded() && map.loaded()) {
+				console.log("Loading tiles after 2 seconds.");
+				loadTiles(); // Load tiles after the map is idle for 2 seconds
+				tilesRendered = true; // Set flag to true again
+			}
+		}, 2000); // Adjust the delay as needed
 	});
 
 </script>
--->
+
 </body>
 </html>
