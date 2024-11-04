@@ -115,7 +115,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: green;
+			color: black;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -220,6 +220,8 @@
 	}
 
 	function loadTiles() {
+		document.getElementById('loading').style.display = 'block'; // Show loading indicator
+
 		const bounds = map.getBounds();
 		const sw = bounds.getSouthWest();
 		const ne = bounds.getNorthEast();
@@ -287,6 +289,8 @@
 				}
 			}
 		});
+
+		document.getElementById('loading').style.display = 'none'; // Hide loading indicator after loading tiles
 	}
 
 	let debounceTimer;
