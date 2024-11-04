@@ -16,7 +16,7 @@
 			left: 10px;
 			width: 20%;
 			height: 50%;
-			background-color: rgba(255, 255, 255, 0.5);
+			background-color: rgba(0, 0, 0, 0.7);
 			padding: 10px;
 			font-family: Arial, sans-serif;
 			font-size: 12px;
@@ -269,9 +269,12 @@
 
 		console.log('Found glacier IDs:', foundGlaciers.map(glacier => glacier.id));
 
-		// Loop through found glaciers
+		// Create a lookup for glacier data for faster access
+		const glacierDataMap = new Map(glaciers.map(g => [g.id, g]));
+
+		// Loop through found glaciers (this is very long)
 		foundGlaciers.forEach(glacier => {
-			const glacierData = glaciers.find(g => g.id === glacier.id);
+			const glacierData = glacierDataMap.get(glacier.id);
 
 			if (glacierData && glacierData.is_tile) {
 				const sourceId = `${glacier.id}-tiles`;
