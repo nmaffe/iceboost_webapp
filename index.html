@@ -115,7 +115,7 @@
 			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
-			color: black;
+			color: red;
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
@@ -260,6 +260,7 @@
 					'tileSize': 256,
 					'scheme': 'tms'
 				});
+				console.log(`Source added: ${sourceId}`);
 
 				// Add each raster layer
 				map.addLayer({
@@ -270,6 +271,7 @@
 						'raster-opacity': 0.6 // Adjust as needed
 					}
 				});
+				console.log(`Layer added: ${layerId}`);
 			}
 		});
 	}
