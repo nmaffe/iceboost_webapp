@@ -301,7 +301,9 @@
                         'source': sourceId,
                         'paint': {
                             'raster-opacity': 0.6 // Adjust as needed
-                        }
+                        },
+                        'minzoom': 5,  // Minimum zoom level
+                        'maxzoom': 10  // Maximum zoom level
                     });
                     console.log(`Layer added: ${layerId}`);
                 }
