@@ -214,9 +214,9 @@
 			glaciers = data.glaciers; // Store the glaciers array for later use
 			createSpatialIndex(glaciers); // Create the spatial index
 		})
-		//.catch(error => {
-		//	console.error('Fetch error:', error);
-		//});
+		.catch(error => {
+			console.error('Fetch error:', error);
+		});
 
 	function createSpatialIndex(glaciers) {
 		const items = glaciers.map(glacier => {
