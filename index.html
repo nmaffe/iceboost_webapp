@@ -197,7 +197,6 @@
 
 
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
-	const tilesPath = 'tiles/RGI62'; // Your folder path
 	const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
 	const jsonFileUrl = `${s3BucketURL}/tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
 
@@ -319,6 +318,26 @@
 
 	// Set up the initial state when the map is loaded
 	map.on('load', () => {
+
+        // Add the Mapbox Terrain-DEM v1 tileset as a source
+        map.addSource('terrain-dem', {
+            'type': 'raster-dem',
+            'url': 'mapbox://mapbox.mapbox-terrain-dem-v1', // Terrain DEM v1 tileset
+            'tileSize': 256
+        });
+        // Add the hillshade layer
+        map.addLayer({
+            'id': 'hillshade',
+            'type': 'hillshade',
+            'source': 'terrain-dem',
+            'paint': {
+                'hillshade-exaggeration': 1.0,
+                'hillshade-highlight-color': '#ffffff', // Optional: highlight color
+                'hillshade-shadow-color': '#555555', // Optional: shadow color
+                'hillshade-illumination-direction': 315 // Optional: angle of illumination
+            }
+        });
+
 		console.log("Map has fully loaded.");
 		loadTiles(); // Load tiles immediately after the map is loaded
 		tilesRendered = true; // Set the flag to true since the initial tiles are loaded
