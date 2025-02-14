@@ -2,11 +2,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>IceBoost Glacier Model Visualization</title>
+	<title>ICEBOOST Viewer</title>
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 	<link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/rbush"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script> // for decompressing .gz
 	<style>
 		body { margin: 0; padding: 0; }
 		#map { position: absolute; top: 0; bottom: 0; width: 100%; }
@@ -37,49 +38,8 @@
 			width: 20%; /* Width of the colorbar */
 			height: 100%; /* Full height of the container */
 			background: linear-gradient(to top,
-				rgb(0, 0, 127), rgb(0, 0, 132), rgb(0, 0, 136), rgb(0, 0, 141), rgb(0, 0, 145), rgb(0, 0, 150),
-				rgb(0, 0, 154), rgb(0, 0, 159), rgb(0, 0, 163), rgb(0, 0, 168), rgb(0, 0, 172), rgb(0, 0, 177),
-				rgb(0, 0, 182), rgb(0, 0, 186), rgb(0, 0, 191), rgb(0, 0, 195), rgb(0, 0, 200), rgb(0, 0, 204),
-				rgb(0, 0, 209), rgb(0, 0, 213), rgb(0, 0, 218), rgb(0, 0, 222), rgb(0, 0, 227), rgb(0, 0, 232),
-				rgb(0, 0, 236), rgb(0, 0, 241), rgb(0, 0, 245), rgb(0, 0, 250), rgb(0, 0, 254), rgb(0, 0, 255),
-				rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 4, 255), rgb(0, 8, 255), rgb(0, 12, 255),
-				rgb(0, 16, 255), rgb(0, 20, 255), rgb(0, 24, 255), rgb(0, 28, 255), rgb(0, 32, 255), rgb(0, 36, 255),
-				rgb(0, 40, 255), rgb(0, 44, 255), rgb(0, 48, 255), rgb(0, 52, 255), rgb(0, 56, 255), rgb(0, 60, 255),
-				rgb(0, 64, 255), rgb(0, 68, 255), rgb(0, 72, 255), rgb(0, 76, 255), rgb(0, 80, 255), rgb(0, 84, 255),
-				rgb(0, 88, 255), rgb(0, 92, 255), rgb(0, 96, 255), rgb(0, 100, 255), rgb(0, 104, 255), rgb(0, 108, 255),
-				rgb(0, 112, 255), rgb(0, 116, 255), rgb(0, 120, 255), rgb(0, 124, 255), rgb(0, 128, 255), rgb(0, 132, 255),
-				rgb(0, 136, 255), rgb(0, 140, 255), rgb(0, 144, 255), rgb(0, 148, 255), rgb(0, 152, 255), rgb(0, 156, 255),
-				rgb(0, 160, 255), rgb(0, 164, 255), rgb(0, 168, 255), rgb(0, 172, 255), rgb(0, 176, 255), rgb(0, 180, 255),
-				rgb(0, 184, 255), rgb(0, 188, 255), rgb(0, 192, 255), rgb(0, 196, 255), rgb(0, 200, 255), rgb(0, 204, 255),
-				rgb(0, 208, 255), rgb(0, 212, 255), rgb(0, 216, 255), rgb(0, 220, 254), rgb(0, 224, 250), rgb(0, 228, 247),
-				rgb(2, 232, 244), rgb(5, 236, 241), rgb(8, 240, 237), rgb(12, 244, 234), rgb(15, 248, 231), rgb(18, 252, 228),
-				rgb(21, 255, 225), rgb(24, 255, 221), rgb(28, 255, 218), rgb(31, 255, 215), rgb(34, 255, 212), rgb(37, 255, 208),
-				rgb(41, 255, 205), rgb(44, 255, 202), rgb(47, 255, 199), rgb(50, 255, 195), rgb(54, 255, 192), rgb(57, 255, 189),
-				rgb(60, 255, 186), rgb(63, 255, 183), rgb(66, 255, 179), rgb(70, 255, 176), rgb(73, 255, 173), rgb(76, 255, 170),
-				rgb(79, 255, 166), rgb(83, 255, 163), rgb(86, 255, 160), rgb(89, 255, 157), rgb(92, 255, 154), rgb(95, 255, 150),
-				rgb(99, 255, 147), rgb(102, 255, 144), rgb(105, 255, 141), rgb(108, 255, 137), rgb(112, 255, 134), rgb(115, 255, 131),
-				rgb(118, 255, 128), rgb(121, 255, 125), rgb(124, 255, 121), rgb(128, 255, 118), rgb(131, 255, 115), rgb(134, 255, 112),
-				rgb(137, 255, 108), rgb(141, 255, 105), rgb(144, 255, 102), rgb(147, 255, 99), rgb(150, 255, 95), rgb(154, 255, 92),
-				rgb(157, 255, 89), rgb(160, 255, 86), rgb(163, 255, 83), rgb(166, 255, 79), rgb(170, 255, 76), rgb(173, 255, 73),
-				rgb(176, 255, 70), rgb(179, 255, 66), rgb(183, 255, 63), rgb(186, 255, 60), rgb(189, 255, 57), rgb(192, 255, 54),
-				rgb(195, 255, 50), rgb(199, 255, 47), rgb(202, 255, 44), rgb(205, 255, 41), rgb(208, 255, 37), rgb(212, 255, 34),
-				rgb(215, 255, 31), rgb(218, 255, 28), rgb(221, 255, 24), rgb(224, 255, 21), rgb(228, 255, 18), rgb(231, 255, 15),
-				rgb(234, 255, 12), rgb(237, 255, 8), rgb(241, 252, 5), rgb(244, 248, 2), rgb(247, 244, 0), rgb(250, 240, 0),
-				rgb(254, 237, 0), rgb(255, 233, 0), rgb(255, 229, 0), rgb(255, 226, 0), rgb(255, 222, 0), rgb(255, 218, 0),
-				rgb(255, 215, 0), rgb(255, 211, 0), rgb(255, 207, 0), rgb(255, 203, 0), rgb(255, 200, 0), rgb(255, 196, 0),
-				rgb(255, 192, 0), rgb(255, 189, 0), rgb(255, 185, 0), rgb(255, 181, 0), rgb(255, 177, 0), rgb(255, 174, 0),
-				rgb(255, 170, 0), rgb(255, 166, 0), rgb(255, 163, 0), rgb(255, 159, 0), rgb(255, 155, 0), rgb(255, 152, 0),
-				rgb(255, 148, 0), rgb(255, 144, 0), rgb(255, 140, 0), rgb(255, 137, 0), rgb(255, 133, 0), rgb(255, 129, 0),
-				rgb(255, 126, 0), rgb(255, 122, 0), rgb(255, 118, 0), rgb(255, 115, 0), rgb(255, 111, 0), rgb(255, 107, 0),
-				rgb(255, 103, 0), rgb(255, 100, 0), rgb(255, 96, 0), rgb(255, 92, 0), rgb(255, 89, 0), rgb(255, 85, 0),
-				rgb(255, 81, 0), rgb(255, 77, 0), rgb(255, 74, 0), rgb(255, 70, 0), rgb(255, 66, 0), rgb(255, 63, 0),
-				rgb(255, 59, 0), rgb(255, 55, 0), rgb(255, 52, 0), rgb(255, 48, 0), rgb(255, 44, 0), rgb(255, 40, 0),
-				rgb(255, 37, 0), rgb(255, 33, 0), rgb(255, 29, 0), rgb(255, 26, 0), rgb(255, 22, 0), rgb(254, 18, 0),
-				rgb(250, 15, 0), rgb(245, 11, 0), rgb(241, 7, 0), rgb(236, 3, 0), rgb(232, 0, 0), rgb(227, 0, 0),
-				rgb(222, 0, 0), rgb(218, 0, 0), rgb(213, 0, 0), rgb(209, 0, 0), rgb(204, 0, 0), rgb(200, 0, 0),
-				rgb(195, 0, 0), rgb(191, 0, 0), rgb(186, 0, 0), rgb(182, 0, 0), rgb(177, 0, 0), rgb(172, 0, 0),
-				rgb(168, 0, 0), rgb(163, 0, 0), rgb(159, 0, 0), rgb(154, 0, 0), rgb(150, 0, 0), rgb(145, 0, 0),
-				rgb(141, 0, 0), rgb(136, 0, 0), rgb(132, 0, 0), rgb(127, 0, 0));
+				rgb(48, 18, 59), rgb(49, 21, 66), rgb(50, 24, 74), rgb(52, 27, 81), rgb(53, 30, 88), rgb(54, 33, 95), rgb(55, 35, 101), rgb(56, 38, 108), rgb(57, 41, 114), rgb(58, 44, 121), rgb(59, 47, 127), rgb(60, 50, 133), rgb(60, 53, 139), rgb(61, 55, 145), rgb(62, 58, 150), rgb(63, 61, 156), rgb(64, 64, 161), rgb(64, 67, 166), rgb(65, 69, 171), rgb(65, 72, 176), rgb(66, 75, 181), rgb(67, 78, 186), rgb(67, 80, 190), rgb(67, 83, 194), rgb(68, 86, 199), rgb(68, 88, 203), rgb(69, 91, 206), rgb(69, 94, 210), rgb(69, 96, 214), rgb(69, 99, 217), rgb(70, 102, 221), rgb(70, 104, 224), rgb(70, 107, 227), rgb(70, 109, 230), rgb(70, 112, 232), rgb(70, 115, 235), rgb(70, 117, 237), rgb(70, 120, 240), rgb(70, 122, 242), rgb(70, 125, 244), rgb(70, 127, 246), rgb(70, 130, 248), rgb(69, 132, 249), rgb(69, 135, 251), rgb(69, 137, 252), rgb(68, 140, 253), rgb(67, 142, 253), rgb(66, 145, 254), rgb(65, 147, 254), rgb(64, 150, 254), rgb(63, 152, 254), rgb(62, 155, 254), rgb(60, 157, 253), rgb(59, 160, 252), rgb(57, 162, 252), rgb(56, 165, 251), rgb(54, 168, 249), rgb(52, 170, 248), rgb(51, 172, 246), rgb(49, 175, 245), rgb(47, 177, 243), rgb(45, 180, 241), rgb(43, 182, 239), rgb(42, 185, 237), rgb(40, 187, 235), rgb(38, 189, 233), rgb(37, 192, 230), rgb(35, 194, 228), rgb(33, 196, 225), rgb(32, 198, 223), rgb(30, 201, 220), rgb(29, 203, 218), rgb(28, 205, 215), rgb(27, 207, 212), rgb(26, 209, 210), rgb(25, 211, 207), rgb(24, 213, 204), rgb(24, 215, 202), rgb(23, 217, 199), rgb(23, 218, 196), rgb(23, 220, 194), rgb(23, 222, 191), rgb(24, 224, 189), rgb(24, 225, 186), rgb(25, 227, 184), rgb(26, 228, 182), rgb(27, 229, 180), rgb(29, 231, 177), rgb(30, 232, 175), rgb(32, 233, 172), rgb(34, 235, 169), rgb(36, 236, 166), rgb(39, 237, 163), rgb(41, 238, 160), rgb(44, 239, 157), rgb(47, 240, 154), rgb(50, 241, 151), rgb(53, 243, 148), rgb(56, 244, 145), rgb(59, 244, 141), rgb(63, 245, 138), rgb(66, 246, 135), rgb(70, 247, 131), rgb(74, 248, 128), rgb(77, 249, 124), rgb(81, 249, 121), rgb(85, 250, 118), rgb(89, 251, 114), rgb(93, 251, 111), rgb(97, 252, 108), rgb(101, 252, 104), rgb(105, 253, 101), rgb(109, 253, 98), rgb(113, 253, 95), rgb(116, 254, 92), rgb(120, 254, 89), rgb(124, 254, 86), rgb(128, 254, 83), rgb(132, 254, 80), rgb(135, 254, 77), rgb(139, 254, 75), rgb(142, 254, 72), rgb(146, 254, 70), rgb(149, 254, 68), rgb(152, 254, 66), rgb(155, 253, 64), rgb(158, 253, 62), rgb(161, 252, 61), rgb(164, 252, 59), rgb(166, 251, 58), rgb(169, 251, 57), rgb(172, 250, 55), rgb(174, 249, 55), rgb(177, 248, 54), rgb(179, 248, 53), rgb(182, 247, 53), rgb(185, 245, 52), rgb(187, 244, 52), rgb(190, 243, 52), rgb(192, 242, 51), rgb(195, 241, 51), rgb(197, 239, 51), rgb(200, 238, 51), rgb(202, 237, 51), rgb(205, 235, 52), rgb(207, 234, 52), rgb(209, 232, 52), rgb(212, 231, 53), rgb(214, 229, 53), rgb(216, 227, 53), rgb(218, 226, 54), rgb(221, 224, 54), rgb(223, 222, 54), rgb(225, 220, 55), rgb(227, 218, 55), rgb(229, 216, 56), rgb(231, 215, 56), rgb(232, 213, 56), rgb(234, 211, 57), rgb(236, 209, 57), rgb(237, 207, 57), rgb(239, 205, 57), rgb(240, 203, 58), rgb(242, 200, 58), rgb(243, 198, 58), rgb(244, 196, 58), rgb(246, 194, 58), rgb(247, 192, 57), rgb(248, 190, 57), rgb(249, 188, 57), rgb(249, 186, 56), rgb(250, 183, 55), rgb(251, 181, 55), rgb(251, 179, 54), rgb(252, 176, 53), rgb(252, 174, 52), rgb(253, 171, 51), rgb(253, 169, 50), rgb(253, 166, 49), rgb(253, 163, 48), rgb(254, 161, 47), rgb(254, 158, 46), rgb(254, 155, 45), rgb(254, 152, 44), rgb(253, 149, 43), rgb(253, 146, 41), rgb(253, 143, 40), rgb(253, 140, 39), rgb(252, 137, 38), rgb(252, 134, 36), rgb(251, 131, 35), rgb(251, 128, 34), rgb(250, 125, 32), rgb(250, 122, 31), rgb(249, 119, 30), rgb(248, 116, 28), rgb(247, 113, 27), rgb(247, 110, 26), rgb(246, 107, 24), rgb(245, 104, 23), rgb(244, 101, 22), rgb(243, 99, 21), rgb(242, 96, 20), rgb(241, 93, 19), rgb(239, 90, 17), rgb(238, 88, 16), rgb(237, 85, 15), rgb(236, 82, 14), rgb(234, 80, 13), rgb(233, 77, 13), rgb(232, 75, 12), rgb(230, 73, 11), rgb(229, 70, 10), rgb(227, 68, 10), rgb(226, 66, 9), rgb(224, 64, 8), rgb(222, 62, 8), rgb(221, 60, 7), rgb(219, 58, 7), rgb(217, 56, 6), rgb(215, 54, 6), rgb(214, 52, 5), rgb(212, 50, 5), rgb(210, 48, 5), rgb(208, 47, 4), rgb(206, 45, 4), rgb(203, 43, 3), rgb(201, 41, 3), rgb(199, 40, 3), rgb(197, 38, 2), rgb(195, 36, 2), rgb(192, 35, 2), rgb(190, 33, 2), rgb(187, 31, 1), rgb(185, 30, 1), rgb(182, 28, 1), rgb(180, 27, 1), rgb(177, 25, 1), rgb(174, 24, 1), rgb(172, 22, 1), rgb(169, 21, 1), rgb(166, 20, 1), rgb(163, 18, 1), rgb(160, 17, 1), rgb(157, 16, 1), rgb(154, 14, 1), rgb(151, 13, 1), rgb(148, 12, 1), rgb(145, 11, 1), rgb(142, 10, 1), rgb(139, 9, 1), rgb(135, 8, 1), rgb(132, 7, 1), rgb(129, 6, 2), rgb(125, 5, 2), rgb(122, 4, 2)
+            );
 			border: 1px solid black; /* Optional border */
 		}
 
@@ -195,8 +155,9 @@
 
 
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
-	const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
-	const jsonFileUrl = `${s3BucketURL}/tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
+	//const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
+	//const jsonFileUrl = `${s3BucketURL}/tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
+	const jsonFileUrl = `tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
 
 	let glaciers; // Declare glaciers outside the fetch so it can be accessed in moveend
 	const rbushIndex = new RBush(); // Initialize RBush
@@ -208,9 +169,11 @@
 			if (!response.ok) {
 				throw new Error('Failed to fetch tile folders');
 			}
-			return response.json();
+			return response.arrayBuffer(); // Fetch as binary data
 		})
-		.then(data => {
+		.then(buffer => {
+		    const decompressed = pako.inflate(new Uint8Array(buffer), { to: 'string' });
+			const data = JSON.parse(decompressed); // Parse decompressed JSON data
 			glaciers = data.glaciers; // Store the glaciers array for later use
 			createSpatialIndex(glaciers); // Create the spatial index
 		})
@@ -272,44 +235,44 @@
 		// Create a lookup for glacier data for faster access
         const glacierDataMap = new Map(glaciers.map(g => [g.id, g]));
 
-		// Add only the necessary sources and layers that are in the view
-		foundGlaciers.forEach(glacier => {
-			const glacierData = glacierDataMap.get(glacier.id);
+        // Collect the IDs of glaciers that need to be displayed (using a single loop)
+        const glacierIdsToDisplay = foundGlaciers
+            .map(glacier => glacier.id)  // Extract glacier IDs
+            .filter(id => glacierDataMap.get(id)?.is_tile);  // Only include glaciers that are tile-based
+        console.log("Glaciers to display:", glacierIdsToDisplay);
 
-			if (glacierData && glacierData.is_tile) {
-				const sourceId = `${glacier.id}-tiles`;
-				const layerId = `${glacier.id}-tiles-layer`;
 
-				// Add source only if it does not exist
-                if (!map.getSource(sourceId)) {
-                    map.addSource(sourceId, {
-                        'type': 'raster',
-                        'tiles': [
-                            `${s3BucketURL}/${glacier.id}/{z}/{x}/{y}.png`
-                            //`http://localhost:8000/RGI62/${glacier.id}/{z}/{x}/{y}.png`
-                        ],
-                        'tileSize': 256,
-                        'scheme': 'tms'
-                    });
-                    console.log(`Source added: ${sourceId}`);
-                }
+        // Create a single source for all glaciers
+        //const sourceId = 'all-glaciers-tiles';
+        // Add source if it doesn't exist
+        //if (!map.getSource(sourceId)) {
+        //    map.addSource(sourceId, {
+        //        'type': 'raster',
+        //        //'tiles': glacierIdsToDisplay.map(glacierId =>`/tiles/RGI62/${glacierId}/{z}/{x}/{y}.png`),
+        //        'tiles': [`/tiles/RGI62/RGI60-06.00475/{z}/{x}/{y}.png`, `/tiles/RGI62/RGI60-06.00416/{z}/{x}/{y}.png`],
+        //        'tileSize': 256,
+        //        'scheme': 'tms'
+        //    });
+        //    console.log(`Source added: ${sourceId}`);
+        //}
+        // Add a single layer for all glaciers
+        //const layerId = 'all-glaciers-layer';
+        //if (!map.getLayer(layerId)) {
+        //    map.addLayer({
+        //        'id': layerId,
+        //        'type': 'raster',
+        //        'source': sourceId,
+        //        'paint': {'raster-opacity': 1}
+        //    });
+        //    console.log(`Layer added: ${layerId}`);
+        //}
 
-				// Add layer only if it does not exist
-                if (!map.getLayer(layerId)) {
-                    map.addLayer({
-                        'id': layerId,
-                        'type': 'raster',
-                        'source': sourceId,
-                        'paint': {
-                            'raster-opacity': 0.6 // Adjust as needed
-                        },
-                    });
-                    console.log(`Layer added: ${layerId}`);
-                }
-			}
-		});
+		//const t0 = performance.now();
+		//const t1 = performance.now();
+		//console.log(`Time taken for the whole funct ${t1 - t0} ms`);
 
 		document.getElementById('loading').style.display = 'none'; // Hide loading indicator after loading tiles
+		console.log("All tiles loaded, hiding loading indicator.");
 	}
 
 	let debounceTimer;
@@ -336,9 +299,58 @@
                 'hillshade-illumination-direction': 315 // Optional: angle of illumination
             }
         });
+        map.addSource('source_rgi6', {
+            'type': 'raster',
+            'tiles': [`/tiles/RGI62/rgi6/{z}/{x}/{y}.png`],
+            'tileSize': 256,
+            'scheme': 'tms'
+        });
+        map.addSource('source_rgi7', {
+            'type': 'raster',
+            'tiles': [`/tiles/RGI62/rgi7/{z}/{x}/{y}.png`],
+            'tileSize': 256,
+            'scheme': 'tms'
+        });
+        map.addSource('source_rgi11', {
+            'type': 'raster',
+            'tiles': [`/tiles/RGI62/rgi11/{z}/{x}/{y}.png`],
+            'tileSize': 256,
+            'scheme': 'tms'
+        });
+        map.addSource('source_rgi19', {
+            'type': 'raster',
+            'tiles': [`/tiles/RGI62/rgi19/{z}/{x}/{y}.png`],
+            'tileSize': 256,
+            'scheme': 'tms'
+        });
+
+        map.addLayer({
+                'id': 'layer_rgi6',
+                'type': 'raster',
+                'source': 'source_rgi6',
+                'paint': {'raster-opacity': 1}
+        });
+        map.addLayer({
+                'id': 'layer_rgi7',
+                'type': 'raster',
+                'source': 'source_rgi7',
+                'paint': {'raster-opacity': 1}
+        });
+        map.addLayer({
+                'id': 'layer_rgi11',
+                'type': 'raster',
+                'source': 'source_rgi11',
+                'paint': {'raster-opacity': 1}
+        });
+        map.addLayer({
+                'id': 'layer_rgi19',
+                'type': 'raster',
+                'source': 'source_rgi19',
+                'paint': {'raster-opacity': 1}
+        });
 
 		console.log("Map has fully loaded.");
-		loadTiles(); // Load tiles immediately after the map is loaded
+		//loadTiles(); // Load tiles immediately after the map is loaded
 		tilesRendered = true; // Set the flag to true since the initial tiles are loaded
 	});
 
@@ -363,7 +375,7 @@
 		debounceTimer = setTimeout(() => {
 			if (map.isStyleLoaded() && map.loaded()) {
 				console.log("Loading tiles after 2 seconds.");
-				loadTiles(); // Load tiles after the map is idle for 2 seconds
+				//loadTiles(); // Load tiles after the map is idle for 2 seconds
 				tilesRendered = true; // Set flag to true again
 			}
 		}, 2000); // Adjust the delay as needed
