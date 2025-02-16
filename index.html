@@ -139,7 +139,7 @@
 		//style: 'mapbox://styles/mapbox/light-v11',
 		//style: 'mapbox://styles/mapbox/satellite-v9',
 		center: [60, 76], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-		zoom: 4, // starting zoom
+		zoom: 3, // starting zoom
 	});
 
 	// Add a scale bar to a map
@@ -192,7 +192,7 @@
 
         map.addSource('source_rgi1', {
             'type': 'raster',
-            'tiles': [`/tiles/RGI62/rgi3/{z}/{x}/{y}.png`],
+            'tiles': [`/tiles/RGI62/rgi1/{z}/{x}/{y}.png`],
             'tileSize': 256,
             'scheme': 'tms'
         });
