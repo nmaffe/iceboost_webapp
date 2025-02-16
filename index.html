@@ -6,8 +6,9 @@
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 	<link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/rbush"></script>
+	//<script src="https://cdn.jsdelivr.net/npm/rbush"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script> // for decompressing .gz
+    <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
 	<style>
 		body { margin: 0; padding: 0; }
 		#map { position: absolute; top: 0; bottom: 0; width: 100%; }
@@ -107,7 +108,7 @@
 </div>
 <div id="left-panel">
 	<img src="logo_iceboost.svg" alt="ICEBOOST logo" style="max-width: 100%;">
-	<h4 style="color: blue;">Gradient-Boosted Regression Tree ensemble for ice thickness retrieval of the world's glaciers</h4>
+	<h2 style="color: lightblue;">A machine learning solution for the world's glaciers</h2>
 </div>
 <!-- Vertical colorbar for ice thickness -->
 <div id="colorbar-container">
@@ -124,7 +125,7 @@
             <span>100</span>
             <span>0</span>
         </div>
-        <div id="colorbar-title">Ice thickness (m)</div>
+        <div id="colorbar-title">Ice thickness [m]</div>
     </div>
 </div>
 <div id="coordinates">Lat: N/A, Lon: N/A</div>
@@ -134,11 +135,11 @@
 	mapboxgl.accessToken = 'pk.eyJ1IjoibWFmZmU4OSIsImEiOiJjbTExZXM4bmEwcmFkMmtxMnlleDE2aWo2In0.E6BiHnnixuupE5Zpx9FS8g';
 	const map = new mapboxgl.Map({
 		container: 'map', // container ID
-		//style: 'mapbox://styles/maffe89/cm2wh6ece00in01pw42nsbsxq',
-		style: 'mapbox://styles/mapbox/light-v11',
+		style: 'mapbox://styles/maffe89/cm2wh6ece00in01pw42nsbsxq',
+		//style: 'mapbox://styles/mapbox/light-v11',
 		//style: 'mapbox://styles/mapbox/satellite-v9',
-		center: [-16, 64], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-		zoom: 6, // starting zoom
+		center: [60, 76], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+		zoom: 4, // starting zoom
 	});
 
 	// Add a scale bar to a map
@@ -147,136 +148,19 @@
 	// Add zoom and rotation controls to the map.
 	map.addControl(new mapboxgl.NavigationControl());
 
+	// Set the cursor style globally
+	map.getCanvas().style.cursor = 'default';
+
 	// Display latitude and longitude as the mouse moves
 	map.on('mousemove', function (e) {
 		const coords = e.lngLat; // Get the coordinates
     	document.getElementById('coordinates').innerHTML = `<span>Lat: ${coords.lat.toFixed(5)}, Lon: ${coords.lng.toFixed(5)}</span>`; // Update the coordinates display
 	});
 
-
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
 	//const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
 	//const jsonFileUrl = `${s3BucketURL}/tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
-	const jsonFileUrl = `tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
-
-	let glaciers; // Declare glaciers outside the fetch so it can be accessed in moveend
-	const rbushIndex = new RBush(); // Initialize RBush
-
-
-	// Fetch the tile folder information (loads the JSON file)
-	fetch(jsonFileUrl)
-		.then(response => {
-			if (!response.ok) {
-				throw new Error('Failed to fetch tile folders');
-			}
-			return response.arrayBuffer(); // Fetch as binary data
-		})
-		.then(buffer => {
-		    const decompressed = pako.inflate(new Uint8Array(buffer), { to: 'string' });
-			const data = JSON.parse(decompressed); // Parse decompressed JSON data
-			glaciers = data.glaciers; // Store the glaciers array for later use
-			createSpatialIndex(glaciers); // Create the spatial index
-		})
-		.catch(error => {
-			console.error('Fetch error:', error);
-		});
-
-	function createSpatialIndex(glaciers) {
-		const items = glaciers.map(glacier => {
-			const [minX, minY, maxX, maxY] = glacier.bbox;
-			return {
-				minX: minX,
-				minY: minY,
-				maxX: maxX,
-				maxY: maxY,
-				id: glacier.id // Store glacier ID for reference
-			};
-		});
-		rbushIndex.load(items); // Load items into the RBush index
-	}
-
-	function loadTiles() {
-		document.getElementById('loading').style.display = 'block'; // Show loading indicator
-
-		const bounds = map.getBounds();
-		const sw = bounds.getSouthWest();
-		const ne = bounds.getNorthEast();
-
-		// Query the RBush index to find glaciers within the current bounds
-		const foundGlaciers = rbushIndex.search({
-			minX: sw.lng,
-			minY: sw.lat,
-			maxX: ne.lng,
-			maxY: ne.lat
-		});
-
-		console.log('Found glacier IDs:', foundGlaciers.map(glacier => glacier.id));
-
-		// Convert found glaciers to a set for quick lookup
-        const foundGlacierIds = new Set(foundGlaciers.map(glacier => glacier.id));
-
-		// Remove layers and sources that are no longer in view
-		glaciers.forEach(glacier => {
-			const sourceId = `${glacier.id}-tiles`;
-			const layerId = `${glacier.id}-tiles-layer`;
-
-			// Remove layers and sources that are no longer in view
-            if (!foundGlacierIds.has(glacier.id)) {
-                if (map.getLayer(layerId)) {
-                    map.removeLayer(layerId);
-                }
-                if (map.getSource(sourceId)) {
-                    map.removeSource(sourceId);
-                }
-            }
-        });
-
-
-		// Create a lookup for glacier data for faster access
-        const glacierDataMap = new Map(glaciers.map(g => [g.id, g]));
-
-        // Collect the IDs of glaciers that need to be displayed (using a single loop)
-        const glacierIdsToDisplay = foundGlaciers
-            .map(glacier => glacier.id)  // Extract glacier IDs
-            .filter(id => glacierDataMap.get(id)?.is_tile);  // Only include glaciers that are tile-based
-        console.log("Glaciers to display:", glacierIdsToDisplay);
-
-
-        // Create a single source for all glaciers
-        //const sourceId = 'all-glaciers-tiles';
-        // Add source if it doesn't exist
-        //if (!map.getSource(sourceId)) {
-        //    map.addSource(sourceId, {
-        //        'type': 'raster',
-        //        //'tiles': glacierIdsToDisplay.map(glacierId =>`/tiles/RGI62/${glacierId}/{z}/{x}/{y}.png`),
-        //        'tiles': [`/tiles/RGI62/RGI60-06.00475/{z}/{x}/{y}.png`, `/tiles/RGI62/RGI60-06.00416/{z}/{x}/{y}.png`],
-        //        'tileSize': 256,
-        //        'scheme': 'tms'
-        //    });
-        //    console.log(`Source added: ${sourceId}`);
-        //}
-        // Add a single layer for all glaciers
-        //const layerId = 'all-glaciers-layer';
-        //if (!map.getLayer(layerId)) {
-        //    map.addLayer({
-        //        'id': layerId,
-        //        'type': 'raster',
-        //        'source': sourceId,
-        //        'paint': {'raster-opacity': 1}
-        //    });
-        //    console.log(`Layer added: ${layerId}`);
-        //}
-
-		//const t0 = performance.now();
-		//const t1 = performance.now();
-		//console.log(`Time taken for the whole funct ${t1 - t0} ms`);
-
-		document.getElementById('loading').style.display = 'none'; // Hide loading indicator after loading tiles
-		console.log("All tiles loaded, hiding loading indicator.");
-	}
-
-	let debounceTimer;
-	let tilesRendered = false;
+	//const jsonFileUrl = `tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
 
 	// Set up the initial state when the map is loaded
 	map.on('load', () => {
@@ -285,7 +169,8 @@
         map.addSource('terrain-dem', {
             'type': 'raster-dem',
             'url': 'mapbox://mapbox.mapbox-terrain-dem-v1', // Terrain DEM v1 tileset
-            'tileSize': 256
+            'tileSize': 256,
+            'attribution': 'Fuck Trump'
         });
         // Add the hillshade layer
         map.addLayer({
@@ -299,17 +184,50 @@
                 'hillshade-illumination-direction': 315 // Optional: angle of illumination
             }
         });
+        //map.addSource('geometries_rgi5', {
+        //    'type': 'geojson',
+        //    'data': '/tiles/RGI62/geometries/05_rgi62_GreenlandPeriphery_cleaned.geojson'
+        //});
+
+        map.addSource('source_rgi3', {
+            'type': 'raster',
+            'tiles': [`/tiles/RGI62/rgi3/{z}/{x}/{y}.png`],
+            'tileSize': 256,
+            'scheme': 'tms'
+        });
+        map.addSource('source_rgi4', {
+            'type': 'raster',
+            'tiles': [`/tiles/RGI62/rgi4/{z}/{x}/{y}.png`],
+            'tileSize': 256,
+            'scheme': 'tms'
+        });
+        map.addSource('source_rgi5', {
+            'type': 'raster',
+            'tiles': [`/tiles/RGI62/rgi5/{z}/{x}/{y}.png`],
+            'tileSize': 256,
+            'scheme': 'tms'
+        });
         map.addSource('source_rgi6', {
             'type': 'raster',
             'tiles': [`/tiles/RGI62/rgi6/{z}/{x}/{y}.png`],
             'tileSize': 256,
-            'scheme': 'tms'
+            'scheme': 'tms',
+            'minzoom': 5,
+            'maxzoom': 10,
         });
         map.addSource('source_rgi7', {
             'type': 'raster',
             'tiles': [`/tiles/RGI62/rgi7/{z}/{x}/{y}.png`],
             'tileSize': 256,
             'scheme': 'tms'
+        });
+        map.addSource('source_rgi9', {
+            'type': 'raster',
+            'tiles': [`/tiles/RGI62/rgi9/{z}/{x}/{y}.png`],
+            'tileSize': 256,
+            'scheme': 'tms',
+            'minzoom': 5,
+            'maxzoom': 10,
         });
         map.addSource('source_rgi11', {
             'type': 'raster',
@@ -324,61 +242,66 @@
             'scheme': 'tms'
         });
 
+
+
+        // LAYERS
+        map.addLayer({
+                'id': 'layer_rgi3',
+                'type': 'raster',
+                'source': 'source_rgi3',
+                'paint': {'raster-opacity': .5},
+        });
+        map.addLayer({
+                'id': 'layer_rgi4',
+                'type': 'raster',
+                'source': 'source_rgi4',
+                'paint': {'raster-opacity': .5},
+        });
+        map.addLayer({
+                'id': 'layer_rgi5',
+                'type': 'raster',
+                'source': 'source_rgi5',
+                'paint': {'raster-opacity': .5},
+        });
         map.addLayer({
                 'id': 'layer_rgi6',
                 'type': 'raster',
                 'source': 'source_rgi6',
-                'paint': {'raster-opacity': 1}
+                'paint': {'raster-opacity': .5}
         });
         map.addLayer({
                 'id': 'layer_rgi7',
                 'type': 'raster',
                 'source': 'source_rgi7',
-                'paint': {'raster-opacity': 1}
+                'paint': {'raster-opacity': .5}
+        });
+        map.addLayer({
+                'id': 'layer_rgi9',
+                'type': 'raster',
+                'source': 'source_rgi9',
+                'paint': {'raster-opacity': .5}
         });
         map.addLayer({
                 'id': 'layer_rgi11',
                 'type': 'raster',
                 'source': 'source_rgi11',
-                'paint': {'raster-opacity': 1}
+                'paint': {'raster-opacity': .5}
         });
         map.addLayer({
                 'id': 'layer_rgi19',
                 'type': 'raster',
                 'source': 'source_rgi19',
-                'paint': {'raster-opacity': 1}
+                'paint': {'raster-opacity': .5}
         });
 
-		console.log("Map has fully loaded.");
-		//loadTiles(); // Load tiles immediately after the map is loaded
-		tilesRendered = true; // Set the flag to true since the initial tiles are loaded
-	});
+        // GEOMETRY LAYERS
+        //map.addLayer({
+        //    'id': 'layer_geometries_rgi5',
+        //    'type': 'line',
+        //    'source': 'geometries_rgi5',
+        //    'paint': {'line-color': '#000000', 'line-width': 0.3,}
+        //});
 
-	// Reset the flag when the map starts moving or zooming
-	map.on('zoomstart', () => {
-		tilesRendered = false; // Reset flag since the map is changing
-	});
-
-	map.on('movestart', () => {
-		tilesRendered = false; // Reset flag since the map is changing
-	});
-
-	// Use 'idle' to determine when the map has finished moving/zooming
-	map.on('idle', () => {
-		if (tilesRendered) {
-			console.log("Map is idle and tiles are already rendered.");
-			return; // No need to load tiles again
-		}
-
-		// Wait for 2 seconds before calling loadTiles
-		clearTimeout(debounceTimer);
-		debounceTimer = setTimeout(() => {
-			if (map.isStyleLoaded() && map.loaded()) {
-				console.log("Loading tiles after 2 seconds.");
-				//loadTiles(); // Load tiles after the map is idle for 2 seconds
-				tilesRendered = true; // Set flag to true again
-			}
-		}, 2000); // Adjust the delay as needed
 	});
 
 </script>
