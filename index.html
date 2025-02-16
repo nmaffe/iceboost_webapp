@@ -184,11 +184,18 @@
                 'hillshade-illumination-direction': 315 // Optional: angle of illumination
             }
         });
-        //map.addSource('geometries_rgi5', {
+        //map.addSource('geometries_rgi1', {
         //    'type': 'geojson',
-        //    'data': '/tiles/RGI62/geometries/05_rgi62_GreenlandPeriphery_cleaned.geojson'
+        //    'data': '/tiles/RGI62/geometries/01_rgi62_Alaska_cleaned2.geojson'
         //});
 
+
+        map.addSource('source_rgi1', {
+            'type': 'raster',
+            'tiles': [`/tiles/RGI62/rgi3/{z}/{x}/{y}.png`],
+            'tileSize': 256,
+            'scheme': 'tms'
+        });
         map.addSource('source_rgi3', {
             'type': 'raster',
             'tiles': [`/tiles/RGI62/rgi3/{z}/{x}/{y}.png`],
@@ -246,6 +253,12 @@
 
         // LAYERS
         map.addLayer({
+                'id': 'layer_rgi1',
+                'type': 'raster',
+                'source': 'source_rgi1',
+                'paint': {'raster-opacity': .5},
+        });
+        map.addLayer({
                 'id': 'layer_rgi3',
                 'type': 'raster',
                 'source': 'source_rgi3',
@@ -296,10 +309,10 @@
 
         // GEOMETRY LAYERS
         //map.addLayer({
-        //    'id': 'layer_geometries_rgi5',
+        //    'id': 'layer_geometries_rgi1',
         //    'type': 'line',
-        //    'source': 'geometries_rgi5',
-        //    'paint': {'line-color': '#000000', 'line-width': 0.3,}
+        //    'source': 'geometries_rgi1',
+        //    'paint': {'line-color': '#de0909', 'line-width': 1,}
         //});
 
 	});
