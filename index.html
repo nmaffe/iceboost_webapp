@@ -98,20 +98,43 @@
 			100% { transform: rotate(360deg); }
         }
 
-        .toggle-btn {
+        /* First button styling */
+        #toggle-layer {
             position: absolute;
-            top: 20vh; /* 20% of the viewport height */
-            left: 1vw; /* 1% of the viewport width */
-            z-index: 1000; /* Ensure it appears above the map */
+            top: 20vh;  /* 20% of the viewport height */
+            left: 1vw;  /* 1% of the viewport width */
+            z-index: 1000;  /* Ensure it appears above the map */
             background-color: white;
             border: 1px solid black;
             border-radius: 12px;  /* Rounded corners */
             font-size: 1rem;  /* Equals the root font size (16px by default) */
-            padding: 1em; /* font size */
+            padding: 1em;  /* font size */
             cursor: pointer;
         }
-        .toggle-btn.active {
+
+        /* Second button styling */
+        #toggle-layer-2 {
+            position: absolute;
+            top: 30vh;  /* 30% of the viewport height (adjusted to avoid overlap) */
+            left: 1vw;  /* 1% of the viewport width */
+            z-index: 1000;  /* Ensure it appears above the map */
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 12px;  /* Rounded corners */
+            font-size: 1rem;  /* Equals the root font size (16px by default) */
+            padding: 1em;  /* font size */
+            cursor: pointer;
+        }
+
+        /* Button appearance when active for the first button */
+        #toggle-layer.active {
             background-color: blue;
+            color: white;
+        }
+
+        /* Button appearance when active for the second button */
+        #toggle-layer-2.active {
+            background-color: red;
             color: white;
         }
 
@@ -120,6 +143,7 @@
 
 <body>
 <button id="toggle-layer" class="toggle-btn">Geoms RGI62</button>
+<button id="toggle-layer-2" class="toggle-btn">Geoms RGI63</button>
 <div id="map"></div>
 <div id="loading" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
     <div class="loader"></div>
@@ -343,7 +367,8 @@
 // the following script positioned after the map loading, listed to the button and triggers the visibility of layer3
 <script>
     map.on('load', function() {
-        document.querySelector('.toggle-btn').addEventListener('click', function () {
+        // Handle first button click (Geoms RGI62)
+        document.querySelector('#toggle-layer').addEventListener('click', function () {
             const visibility = map.getLayoutProperty('geoms-rgi62', 'visibility');
 
             if (visibility === 'visible') {
@@ -351,6 +376,19 @@
                 this.classList.remove('active'); // Optional: change button appearance
             } else {
                 map.setLayoutProperty('geoms-rgi62', 'visibility', 'visible');
+                this.classList.add('active');
+            }
+        });
+
+        // Handle second button click (Geoms RGI70G)
+        document.querySelector('#toggle-layer-2').addEventListener('click', function () {
+            const visibility = map.getLayoutProperty('geoms-rgi70g', 'visibility');
+
+            if (visibility === 'visible') {
+                map.setLayoutProperty('geoms-rgi70g', 'visibility', 'none');
+                this.classList.remove('active'); // Optional: change button appearance
+            } else {
+                map.setLayoutProperty('geoms-rgi70g', 'visibility', 'visible');
                 this.classList.add('active');
             }
         });
