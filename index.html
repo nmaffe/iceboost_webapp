@@ -104,7 +104,7 @@
             top: 20vh;  /* 20% of the viewport height */
             left: 1vw;  /* 1% of the viewport width */
             z-index: 1000;  /* Ensure it appears above the map */
-            background-color: white;
+            background-color: transparent;
             border: 1px solid black;
             border-radius: 12px;  /* Rounded corners */
             font-size: 1rem;  /* Equals the root font size (16px by default) */
@@ -118,7 +118,7 @@
             top: 30vh;  /* 30% of the viewport height (adjusted to avoid overlap) */
             left: 1vw;  /* 1% of the viewport width */
             z-index: 1000;  /* Ensure it appears above the map */
-            background-color: white;
+            background-color: transparent;
             border: 1px solid black;
             border-radius: 12px;  /* Rounded corners */
             font-size: 1rem;  /* Equals the root font size (16px by default) */
@@ -128,22 +128,22 @@
 
         /* Button appearance when active for the first button */
         #button-geoms-rgi62.active {
-            background-color: green;
-            color: white;
+            border-color: green;
+            color: green;
         }
 
         /* Button appearance when active for the second button */
         #button-geoms-rgi70g.active {
-            background-color: red;
-            color: white;
+            border-color: red;
+            color: red;
         }
 
 	</style>
 </head>
 
 <body>
-<button id="button-geoms-rgi62" class="toggle-btn">Geoms RGI-62</button>
-<button id="button-geoms-rgi70g" class="toggle-btn">Geoms RGI-70G</button>
+<button id="button-geoms-rgi62" class="toggle-btn">RGI v. 62</button>
+<button id="button-geoms-rgi70g" class="toggle-btn">RGI v. 70G</button>
 <div id="map"></div>
 <div id="loading" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
     <div class="loader"></div>
