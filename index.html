@@ -230,7 +230,7 @@
             'source': 'terrain-dem',
             'paint': {
                 'hillshade-exaggeration': 1.0,
-                'hillshade-highlight-color': '#000000', // Optional: highlight color
+                'hillshade-highlight-color': '#c4c4c4', // Optional: highlight color
                 'hillshade-shadow-color': '#555555', // Optional: shadow color
                 'hillshade-illumination-direction': 315 // Optional: angle of illumination
             }
@@ -295,6 +295,12 @@
             'tileSize': 256,
             'scheme': 'tms'
         });
+        map.addSource('source_rgi17', {
+            'type': 'raster',
+            'tiles': [`/tiles/RGI62/rgi17/{z}/{x}/{y}.png`],
+            'tileSize': 256,
+            'scheme': 'tms'
+        });
         map.addSource('source_rgi19', {
             'type': 'raster',
             'tiles': [`/tiles/RGI62/rgi19/{z}/{x}/{y}.png`],
@@ -352,6 +358,12 @@
                 'type': 'raster',
                 'source': 'source_rgi11',
                 'paint': {'raster-opacity': 1}
+        });
+        map.addLayer({
+                'id': 'layer_rgi17',
+                'type': 'raster',
+                'source': 'source_rgi17',
+                'paint': {'raster-opacity': .5}
         });
         map.addLayer({
                 'id': 'layer_rgi19',
