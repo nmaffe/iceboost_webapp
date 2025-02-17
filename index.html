@@ -98,6 +98,11 @@
 			100% { transform: rotate(360deg); }
         }
 
+        /* Button font */
+        .toggle-btn {
+            font-weight: bold;
+        }
+
         /* First button styling */
         #button-geoms-rgi62 {
             position: absolute;
@@ -134,16 +139,57 @@
 
         /* Button appearance when active for the second button */
         #button-geoms-rgi70g.active {
-            border-color: red;
-            color: red;
+            border-color: darkred;
+            color: darkred;
         }
 
         #button-geoms-rgi62:hover {
-            color: lime;  /* Change text color to grey on hover */
+            color: lime;  /* Change text color on hover */
         }
 
         #button-geoms-rgi70g:hover {
-            color: red;  /* Change text color to grey on hover */
+            color: red;  /* Change text color on hover */
+        }
+
+        .credits-toggle {
+            position: absolute;
+            bottom: 2vh;
+            right: 50vw;
+            z-index: 1000;
+            background-color: white;
+            border: 2px solid blue;
+            border-radius: 8px;
+            font-size: 1rem;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            color: blue;
+        }
+
+        .credits-box {
+            position: absolute;
+            bottom: 8vh;
+            right: 35vw;
+            width: 30vw; /* 30% of the viewport width, adjust as needed */
+            background: lightgrey;
+            padding: 1em;
+            border-radius: 8px;
+            border: 2px solid black;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            display: none; /* Hidden by default */
+            flex-direction: row; /* Arrange text and logos vertically */
+            align-items: center; /* Align the content (text + logos) in the center */
+            justify-content: flex-start; /* Start the content at the top */
+            flex-wrap: nowrap; /* Prevent content from wrapping */
+        }
+        .credits-box p {
+            margin: 0; /* Remove default margin to avoid extra space */
+        }
+
+        .credits-logo {
+            width: 30%; /* 1/3 of the credits box width */
+            height: 100px; /* Set a consistent height */
+            object-fit: contain; /* Maintain aspect ratio without stretching */
+            margin-top: 1em; /* Space above the logo */
         }
 
 	</style>
@@ -158,8 +204,8 @@
     <p style="text-align: center; margin-top: 10px;">Loading tiles...</p>
 </div>
 <div id="left-panel">
-	<img src="logo_iceboost.svg" alt="ICEBOOST logo" style="max-width: 100%;">
-	<h2 style="color: blue;">The ice volume of the Earth's glaciers with Machine Learning</h2>
+	<img src="logos/logo_iceboost.svg" alt="ICEBOOST logo" style="max-width: 100%;">
+	<h2 style="color: blue;">The ice volume of Earth's glaciers with Machine Learning</h2>
 </div>
 <!-- Vertical colorbar for ice thickness -->
 <div id="colorbar-container">
@@ -221,7 +267,7 @@
             'type': 'raster-dem',
             'url': 'mapbox://mapbox.mapbox-terrain-dem-v1', // Terrain DEM v1 tileset
             'tileSize': 256,
-            'attribution': 'Niccolo Maffezzoli'
+            'attribution': 'created by Niccolo Maffezzoli'
         });
         // Add the hillshade layer
         map.addLayer({
@@ -245,7 +291,7 @@
             'type': 'raster',
             'tiles': [`/tiles/RGI62/rgi1/{z}/{x}/{y}.png`],
             'tileSize': 256,
-            'scheme': 'tms'
+            'scheme': 'tms',
         });
         map.addSource('source_rgi3', {
             'type': 'raster',
@@ -384,7 +430,7 @@
 
 </script>
 
-/* the following script positioned after the map loading, listed to the button and triggers the visibility of layer3 */
+// script to activate/deactivate the visibility of the geometry layers when the buttons are clicked
 <script>
     map.on('load', function() {
         // Handle first button click (Geoms RGI62)
@@ -412,6 +458,41 @@
                 this.classList.add('active');
             }
         });
+    });
+</script>
+
+// credits button
+<button id="credits-btn" class="credits-toggle">Credits</button>
+<div id="credits-box" class="credits-box">
+    <p>The SKYNET project received funding from the European Commission,
+        under the Marie Curie Global Fellowship scheme, grant agreement no. 101066651. <br><br>
+        It is a collaboration between University of Venice and University of California, Irvine.
+    </p>
+    <img src="logos/logo_ec.svg" alt="EC Logo" class="credits-logo">
+    <img src="logos/logo_unive.svg" alt="EC Logo" class="credits-logo">
+    <img src="logos/logo_uci.svg" alt="EC Logo" class="credits-logo">
+</div>
+
+// script for credits button
+<script>
+    // Event listener for the credits button
+    document.getElementById('credits-btn').addEventListener('click', function(event) {
+        const box = document.getElementById('credits-box');
+        // Toggle visibility of the credits box
+        box.style.display = (box.style.display === 'none' || box.style.display === '') ? 'block' : 'none';
+        // Prevent the click event from propagating to the document
+        event.stopPropagation();
+    });
+
+    // Close the credits box if clicked outside (using mousedown event)
+    document.addEventListener('mousedown', function(event) {
+        const box = document.getElementById('credits-box');
+        const button = document.getElementById('credits-btn');
+
+        // Check if the click is outside the box and button
+        if (!box.contains(event.target) && event.target !== button) {
+            box.style.display = 'none'; // Hide the credits box
+        }
     });
 </script>
 </body>
