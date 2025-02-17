@@ -221,7 +221,7 @@
             'type': 'raster-dem',
             'url': 'mapbox://mapbox.mapbox-terrain-dem-v1', // Terrain DEM v1 tileset
             'tileSize': 256,
-            'attribution': 'Fuck Trump'
+            'attribution': 'Niccolo Maffezzoli'
         });
         // Add the hillshade layer
         map.addLayer({
@@ -230,7 +230,7 @@
             'source': 'terrain-dem',
             'paint': {
                 'hillshade-exaggeration': 1.0,
-                'hillshade-highlight-color': '#ffffff', // Optional: highlight color
+                'hillshade-highlight-color': '#000000', // Optional: highlight color
                 'hillshade-shadow-color': '#555555', // Optional: shadow color
                 'hillshade-illumination-direction': 315 // Optional: angle of illumination
             }
@@ -357,7 +357,7 @@
                 'id': 'layer_rgi19',
                 'type': 'raster',
                 'source': 'source_rgi19',
-                'paint': {'raster-opacity': 1}
+                'paint': {'raster-opacity': .5}
         });
 
         // GEOMETRY LAYERS
