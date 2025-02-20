@@ -22,7 +22,7 @@
 			background-color: rgba(0, 0, 0, 0.2);
 			padding: 10px;
 			font-family: Arial, sans-serif;
-			font-size: 0.7rem;
+			font-size: clamp(12px, 1vw, 18px);
 			text-align: center;
 		}
 
@@ -383,6 +383,8 @@
 </script>
 
 // script to activate/deactivate the visibility of the geometry layers when the buttons are clicked
+// In addition, if the layers are active and the mouse is clicked inside glaciers, this script is reponsible
+// to display a popup with the glacier ids.
 <script>
     let popup; // Variable to hold the popup instance
     let activeLayers = new Set(); // Set to keep track of active layers
