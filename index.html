@@ -19,7 +19,7 @@
 			left: 10px;
 			width: 20%;
 			height: 15%;
-			background-color: rgba(0, 0, 0, 0.2);
+			background-color: rgba(0, 0, 0, 0.0);
 			padding: 10px;
 			font-family: Arial, sans-serif;
 			font-size: clamp(12px, 1vw, 13px);
@@ -236,7 +236,7 @@
 		style: 'mapbox://styles/maffe89/cm2wh6ece00in01pw42nsbsxq',
 		//style: 'mapbox://styles/mapbox/light-v11',
 		//style: 'mapbox://styles/mapbox/satellite-v9',
-		center: [80, 35], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+		center: [-69, -69], // starting position [lng, lat]. Note that lat must be set between -90 and 90
 		zoom: 5, // starting zoom
 	});
 
@@ -370,13 +370,13 @@
                 'id': 'layer_rgi17',
                 'type': 'raster',
                 'source': 'source_rgi17',
-                'paint': {'raster-opacity': .5}
+                'paint': {'raster-opacity': 1}
         });
         map.addLayer({
                 'id': 'layer_rgi19',
                 'type': 'raster',
                 'source': 'source_rgi19',
-                'paint': {'raster-opacity': .5}
+                'paint': {'raster-opacity': 1}
         });
 	});
 
@@ -421,6 +421,10 @@
             button.classList.add('active');
             activeLayers.add(fillLayerId); // Add to active layers
             activeLayers.add(boundaryLayerId); // Add to active layers
+
+            // Move layers to the foreground
+            moveLayerToTop(fillLayerId);
+            moveLayerToTop(boundaryLayerId);
 
             // Add click interaction only on the fill layer
             map.on('click', fillLayerId, handleClick);
@@ -467,6 +471,13 @@
             .setLngLat(lngLat)
             .setHTML(popupContent)
             .addTo(map);
+    }
+
+    function moveLayerToTop(layerId) {
+        const layers = map.getStyle().layers.map(l => l.id); // Get all layer IDs
+        if (layers.includes(layerId)) {
+            map.moveLayer(layerId); // Moves the layer to the top (above all others)
+        }
     }
 </script>
 
