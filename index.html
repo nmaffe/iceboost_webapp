@@ -236,8 +236,8 @@
 		style: 'mapbox://styles/maffe89/cm2wh6ece00in01pw42nsbsxq',
 		//style: 'mapbox://styles/mapbox/light-v11',
 		//style: 'mapbox://styles/mapbox/satellite-v9',
-		center: [-69, -69], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-		zoom: 5, // starting zoom
+		center: [-30, 0], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+		zoom: 0, // starting zoom
 	});
 
 	// Add a scale bar to a map
@@ -278,16 +278,21 @@
             'tiles': [`/tiles/RGI62/rgi4/{z}/{x}/{y}.png`],
             'tileSize': 256, 'scheme': 'tms'
         });
-        map.addSource('source_rgi5', {
-            'type': 'raster',
-            'tiles': [`/tiles/RGI62/rgi5/{z}/{x}/{y}.png`],
-            'tileSize': 256, 'scheme': 'tms', 'minzoom': 0, 'maxzoom': 10,
-        });
-        map.addSource('source_rgi6', {
-            'type': 'raster',
-            'tiles': [`/tiles/RGI62/rgi6/{z}/{x}/{y}.png`],
-            'tileSize': 256, 'scheme': 'tms', 'minzoom': 5, 'maxzoom': 10,
-        });
+        //map.addSource('source_rgi5', {
+        //    'type': 'raster',
+        //    'tiles': ['https://api.mapbox.com/v4/maffe89.68xthnkw/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFmZmU4OSIsImEiOiJjbTExZXM4bmEwcmFkMmtxMnlleDE2aWo2In0.E6BiHnnixuupE5Zpx9FS8g'],
+        //    'tileSize': 256, 'scheme': 'tms'
+        //});
+        //map.addSource('source_rgi5', {
+        //    'type': 'raster',
+        //    'tiles': [`/tiles/RGI62/rgi5/{z}/{x}/{y}.png`],
+        //    'tileSize': 256, 'scheme': 'tms', 'minzoom': 0, 'maxzoom': 10,
+        //});
+        //map.addSource('source_rgi6', {
+        //    'type': 'raster',
+        //    'tiles': [`/tiles/RGI62/rgi6/{z}/{x}/{y}.png`],
+        //    'tileSize': 256, 'scheme': 'tms', 'minzoom': 5, 'maxzoom': 10,
+        //});
         map.addSource('source_rgi7', {
             'type': 'raster',
             'tiles': [`/tiles/RGI62/rgi7/{z}/{x}/{y}.png`],
@@ -336,18 +341,18 @@
                 'source': 'source_rgi4',
                 'paint': {'raster-opacity': 1},
         });
-        map.addLayer({
-                'id': 'layer_rgi5',
-                'type': 'raster',
-                'source': 'source_rgi5',
-                'paint': {'raster-opacity': 1},
-        });
-        map.addLayer({
-                'id': 'layer_rgi6',
-                'type': 'raster',
-                'source': 'source_rgi6',
-                'paint': {'raster-opacity': 1}
-        });
+        //map.addLayer({
+        //        'id': 'layer_rgi5',
+        //        'type': 'raster',
+        //        'source': 'source_rgi5',
+        //        'paint': {'raster-opacity': 1},
+        //});
+        //map.addLayer({
+        //        'id': 'layer_rgi6',
+        //        'type': 'raster',
+        //        'source': 'source_rgi6',
+        //        'paint': {'raster-opacity': 1}
+        //});
         map.addLayer({
                 'id': 'layer_rgi7',
                 'type': 'raster',
