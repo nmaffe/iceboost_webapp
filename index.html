@@ -132,6 +132,20 @@
             cursor: pointer;
         }
 
+        /* Second button styling */
+        #button-data {
+            position: absolute;
+            top: 36vh;
+            left: 1vw;
+            z-index: 1000;  /* Ensure it appears above the map */
+            background-color: transparent;
+            border: 2px solid black;
+            border-radius: 12px;  /* Rounded corners */
+            font-size: 1rem;  /* Equals the root font size (16px by default) */
+            padding: .7em;  /* font size */
+            cursor: pointer;
+        }
+
         /* Button appearance when active for the first button */
         #button-geoms-rgi62.active {
             border-color: blue;
@@ -144,12 +158,22 @@
             color: Purple;
         }
 
+        /* Button appearance when active*/
+        #button-data.active {
+            border-color: Orange;
+            color: Orange;
+        }
+
         #button-geoms-rgi62:hover {
             color: Aqua;  /* Change text color on hover */
         }
 
         #button-geoms-rgi70g:hover {
             color: Fuchsia;  /* Change text color on hover */
+        }
+
+        #button-data:hover {
+            color: Red;  /* Change text color on hover */
         }
 
         .credits-toggle {
@@ -199,6 +223,7 @@
 <body>
 <button id="button-geoms-rgi62" class="toggle-btn">RGI v. 62</button>
 <button id="button-geoms-rgi70g" class="toggle-btn">RGI v. 70G</button>
+<button id="button-data" class="toggle-btn">data</button>
 <div id="map"></div>
 <div id="loading" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
     <div class="loader"></div>
@@ -256,18 +281,18 @@
 	});
 
 	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
-	//const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
-	//const jsonFileUrl = `${s3BucketURL}/tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
-	//const jsonFileUrl = `tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
+	// const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
+	// const jsonFileUrl = `${s3BucketURL}/tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
+	// const jsonFileUrl = `tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
 
 	// Set up the initial state when the map is loaded
 	map.on('load', () => {
 
-        map.addSource('source_rgi1', {
-            'type': 'raster',
-            'tiles': [`/tiles/RGI62/rgi1/{z}/{x}/{y}.png`],
-            'tileSize': 256, 'scheme': 'tms',
-        });
+        //map.addSource('source_rgi1', {
+        //    'type': 'raster',
+        //    'tiles': [`/tiles/RGI62/rgi1/{z}/{x}/{y}.png`],
+        //    'tileSize': 256, 'scheme': 'tms',
+        //});
         //map.addSource('source_rgi3', {
         //    'type': 'raster',
         //    'tiles': [`/tiles/RGI62/rgi3/{z}/{x}/{y}.png`],
@@ -318,12 +343,12 @@
 
 
         // LAYERS
-        map.addLayer({
-                'id': 'layer_rgi1',
-                'type': 'raster',
-                'source': 'source_rgi1',
-                'paint': {'raster-opacity': 1},
-        });
+        //map.addLayer({
+        //        'id': 'layer_rgi1',
+        //        'type': 'raster',
+        //        'source': 'source_rgi1',
+        //        'paint': {'raster-opacity': 1},
+        //});
         //map.addLayer({
         //        'id': 'layer_rgi3',
         //        'type': 'raster',
@@ -399,6 +424,12 @@
         document.querySelector('#button-geoms-rgi70g').addEventListener('click', function () {
             toggleLayers('geoms-rgi70g-fill', 'geoms-rgi70g-boundary', this);
         });
+
+        // Handle button click for Ground Truth Points
+        document.querySelector('#button-data').addEventListener('click', function () {
+            togglePointsLayer('ground_truth_points', this);
+        });
+
     });
 
     function toggleLayers(fillLayerId, boundaryLayerId, button) {
@@ -428,6 +459,22 @@
 
             // Add click interaction only on the fill layer
             map.on('click', fillLayerId, handleClick);
+        }
+    }
+
+    function togglePointsLayer(layerId, button) {
+        const visibility = map.getLayoutProperty(layerId, 'visibility');
+        if (visibility === 'visible') {
+            // Hide the points layer
+            map.setLayoutProperty(layerId, 'visibility', 'none');
+            button.classList.remove('active'); // Optionally change button appearance
+        } else {
+            // Show the points layer
+            map.setLayoutProperty(layerId, 'visibility', 'visible');
+            button.classList.add('active');
+
+            // Move the points layer to the top
+            moveLayerToTop(layerId);
         }
     }
 
