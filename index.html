@@ -7,9 +7,9 @@
 	<link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-	//<script src="https://cdn.jsdelivr.net/npm/rbush"></script>
-    //<script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
-    //<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/rbush"></script> -->
+    <!-- //<script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script> -->
+    <!-- //<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script> -->
 
 	<style>
 		body { margin: 0; padding: 0; }
@@ -89,7 +89,6 @@
 			font-size: clamp(12px, 2vw, 18px);
 			font-weight: normal;
 		}
-
 
         .credits-toggle {
             position: absolute;
@@ -252,6 +251,7 @@
 		//style: 'mapbox://styles/mapbox/satellite-v9',
 		center: [-77, 80], // starting position [lng, lat]. Note that lat must be set between -90 and 90
 		zoom: 3, // starting zoom
+		customAttribution: 'Niccolò Maffezzoli'
 	});
 
 	// Add a scale bar to a map
@@ -269,7 +269,7 @@
     	document.getElementById('coordinates').innerHTML = `<span>Lat: ${coords.lat.toFixed(5)}, Lon: ${coords.lng.toFixed(5)}</span>`; // Update the coordinates display
 	});
 
-	const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
+	// const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
 	// const s3BucketURL = 'https://as3-iceboost-tiles.s3.amazonaws.com/tiles/RGI62';
 	// const jsonFileUrl = `${s3BucketURL}/tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
 	// const jsonFileUrl = `tileFolders_RGI62_with_bbox.json.gz`; // Path to your JSON file
@@ -277,6 +277,7 @@
 	// Set up the initial state when the map is loaded
 	map.on('load', () => {
 
+        // SOURCES
         //map.addSource('source_rgi1', {
         //    'type': 'raster',
         //    'tiles': [`/tiles/RGI62/rgi1/{z}/{x}/{y}.png`],
@@ -287,49 +288,6 @@
         //    'tiles': [`/tiles/RGI62/rgi3/{z}/{x}/{y}.png`],
         //    'tileSize': 256, 'scheme': 'tms'
         //});
-        //map.addSource('source_rgi4', {
-        //    'type': 'raster',
-        //    'tiles': [`/tiles/RGI62/rgi4/{z}/{x}/{y}.png`],
-        //    'tileSize': 256, 'scheme': 'tms'
-        //});
-        //map.addSource('source_rgi5', {
-        //    'type': 'raster',
-        //    'tiles': [`/tiles/RGI62/rgi5/{z}/{x}/{y}.png`],
-        //    'tileSize': 256, 'scheme': 'tms', 'minzoom': 0, 'maxzoom': 10,
-        //});
-        //map.addSource('source_rgi6', {
-        //    'type': 'raster',
-        //    'tiles': [`/tiles/RGI62/rgi6/{z}/{x}/{y}.png`],
-        //    'tileSize': 256, 'scheme': 'tms', 'minzoom': 5, 'maxzoom': 10,
-        //});
-        //map.addSource('source_rgi7', {
-        //    'type': 'raster',
-        //    'tiles': [`/tiles/RGI62/rgi7/{z}/{x}/{y}.png`],
-        //    'tileSize': 256,
-        //    'scheme': 'tms', 'minzoom': 0, 'maxzoom': 10,
-        //});
-        //map.addSource('source_rgi9', {
-        //    'type': 'raster',
-        //    'tiles': [`/tiles/RGI62/rgi9/{z}/{x}/{y}.png`],
-        //    'tileSize': 256, 'scheme': 'tms', 'minzoom': 5, 'maxzoom': 10,
-        //});
-        map.addSource('source_rgi11', {
-            'type': 'raster',
-            'tiles': [`/tiles/RGI62/rgi11/{z}/{x}/{y}.png`],
-            'tileSize': 256, 'scheme': 'tms'
-        });
-        map.addSource('source_rgi17', {
-            'type': 'raster',
-            'tiles': [`/tiles/RGI62/rgi17/{z}/{x}/{y}.png`],
-            'tileSize': 256, 'scheme': 'tms'
-        });
-        //map.addSource('source_rgi19', {
-        //    'type': 'raster',
-        //    'tiles': [`/tiles/RGI62/rgi19/{z}/{x}/{y}.png`],
-        //    'tileSize': 256, 'scheme': 'tms'
-        //});
-
-
 
         // LAYERS
         //map.addLayer({
@@ -343,54 +301,6 @@
         //        'type': 'raster',
         //        'source': 'source_rgi3',
         //        'paint': {'raster-opacity': 1},
-        //});
-        //map.addLayer({
-        //        'id': 'layer_rgi4',
-        //        'type': 'raster',
-        //        'source': 'source_rgi4',
-        //        'paint': {'raster-opacity': 1},
-        //});
-        //map.addLayer({
-        //        'id': 'layer_rgi5',
-        //        'type': 'raster',
-        //        'source': 'source_rgi5',
-        //        'paint': {'raster-opacity': 1},
-        //});
-        //map.addLayer({
-        //        'id': 'layer_rgi6',
-        //        'type': 'raster',
-        //        'source': 'source_rgi6',
-        //        'paint': {'raster-opacity': 1}
-        //});
-        //map.addLayer({
-        //        'id': 'layer_rgi7',
-        //        'type': 'raster',
-        //        'source': 'source_rgi7',
-        //        'paint': {'raster-opacity': 1}
-        //});
-        //map.addLayer({
-        //        'id': 'layer_rgi9',
-        //        'type': 'raster',
-        //        'source': 'source_rgi9',
-        //        'paint': {'raster-opacity': 1}
-        //});
-        map.addLayer({
-                'id': 'layer_rgi11',
-                'type': 'raster',
-                'source': 'source_rgi11',
-                'paint': {'raster-opacity': 1}
-        });
-        map.addLayer({
-                'id': 'layer_rgi17',
-                'type': 'raster',
-                'source': 'source_rgi17',
-                'paint': {'raster-opacity': 1}
-        });
-        //map.addLayer({
-        //        'id': 'layer_rgi19',
-        //        'type': 'raster',
-        //        'source': 'source_rgi19',
-        //        'paint': {'raster-opacity': 1}
         //});
 	});
 
@@ -518,7 +428,7 @@
     }
 </script>
 
-// credits button
+<!-- credits button -->
 <button id="credits-btn" class="credits-toggle">Credits</button>
 <div id="credits-box" class="credits-box">
     <p>The SKYNET project received funding from the European Commission,
@@ -530,7 +440,7 @@
     <img src="logos/logo_uci.svg" alt="EC Logo" class="credits-logo">
 </div>
 
-// script for credits button
+<!-- script for credits button -->
 <script>
     // Event listener for the credits button
     document.getElementById('credits-btn').addEventListener('click', function(event) {
