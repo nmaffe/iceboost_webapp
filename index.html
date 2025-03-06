@@ -85,101 +85,11 @@
 			font-weight: normal;
 		}
 
-		.loader {
-			border: 8px solid rgba(255, 255, 255, 0.3); /* Light border */
-			border-top: 8px solid #0074d9; /* Darker color for the spinner */
-			border-radius: 50%;
-			width: 50px; /* Size of the spinner */
-			height: 50px; /* Size of the spinner */
-			animation: spin 1s linear infinite; /* Animation properties */
-		}
-
-		@keyframes spin {
-			0% { transform: rotate(0deg); }
-			100% { transform: rotate(360deg); }
-        }
-
-        /* Button font */
-        .toggle-btn {
-            font-weight: bold;
-        }
-
-        /* First button styling */
-        #button-geoms-rgi62 {
-            position: absolute;
-            top: 24vh;  /* 28% of the viewport height */
-            left: 1vw;  /* 1% of the viewport width */
-            z-index: 1000;  /* Ensure it appears above the map */
-            background-color: transparent;
-            border: 2px solid black;
-            border-radius: 12px;  /* Rounded corners */
-            font-size: 1rem;  /* Equals the root font size (16px by default) */
-            padding: .7em;  /* font size */
-            cursor: pointer;
-        }
-
-        /* Second button styling */
-        #button-geoms-rgi70g {
-            position: absolute;
-            top: 30vh;  /* 30% of the viewport height (adjusted to avoid overlap) */
-            left: 1vw;  /* 1% of the viewport width */
-            z-index: 1000;  /* Ensure it appears above the map */
-            background-color: transparent;
-            border: 2px solid black;
-            border-radius: 12px;  /* Rounded corners */
-            font-size: 1rem;  /* Equals the root font size (16px by default) */
-            padding: .7em;  /* font size */
-            cursor: pointer;
-        }
-
-        /* Second button styling */
-        #button-data {
-            position: absolute;
-            top: 36vh;
-            left: 1vw;
-            z-index: 1000;  /* Ensure it appears above the map */
-            background-color: transparent;
-            border: 2px solid black;
-            border-radius: 12px;  /* Rounded corners */
-            font-size: 1rem;  /* Equals the root font size (16px by default) */
-            padding: .7em;  /* font size */
-            cursor: pointer;
-        }
-
-        /* Button appearance when active for the first button */
-        #button-geoms-rgi62.active {
-            border-color: blue;
-            color: blue;
-        }
-
-        /* Button appearance when active for the second button */
-        #button-geoms-rgi70g.active {
-            border-color: Purple;
-            color: Purple;
-        }
-
-        /* Button appearance when active*/
-        #button-data.active {
-            border-color: Orange;
-            color: Orange;
-        }
-
-        #button-geoms-rgi62:hover {
-            color: Aqua;  /* Change text color on hover */
-        }
-
-        #button-geoms-rgi70g:hover {
-            color: Fuchsia;  /* Change text color on hover */
-        }
-
-        #button-data:hover {
-            color: Red;  /* Change text color on hover */
-        }
 
         .credits-toggle {
             position: absolute;
             bottom: 2vh;
-            right: 50vw;
+            right: 80vw;
             z-index: 1000;
             background-color: white;
             border: 2px solid blue;
@@ -217,18 +127,63 @@
             margin-top: 1em; /* Space above the logo */
         }
 
+        .hexagon-menu {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            z-index: 1000; /* Ensure it appears above the map */
+            pointer-events: auto; /* Ensure it is clickable */
+        }
+
+        .hexagon-item {
+            width: 80px; /* Hexagon size */
+            aspect-ratio: 1.1547; /* Hexagonal proportion */
+            cursor: pointer;
+        }
+
+        .hex-item {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b6b, #ffb86c);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .hex-item:hover {
+            background: linear-gradient(135deg, #ff4757, #ff9f1a);
+            transform: scale(1.1);
+        }
+
+        .hexagon-item {
+            cursor: pointer;
+        }
+
 	</style>
 </head>
 
 <body>
-<button id="button-geoms-rgi62" class="toggle-btn">RGI v. 62</button>
-<button id="button-geoms-rgi70g" class="toggle-btn">RGI v. 70G</button>
-<button id="button-data" class="toggle-btn">data</button>
-<div id="map"></div>
-<div id="loading" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
-    <div class="loader"></div>
-    <p style="text-align: center; margin-top: 10px;">Loading tiles...</p>
+<div class="hexagon-menu">
+    <div class="hexagon-item" id="button-geoms-rgi62">
+        <div class="hex-item"><span>RGI v. 62</span></div>
+    </div>
+    <div class="hexagon-item" id="button-geoms-rgi70g">
+        <div class="hex-item"><span>RGI v. 70G</span></div>
+    </div>
+    <div class="hexagon-item" id="button-data">
+        <div class="hex-item"><span>Data</span></div>
+    </div>
 </div>
+<div id="map"></div>
 <div id="left-panel">
 	<img src="logos/logo_iceboost.svg" alt="ICEBOOST logo" style="max-width: 100%;">
 	<h2 style="color: blue;">The ice volume of Earth's glaciers with Machine Learning</h2>
