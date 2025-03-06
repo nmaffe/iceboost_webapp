@@ -6,6 +6,7 @@
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 	<link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 	//<script src="https://cdn.jsdelivr.net/npm/rbush"></script>
     //<script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
     //<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
@@ -141,7 +142,7 @@
 
         .hexagon-item {
             width: 80px; /* Hexagon size */
-            aspect-ratio: 1.1547; /* Hexagonal proportion */
+            aspect-ratio: 0.866; /* Hexagonal proportion */
             cursor: pointer;
         }
 
@@ -151,12 +152,17 @@
             background: #212f3c;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             display: flex;
+            flex-direction: column; /* Stack icon and text */
             justify-content: center;
             align-items: center;
             color: white;
-            font-weight: bold;
             text-align: center;
             transition: 0.3s ease;
+        }
+
+        .hex-item i {
+            font-size: 24px; /* Adjust icon size */
+            margin-bottom: 5px; /* Space between icon and text */
         }
 
         .hex-item:hover {
@@ -174,13 +180,22 @@
 <body>
 <div class="hexagon-menu">
     <div class="hexagon-item" id="button-geoms-rgi62">
-        <div class="hex-item"><span>RGI 62</span></div>
+        <div class="hex-item">
+            <i class="fa-solid fa-bezier-curve"></i><!-- Icon -->
+            <span>RGI 62</span> <!-- Text below the icon -->
+        </div>
     </div>
     <div class="hexagon-item" id="button-geoms-rgi70g">
-        <div class="hex-item"><span>RGI 70</span></div>
+        <div class="hex-item">
+            <i class="fa-solid fa-bezier-curve"></i>
+            <span>RGI 70</span>
+        </div>
     </div>
     <div class="hexagon-item" id="button-data">
-        <div class="hex-item"><span>DATA</span></div>
+        <div class="hex-item">
+            <i class="fa-solid fa-bullseye"></i>
+            <span>DATA</span>
+        </div>
     </div>
 </div>
 <div id="map"></div>
