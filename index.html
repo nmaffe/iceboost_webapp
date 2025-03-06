@@ -141,7 +141,7 @@
         }
 
         .hexagon-item {
-            width: 80px; /* Hexagon size */
+            width: 60px; /* Hexagon size */
             aspect-ratio: 0.866; /* Hexagonal proportion */
             cursor: pointer;
         }
@@ -152,26 +152,20 @@
             background: #212f3c;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             display: flex;
-            flex-direction: column; /* Stack icon and text */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             color: white;
             text-align: center;
-            transition: 0.3s ease;
+            position: relative;
+            transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease;
         }
 
-        .hex-item i {
-            font-size: 24px; /* Adjust icon size */
-            margin-bottom: 5px; /* Space between icon and text */
-        }
-
+        /* Hover effect: Border and scale */
         .hex-item:hover {
-            background: linear-gradient(135deg, #ff4757, #ff9f1a);
-            transform: scale(1.1);
-        }
-
-        .hexagon-item {
-            cursor: pointer;
+            transform: scale(1.1); /* Scale the hexagon */
+            background: lightblue;
+            color: blue;
         }
 
 	</style>
@@ -231,8 +225,8 @@
 		style: 'mapbox://styles/maffe89/cm2wh6ece00in01pw42nsbsxq',
 		//style: 'mapbox://styles/mapbox/light-v11',
 		//style: 'mapbox://styles/mapbox/satellite-v9',
-		center: [-30, 0], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-		zoom: 0, // starting zoom
+		center: [-77, 80], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+		zoom: 3, // starting zoom
 	});
 
 	// Add a scale bar to a map
