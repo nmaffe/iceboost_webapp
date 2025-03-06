@@ -334,11 +334,11 @@
             'tiles': [`/tiles/RGI62/rgi17/{z}/{x}/{y}.png`],
             'tileSize': 256, 'scheme': 'tms'
         });
-        map.addSource('source_rgi19', {
-            'type': 'raster',
-            'tiles': [`/tiles/RGI62/rgi19/{z}/{x}/{y}.png`],
-            'tileSize': 256, 'scheme': 'tms'
-        });
+        //map.addSource('source_rgi19', {
+        //    'type': 'raster',
+        //    'tiles': [`/tiles/RGI62/rgi19/{z}/{x}/{y}.png`],
+        //    'tileSize': 256, 'scheme': 'tms'
+        //});
 
 
 
@@ -397,12 +397,12 @@
                 'source': 'source_rgi17',
                 'paint': {'raster-opacity': 1}
         });
-        map.addLayer({
-                'id': 'layer_rgi19',
-                'type': 'raster',
-                'source': 'source_rgi19',
-                'paint': {'raster-opacity': 1}
-        });
+        //map.addLayer({
+        //        'id': 'layer_rgi19',
+        //        'type': 'raster',
+        //        'source': 'source_rgi19',
+        //        'paint': {'raster-opacity': 1}
+        //});
 	});
 
 </script>
