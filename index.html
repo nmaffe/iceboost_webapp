@@ -84,11 +84,10 @@
 			position: absolute;
 			bottom: 10vh; /* 10% of viewport height from the bottom */
     		left: 1vw;    /* 1% of viewport width from the left */
-			/*background-color: white;*/
 			padding: 5px;
 			font-family: Arial, sans-serif;
 			color: black;
-			font-size: clamp(12px, 2vw, 18px);
+			font-size: clamp(12px, 1.1vw, 18px);
 			font-weight: normal;
 		}
 
@@ -241,7 +240,7 @@
         <div id="colorbar-title">Ice thickness [m]</div>
     </div>
 </div>
-<div id="coordinates">Lat: N/A, Lon: N/A</div>
+<div id="coordinates"></div>
 
 
 <script>
@@ -268,7 +267,7 @@
 	// Display latitude and longitude as the mouse moves
 	map.on('mousemove', function (e) {
 		const coords = e.lngLat; // Get the coordinates
-    	document.getElementById('coordinates').innerHTML = `<span>Lat: ${coords.lat.toFixed(5)}, Lon: ${coords.lng.toFixed(5)}</span>`; // Update the coordinates display
+    	document.getElementById('coordinates').innerHTML = `<span>φ ${coords.lat.toFixed(5)} | λ ${coords.lng.toFixed(5)}</span>`; // Update the coordinates display
 	});
 
 	// const githubRepo = 'nmaffe/iceboost_webapp'; // Replace with your GitHub username and repo
