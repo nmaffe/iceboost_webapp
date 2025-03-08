@@ -164,9 +164,7 @@
             text-align: center;
             position: relative;
             transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease;
-            font-size: 1vw; /* Responsive text */
-            max-font-size: 14px; /* Prevents excessive text size */
-            min-font-size: 8px; /* Ensures readability on small screens */
+            font-size: clamp(12px, 0.9vw, 18px);
             user-select: none; /* Prevent text selection to prevent interference and lag when panning the map */
         }
 
@@ -242,7 +240,7 @@
 <!-- Full-page Welcome screen -->
 <div id="welcomeScreen" class="welcome-screen">
     <h1>Welcome to ICEBOOST visualizer</h1>
-    <p>A machine learning model for glaciers' ice thickness.</p>
+    <p>A machine learning model for glaciers' ice thickness</p>
     <button onclick="enterWebsite()">Enter</button>
 </div>
 
@@ -293,6 +291,7 @@
 </div>
 <div id="coordinates"></div>
 
+<!-- Welcome Screen Script  -->
 <script>
     // Ensure welcome screen remains visible initially
     document.addEventListener("DOMContentLoaded", function () {
