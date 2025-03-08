@@ -142,8 +142,7 @@
         }
 
         .hexagon-item {
-            width: 4vw; /* Scales based on viewport width */
-            max-width: 60px; /* Prevents it from getting too large */
+            width: clamp(50px, 4vw, 80px);
             aspect-ratio: 0.866; /* Hexagonal proportion */
             cursor: pointer;
         }
