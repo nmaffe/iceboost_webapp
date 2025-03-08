@@ -94,15 +94,12 @@
         .credits-toggle {
             position: absolute;
             bottom: 2vh;
-            right: 80vw;
+            left: 7vw;
             z-index: 100;
-            background-color: white;
-            border: 2px solid blue;
-            border-radius: 8px;
+            background: rgba(33, 47, 60, 0.9);
             font-size: 1rem;
-            padding: 0.5em 1em;
             cursor: pointer;
-            color: blue;
+            color: white;
         }
 
         .credits-box {
@@ -263,6 +260,13 @@
             <span>DATA</span>
         </div>
     </div>
+    <!-- Hexagon Item for 2D-Globe View -->
+    <div class="hexagon-item" id="button-globe-view" onclick="switchToGlobe()">
+        <div class="hex-item">
+            <i class="fa-solid fa-globe"></i><!-- Globe Icon -->
+            <span>2D-3D</span>
+        </div>
+    </div>
 </div>
 
 <div id="map"></div>
@@ -316,6 +320,22 @@
         zoom: 3, // starting zoom
         customAttribution: 'Niccolò Maffezzoli'
     });
+
+    let isGlobeView = false;  // Flag to track the current view state
+    // Function to toggle between Mercator and Globe projection
+    function switchToGlobe() {
+        if (isGlobeView) {
+            // Switch to Mercator (2D view)
+            map.setProjection('mercator');
+            map.setPitch(0);
+            isGlobeView = false;
+        } else {
+            // Switch to Globe (3D view)
+            map.setProjection('globe');
+            isGlobeView = true;
+        }
+    }
+
 
 	// Add a scale bar to a map
 	map.addControl(new mapboxgl.ScaleControl({position: 'bottom-left'}));
@@ -373,22 +393,22 @@
     map.on('load', function() {
         // Handle button click for RGI62
         document.querySelector('#button-geoms-rgi62').addEventListener('click', function () {
-            toggleLayers('geoms-rgi62-fill', 'geoms-rgi62-boundary', this);
+            toggleGeometryLayers('geoms-rgi62-fill', 'geoms-rgi62-boundary', this);
         });
 
         // Handle button click for RGI70G
         document.querySelector('#button-geoms-rgi70g').addEventListener('click', function () {
-            toggleLayers('geoms-rgi70g-fill', 'geoms-rgi70g-boundary', this);
+            toggleGeometryLayers('geoms-rgi70g-fill', 'geoms-rgi70g-boundary', this);
         });
 
         // Handle button click for Ground Truth Points
         document.querySelector('#button-data').addEventListener('click', function () {
-            togglePointsLayer('ground_truth_points', this);
+            toggleDatapointsLayer('ground_truth_points', this);
         });
 
     });
 
-    function toggleLayers(fillLayerId, boundaryLayerId, button) {
+    function toggleGeometryLayers(fillLayerId, boundaryLayerId, button) {
         const fillVisibility = map.getLayoutProperty(fillLayerId, 'visibility');
 
         if (fillVisibility === 'visible') {
@@ -422,7 +442,7 @@
         }
     }
 
-    function togglePointsLayer(layerId, button) {
+    function toggleDatapointsLayer(layerId, button) {
         const visibility = map.getLayoutProperty(layerId, 'visibility');
         if (visibility === 'visible') {
             // Hide the points layer
