@@ -95,7 +95,7 @@
             position: absolute;
             bottom: 2vh;
             right: 80vw;
-            z-index: 1000;
+            z-index: 100;
             background-color: white;
             border: 2px solid blue;
             border-radius: 8px;
@@ -140,7 +140,7 @@
             position: fixed;
             bottom: 10px;
             width: 100%;
-            z-index: 1000; /* Ensure it appears above the map */
+            z-index: 100; /* Ensure it appears above the map */
             pointer-events: auto; /* Ensure it is clickable */
         }
 
@@ -193,11 +193,59 @@
             color: rgb(33, 47, 60);
         }
 
+        .welcome-screen {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          color: white;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          z-index: 1000; /* Ensures it stays above everything */
+        }
+        .welcome-screen h1 {
+          font-size: 2rem;
+          margin-bottom: 20px;
+          font-family: "Courier New", Courier, monospace;
+        }
+
+        .welcome-screen p {
+          font-family: "Courier New", Courier, monospace;
+        }
+
+        .welcome-screen button {
+          padding: 10px 20px;
+          font-size: 1rem;
+          font-family: "Courier New", Courier, monospace;
+          background-color: blue;
+          color: white;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+        }
+        .welcome-screen button:hover {
+          background-color: navy;
+          font-family: "Courier New", Courier, monospace;
+        }
+
 
 	</style>
 </head>
 
 <body>
+
+<!-- Full-page Welcome screen -->
+<div id="welcomeScreen" class="welcome-screen">
+    <h1>Welcome to ICEBOOST visualizer</h1>
+    <p>A machine learning model for glaciers' ice thickness.</p>
+    <button onclick="enterWebsite()">Enter</button>
+</div>
+
 <div class="hexagon-menu">
     <div class="hexagon-item" id="button-geoms-rgi62">
         <div class="hex-item">
@@ -218,10 +266,13 @@
         </div>
     </div>
 </div>
+
 <div id="map"></div>
+
 <div id="left-panel">
 	<img src="logos/logo_iceboost.svg" alt="ICEBOOST logo" style="max-width: 100%;">
 </div>
+
 <!-- Vertical colorbar for ice thickness -->
 <div id="colorbar-container">
     <div id="colorbar"></div> <!-- Vertical colorbar gradient -->
@@ -242,18 +293,30 @@
 </div>
 <div id="coordinates"></div>
 
-
 <script>
-	mapboxgl.accessToken = 'pk.eyJ1IjoibWFmZmU4OSIsImEiOiJjbTExZXM4bmEwcmFkMmtxMnlleDE2aWo2In0.E6BiHnnixuupE5Zpx9FS8g';
-	const map = new mapboxgl.Map({
-		container: 'map', // container ID
-		style: 'mapbox://styles/maffe89/cm2wh6ece00in01pw42nsbsxq',
-		//style: 'mapbox://styles/mapbox/light-v11',
-		//style: 'mapbox://styles/mapbox/satellite-v9',
-		center: [-77, 80], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-		zoom: 3, // starting zoom
-		customAttribution: 'Niccolò Maffezzoli'
-	});
+    // Ensure welcome screen remains visible initially
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("welcomeScreen").style.display = "flex";
+    });
+
+    // Function to remove the welcome screen and load the map script
+    function enterWebsite() {
+      document.getElementById("welcomeScreen").style.display = "none";
+    }
+</script>
+
+<!-- Mapbox Script -->
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWFmZmU4OSIsImEiOiJjbTExZXM4bmEwcmFkMmtxMnlleDE2aWo2In0.E6BiHnnixuupE5Zpx9FS8g';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/maffe89/cm2wh6ece00in01pw42nsbsxq',
+        //style: 'mapbox://styles/mapbox/light-v11',
+        //style: 'mapbox://styles/mapbox/satellite-v9',
+        center: [-77, 80], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+        zoom: 3, // starting zoom
+        customAttribution: 'Niccolò Maffezzoli'
+    });
 
 	// Add a scale bar to a map
 	map.addControl(new mapboxgl.ScaleControl({position: 'bottom-left'}));
@@ -277,7 +340,6 @@
 
 	// Set up the initial state when the map is loaded
 	//map.on('load', () => {
-
         // SOURCES
         //map.addSource('source_rgi1', {
         //    'type': 'raster',
@@ -289,7 +351,6 @@
         //    'tiles': [`/tiles/RGI62/rgi3/{z}/{x}/{y}.png`],
         //    'tileSize': 256, 'scheme': 'tms'
         //});
-
         // LAYERS
         //map.addLayer({
         //        'id': 'layer_rgi1',
@@ -304,7 +365,6 @@
         //        'paint': {'raster-opacity': 1},
         //});
 	//});
-
 </script>
 
 <script>
