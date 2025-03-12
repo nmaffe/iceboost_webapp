@@ -546,43 +546,7 @@
 
 <!-- Simple Analytics script -->
 <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-<!-- Your Custom Script for Region Tracking -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    function sendRegionData() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          const regionData = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-          };
-          console.log('Sending region data:', regionData);  // Debugging
 
-          // Check if Simple Analytics is ready to receive the event
-          if (window.sa_event) {
-            console.log('Simple Analytics is ready. Sending event.');
-            window.sa_event('region_tracking', regionData);
-          } else {
-            console.warn('Simple Analytics not yet loaded. Retrying...');
-            document.addEventListener("sa_loaded", () => {
-              console.log('Simple Analytics loaded. Sending event.');
-              window.sa_event('region_tracking', regionData);
-            });
-          }
-        });
-      } else {
-        console.warn('Geolocation not supported.');
-      }
-    }
-
-    // Trigger event after SA is loaded
-    if (window.sa_event) {
-      sendRegionData();
-    } else {
-      document.addEventListener("sa_loaded", sendRegionData);
-    }
-  });
-</script>
 </body>
 
 </html>
