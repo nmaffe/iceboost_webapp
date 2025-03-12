@@ -547,19 +547,20 @@
 <!-- Simple Analytics script -->
 <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 <!-- Custom region tracking script -->
-  <script>
-    window.sa_event = function(event, data) {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          const regionData = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-          };
-          window.sa_event('region_tracking', regionData);
-        });
-      }
-    };
-  </script>
+<script>
+  window.sa_event = function(event, data) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const regionData = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        };
+        console.log('Sending region data:', regionData);  // Debugging line
+        window.sa_event('region_tracking', regionData);
+      });
+    }
+  };
+</script>
 </body>
 
 </html>
