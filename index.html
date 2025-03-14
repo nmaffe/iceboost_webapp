@@ -230,6 +230,23 @@
           font-family: "Courier New", Courier, monospace;
         }
 
+        /* popup */
+        .mapboxgl-popup-content {
+            background-color: rgb(33, 47, 60)  !important; /* Set the background color */
+            color: white !important;               /* Customize text color */
+        }
+
+        /* popup triangle (tip) */
+        .mapboxgl-popup-tip {
+            width: 0;
+            height: 0;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            border-top: 30px solid rgb(33, 47, 60) !important; /* Arrow's color */
+            transform: rotate(0deg); /* Arrow pointing upwards */
+        }
+
+
 
 	</style>
 </head>
