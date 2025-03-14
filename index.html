@@ -131,12 +131,14 @@
 
         .hexagon-menu {
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 20px;
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-start; /* Align to the left margin */
+            gap: 10px; /* Space between items */
+            padding: 10px;
             position: fixed;
-            bottom: 10px;
-            width: 100%;
+            left: 10px; /* Align to the left margin */
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Adjust for true vertical centering */
             z-index: 100; /* Ensure it appears above the map */
             pointer-events: auto; /* Ensure it is clickable */
         }
