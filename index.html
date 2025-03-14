@@ -226,6 +226,7 @@
             font-size: 1rem;
             font-family: "Courier New", Courier, monospace;
             background-color: transparent;
+            animation: borderColorChange 0.1s infinite; /* Animation to change border color */
             color: white;
             border: 2px solid transparent; /* Initially, no border color */
             cursor: pointer;
@@ -245,10 +246,8 @@
         }
 
         .welcome-screen button:hover {
-            background-color: transparent;
-            animation: borderColorChange 0.1s infinite; /* Animation to change border color */
+            color: magenta;
         }
-
 
         .welcome-screen > img {
             position: absolute;
@@ -293,7 +292,7 @@
     <h1>Welcome to the ICEBOOST viewer</h1>
     <p>A machine learning model for glaciers' ice thickness</p>
     <p>* page under development</p>
-    <button onclick="enterWebsite()"> >> ENTER</button>
+    <button onclick="enterWebsite()"> >> model.predict(dtest) </button>
     <img src="logos/logo_eu.png" alt="Funding from the EU commission">
 </div>
 
