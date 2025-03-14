@@ -225,17 +225,30 @@
             padding: 10px 20px;
             font-size: 1rem;
             font-family: "Courier New", Courier, monospace;
-            background-color: blue;
+            background-color: transparent;
             color: white;
-            border: none;
+            border: 2px solid transparent; /* Initially, no border color */
             cursor: pointer;
             border-radius: 5px;
         }
 
-        .welcome-screen button:hover {
-            background-color: navy;
-            font-family: "Courier New", Courier, monospace;
+        @keyframes borderColorChange {
+            0% {
+                border-color: blue;
+            }
+            50% {
+                border-color: cyan;
+            }
+            100% {
+                border-color: blue;
+            }
         }
+
+        .welcome-screen button:hover {
+            background-color: transparent;
+            animation: borderColorChange 0.1s infinite; /* Animation to change border color */
+        }
+
 
         .welcome-screen > img {
             position: absolute;
@@ -270,8 +283,6 @@
             transform: rotate(0deg); /* Arrow pointing upwards */
         }
 
-
-
 	</style>
 </head>
 
@@ -282,7 +293,7 @@
     <h1>Welcome to the ICEBOOST viewer</h1>
     <p>A machine learning model for glaciers' ice thickness</p>
     <p>* page under development</p>
-    <button onclick="enterWebsite()">Take a look</button>
+    <button onclick="enterWebsite()"> >> ENTER</button>
     <img src="logos/logo_eu.png" alt="Funding from the EU commission">
 </div>
 
