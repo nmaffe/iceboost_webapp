@@ -189,46 +189,70 @@
             color: rgb(33, 47, 60);
         }
 
-        .welcome-screen {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.8);
-          color: white;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          z-index: 1000; /* Ensures it stays above everything */
+        /* For the 3d button */
+        #button-globe-view .hex-item.active {
+            background-color: navy;
+            color: rgb(174, 182, 191);
         }
+
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;  /* Align content at the top */
+            align-items: center;
+            text-align: center;
+            padding: 20px 0;
+            z-index: 1000;
+        }
+
         .welcome-screen h1 {
-          font-size: 2rem;
-          margin-bottom: 20px;
-          font-family: "Courier New", Courier, monospace;
+            font-size: 2rem;
+            font-family: "Courier New", Courier, monospace;
         }
 
         .welcome-screen p {
-          font-family: "Courier New", Courier, monospace;
-          margin-bottom: 50px;
+            font-family: "Courier New", Courier, monospace;
         }
 
         .welcome-screen button {
-          padding: 10px 20px;
-          font-size: 1rem;
-          font-family: "Courier New", Courier, monospace;
-          background-color: blue;
-          color: white;
-          border: none;
-          cursor: pointer;
-          border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-family: "Courier New", Courier, monospace;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
         }
+
         .welcome-screen button:hover {
-          background-color: navy;
-          font-family: "Courier New", Courier, monospace;
+            background-color: navy;
+            font-family: "Courier New", Courier, monospace;
         }
+
+        .welcome-screen > img {
+            position: absolute;
+            bottom: 7vh;
+            width: 10vw;
+            max-width: 350px;
+            min-width: 150px;
+        }
+
+        .welcome-screen > div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 40vh;  /* Moves content down from the top */
+            align-items: center;
+        }
+
 
         /* popup */
         .mapboxgl-popup-content {
@@ -259,6 +283,7 @@
     <p>A machine learning model for glaciers' ice thickness</p>
     <p>* page under development</p>
     <button onclick="enterWebsite()">Take a look</button>
+    <img src="logos/logo_eu.png" alt="Funding from the EU commission">
 </div>
 
 <div class="hexagon-menu">
@@ -343,16 +368,21 @@
 
     let isGlobeView = false;  // Flag to track the current view state
     // Function to toggle between Mercator and Globe projection
+
     function switchToGlobe() {
+        const button = document.getElementById('button-globe-view');
+        const hexItem = button.querySelector('.hex-item');
         if (isGlobeView) {
             // Switch to Mercator (2D view)
             map.setProjection('mercator');
             map.setPitch(0);
             isGlobeView = false;
+            hexItem.classList.remove('active');  // Remove the 'active' class when switching to 2D view
         } else {
             // Switch to Globe (3D view)
             map.setProjection('globe');
             isGlobeView = true;
+            hexItem.classList.add('active');  // Add the 'active' class when switching to 3D view
         }
     }
 
