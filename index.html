@@ -20,14 +20,21 @@
 			position: absolute;
 			top: 10px;
 			left: 10px;
-			width: 20%;
-			height: 15%;
+			width: 20vw; /* 20% of the viewport width */
+            height: 15vh; /* 15% of the viewport height */
 			background-color: rgba(0, 0, 0, 0.0);
 			padding: 10px;
 			font-family: Arial, sans-serif;
 			font-size: clamp(12px, 1vw, 13px);
 			text-align: center;
 		}
+
+		#left-panel img {
+            display: block;
+            max-width: 70%;
+            height: auto;
+            margin: 0;
+        }
 
 		#colorbar-container {
 			position: absolute;
@@ -339,7 +346,7 @@
 <div id="map"></div>
 
 <div id="left-panel">
-	<img src="logos/logo_iceboost.svg" alt="ICEBOOST logo" style="max-width: 100%;">
+    <img src="logos/logo_iceboost.svg" alt="ICEBOOST">
 </div>
 
 <!-- Vertical colorbar for ice thickness -->
