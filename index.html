@@ -367,6 +367,13 @@
     // Ensure welcome screen remains visible initially
     document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("welcomeScreen").style.display = "flex";
+
+      // Add event listener for the Enter key
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                enterWebsite(); // Call enterWebsite() when Enter is pressed
+            }
+        });
     });
 
     // Function to remove the welcome screen and load the map script
