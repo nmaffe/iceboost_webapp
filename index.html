@@ -222,7 +222,7 @@
         /* Top section (90% height) */
         .welcome-screen-top {
             width: 100%;
-            height: 80vh;
+            height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -232,7 +232,7 @@
         /* Bottom section (10% height) */
         .welcome-screen-bottom {
             width: 100%;
-            height: 20vh;
+            height: 30vh;
             display: flex;
             flex-direction: column;  /* Stack logo and text vertically */
             justify-content: center;
@@ -243,16 +243,17 @@
         /* Container for the logos to be displayed horizontally */
         .logo-container {
             display: flex;
-            justify-content: space-between; /* Distribute logos evenly */
+            justify-content: center;
             align-items: center;
-            width: 20%; /* Adjust the width to control the space */
+            width: 100%; /* Adjust the width to control the space */
+            gap: 10px; /* Add a small space between the logos */
         }
 
         /* Logo images */
         .logo-container img {
-            height: 80%; /* Adjust the size of the logos */
+            height: auto;
             width: auto;
-            max-width: 100px; /* Optional: Control max width of logos */
+            max-width: 100px;
         }
 
         .welcome-screen h1 {
