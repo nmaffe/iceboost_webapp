@@ -98,7 +98,7 @@
 			font-weight: normal;
 		}
 
-        .credits-toggle {
+        .info-toggle {
             position: absolute;
             bottom: 2vh;
             left: 7vw;
@@ -109,32 +109,23 @@
             color: white;
         }
 
-        .credits-box {
-            position: absolute;
-            bottom: 8vh;
-            right: 35vw;
-            width: 30vw; /* 30% of the viewport width, adjust as needed */
-            background: lightgrey;
+        .info-box {
+            position: fixed;
+            top: 25%;
+            left: 25%;
+            width: 50vw; /* 50% of viewport width */
+            height: 50vh; /* 50% of viewport height */
+            background: rgba(33, 47, 60, 0.9);
+            color: white;
             padding: 1em;
-            border-radius: 8px;
-            border: 2px solid black;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
             display: none; /* Hidden by default */
             flex-direction: row; /* Arrange text and logos vertically */
-            align-items: center; /* Align the content (text + logos) in the center */
+            align-items: center; /* Align the content in the center */
             justify-content: flex-start; /* Start the content at the top */
-            flex-wrap: nowrap; /* Prevent content from wrapping */
-        }
-        .credits-box p {
-            margin: 0; /* Remove default margin to avoid extra space */
+            font-family: "Courier New", Courier, monospace;
         }
 
-        .credits-logo {
-            width: 30%; /* 1/3 of the credits box width */
-            height: 100px; /* Set a consistent height */
-            object-fit: contain; /* Maintain aspect ratio without stretching */
-            margin-top: 1em; /* Space above the logo */
-        }
+
 
         .hexagon-menu {
             display: flex;
@@ -604,37 +595,34 @@
     }
 </script>
 
-<!-- credits button -->
-<button id="credits-btn" class="credits-toggle">Credits</button>
-<div id="credits-box" class="credits-box">
+<!-- info button -->
+<button id="info-btn" class="info-toggle">Info</button>
+<div id="info-box" class="info-box">
     <p>The SKYNET project received funding from the European Commission,
         under the Marie Curie Global Fellowship scheme, grant agreement no. 101066651. <br><br>
         It is a collaboration between University of Venice and University of California, Irvine.
     </p>
-    <img src="logos/logo_ec.svg" alt="EC Logo" class="credits-logo">
-    <img src="logos/logo_unive.svg" alt="EC Logo" class="credits-logo">
-    <img src="logos/logo_uci.svg" alt="EC Logo" class="credits-logo">
 </div>
 
-<!-- script for credits button -->
+<!-- script for info button -->
 <script>
-    // Event listener for the credits button
-    document.getElementById('credits-btn').addEventListener('click', function(event) {
-        const box = document.getElementById('credits-box');
-        // Toggle visibility of the credits box
+    // Event listener for the info button
+    document.getElementById('info-btn').addEventListener('click', function(event) {
+        const box = document.getElementById('info-box');
+        // Toggle visibility of the info box
         box.style.display = (box.style.display === 'none' || box.style.display === '') ? 'block' : 'none';
         // Prevent the click event from propagating to the document
         event.stopPropagation();
     });
 
-    // Close the credits box if clicked outside (using mousedown event)
+    // Close the info box if clicked outside (using mousedown event)
     document.addEventListener('mousedown', function(event) {
-        const box = document.getElementById('credits-box');
-        const button = document.getElementById('credits-btn');
+        const box = document.getElementById('info-box');
+        const button = document.getElementById('info-btn');
 
         // Check if the click is outside the box and button
         if (!box.contains(event.target) && event.target !== button) {
-            box.style.display = 'none'; // Hide the credits box
+            box.style.display = 'none'; // Hide the info box
         }
     });
 </script>
