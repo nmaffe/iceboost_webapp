@@ -252,8 +252,7 @@
         /* Logo images */
         .logo-container img {
             height: auto;
-            width: auto;
-            max-width: 100px;
+            width: clamp(50px, 10vw, 100px); /* Adjusts between 50px and 100px based on viewport width */
         }
 
         .welcome-screen h1 {
