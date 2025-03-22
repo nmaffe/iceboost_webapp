@@ -202,6 +202,7 @@
             color: rgb(174, 182, 191);
         }
 
+        /* Full-screen overlay */
         .welcome-screen {
             position: fixed;
             top: 0;
@@ -212,11 +213,46 @@
             color: white;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;  /* Align content at the top */
+            justify-content: space-between;
             align-items: center;
             text-align: center;
-            padding: 20px 0;
             z-index: 1000;
+        }
+
+        /* Top section (90% height) */
+        .welcome-screen-top {
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        /* Bottom section (10% height) */
+        .welcome-screen-bottom {
+            width: 100%;
+            height: 20vh;
+            display: flex;
+            flex-direction: column;  /* Stack logo and text vertically */
+            justify-content: center;
+            align-items: center;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        /* Container for the logos to be displayed horizontally */
+        .logo-container {
+            display: flex;
+            justify-content: space-between; /* Distribute logos evenly */
+            align-items: center;
+            width: 20%; /* Adjust the width to control the space */
+        }
+
+        /* Logo images */
+        .logo-container img {
+            height: 80%; /* Adjust the size of the logos */
+            width: auto;
+            max-width: 100px; /* Optional: Control max width of logos */
         }
 
         .welcome-screen h1 {
@@ -239,49 +275,12 @@
             border-radius: 5px;
             -webkit-text-stroke: 2px white; /* Creates a white outline */
             text-shadow: 0 0 5px blue, 0 0 10px blue, 0 0 15px blue;
-            /* animation: neonTextFlicker 3s infinite steps(1); */
             outline: none; /* Prevents any focus outline */
             box-shadow: none; /* Removes any 3D shadow */
         }
 
-        @keyframes neonTextFlicker {
-            0%, 20% { text-shadow: 0 0 5px blue, 0 0 10px blue, 0 0 15px blue; opacity: 0.8; }
-            21% { text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white; opacity: 1; }
-            22%, 40% { text-shadow: 0 0 5px blue, 0 0 10px blue, 0 0 15px blue; opacity: 0.8; }
-            41% { text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white; opacity: 1; }
-            42%, 60% { text-shadow: 0 0 5px blue, 0 0 10px blue, 0 0 15px blue; opacity: 0.7; }
-            61% { text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white; opacity: 1; }
-            62%, 100% { text-shadow: 0 0 5px blue, 0 0 10px blue, 0 0 15px blue; opacity: 0.8; }
-        }
-
-        @keyframes neonFlicker {
-            0%, 20% { border-color: blue; opacity: 0.8; }
-            21% { border-color: cyan; opacity: 1; }
-            22%, 40% { border-color: blue; opacity: 0.8; }
-            41% { border-color: cyan; opacity: 1; }
-            42%, 60% { border-color: blue; opacity: 0.7; }
-            61% { border-color: cyan; opacity: 1; }
-            62%, 100% { border-color: blue; opacity: 0.8; }
-        }
-
         .welcome-screen button:hover {
             color: white;
-        }
-
-        .welcome-screen > img {
-            position: absolute;
-            bottom: 7vh;
-            width: 10vw;
-            max-width: 350px;
-            min-width: 150px;
-        }
-
-        .welcome-screen > div {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 40vh;  /* Moves content down from the top */
-            align-items: center;
         }
 
 
@@ -306,13 +305,24 @@
 
 <body>
 
-<!-- Full-page Welcome screen -->
+<!-- Full-page Welcome Screen with separate top and bottom sections -->
 <div id="welcomeScreen" class="welcome-screen">
-    <h1>Welcome to the ICEBOOST viewer</h1>
-    <p>A machine learning model for glaciers' ice thickness</p>
-    <p>* page under development</p>
-    <button onclick="enterWebsite()"> >> ENTER </button>
-    <img src="logos/logo_eu.png" alt="Funding from the EU commission">
+    <div class="welcome-screen-top">
+        <h1>Welcome to the ICEBOOST viewer</h1>
+        <p>A machine learning model for glaciers' ice thickness</p>
+        <p>* page under development</p>
+        <button onclick="enterWebsite()"> >> ENTER </button>
+    </div>
+
+    <div class="welcome-screen-bottom">
+        <div class="logo-container">
+            <img src="logos/logo_eu.png" alt="Funding from the EU commission">
+            <img src="logos/logo_unive.svg" alt="UNIVE">
+            <img src="logos/logo_uci.svg" alt="UCI">
+        </div>
+        <p>The SKYNET project received funding from the European Commission,
+            under the Marie Curie Global Fellowship scheme, grant agreement no. 101066651.</p>
+    </div>
 </div>
 
 <div class="hexagon-menu">
