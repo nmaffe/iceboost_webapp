@@ -302,7 +302,7 @@
     <div class="welcome-screen-top">
         <h1>Welcome to the ICEBOOST viewer</h1>
         <p>A machine learning model for glaciers' ice thickness</p>
-        <p>* page under development</p>
+        <p>* page in perpetual development</p>
         <button onclick="enterWebsite()"> >> ENTER </button>
     </div>
 
@@ -600,14 +600,16 @@
 <button id="info-btn" class="info-toggle">Info</button>
 <div id="info-box" class="info-box">
     <p> ICEBOOST is a boosted-decision tree model. It averages equally the predictions from XGBoost and CatBoost.
-    The model is trained for regression, using a l2 loss.</p>
-    <p>TARGET DATA</p>
+    Both are trained independently for regression, using a l2 loss, and optimized globally.</p>
+    <p>TARGET</p>
     <ul>
-        <li>Ice thickness measurements from GlaThiDa v. 3.1.0</li>
+        <li>Ice thickness measurements from GlaThiDa v. 3.1.0 <a href="https://essd.copernicus.org/articles/12/3039/2020/essd-12-3039-2020.html"
+           target="_blank" style="color: white;">[Welty et al. 2020]</a></li>
     </ul>
     <p>INPUT DATA</p>
     <ul>
-        <li>b.</li>
+        <li>TanDEM-X - Edited Digital Elevation Model (EDEM) - Global, 30m from DLR  <a href="https://ieeexplore.ieee.org/document/9472608"
+           target="_blank" style="color: white;">[González et al. 2021]</a> </li>
         <li>c.</li>
         <li>d.</li>
         <li>e.</li>
