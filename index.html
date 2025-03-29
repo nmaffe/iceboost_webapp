@@ -114,13 +114,22 @@
 
         .info-toggle {
             position: absolute;
-            bottom: 2vh;
-            left: 7vw;
+            top: 13vh;
+            left: 1vw;
             z-index: 100;
-            background: rgba(33, 47, 60, 0.9);
+            border: none; /* Remove default border */
+            background: transparent;
             font-size: 1rem;
+            font-family: "Courier New", Courier, monospace;
             cursor: pointer;
             color: rgb(174, 182, 191);
+        }
+
+        .info-toggle:hover {
+            background: transparent;
+            color: rgb(255, 255, 255);
+            text-decoration: underline; /* White underline on hover */
+            text-decoration-color: rgb(255, 255, 255); /* Set underline color to white */
         }
 
         .info-box {
