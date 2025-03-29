@@ -16,6 +16,11 @@
 
 		#map { position: absolute; top: 0; bottom: 0; width: 100%; }
 
+        @font-face {
+            font-family: 'StreetFont';
+            src: url('fonts/street_cred.otf') format('opentype');
+        }
+
 		#left-panel {
 			position: absolute;
 			top: 10px;
@@ -24,9 +29,6 @@
             height: 15vh; /* 15% of the viewport height */
 			background-color: rgba(0, 0, 0, 0.0);
 			padding: 10px;
-			font-family: Arial, sans-serif;
-			font-size: clamp(12px, 1vw, 13px);
-			text-align: center;
 		}
 
 		#left-panel img {
@@ -34,6 +36,18 @@
             max-width: 70%;
             height: auto;
             margin: 0;
+        }
+
+        #left-panel h1 {
+            font-family: 'StreetFont', sans-serif;
+			font-size: 4vw;
+			font-weight: 100;
+            color: rgb(0, 50, 255);
+            position: absolute;   /* Places it at an exact position */
+            top: 0;               /* Aligns to the top */
+            left: 0;              /* Aligns to the left */
+            margin: 10px;         /* Optional: Adds some spacing */
+            user-select: none; /* Prevents text selection */
         }
 
 		#colorbar-container {
@@ -348,7 +362,8 @@
 <div id="map"></div>
 
 <div id="left-panel">
-    <img src="logos/logo_iceboost.svg" alt="ICEBOOST">
+    <h1>ICEBOOST</h1>
+    <!-- <img src="logos/logo_iceboost.svg" alt="ICEBOOST"> -->
 </div>
 
 <!-- Vertical colorbar for ice thickness -->
@@ -399,7 +414,7 @@
         style: 'mapbox://styles/maffe89/cm2wh6ece00in01pw42nsbsxq',
         //style: 'mapbox://styles/mapbox/light-v11',
         //style: 'mapbox://styles/mapbox/satellite-v9',
-        center: [-27.5, 69.5], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+        center: [-45, 79], // starting position [lng, lat]. Note that lat must be set between -90 and 90
         zoom: 3, // starting zoom
         customAttribution: 'Niccolò Maffezzoli'
     });
