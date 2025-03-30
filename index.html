@@ -231,6 +231,7 @@
             align-items: center;
             text-align: center;
             z-index: 1000;
+            font-family: "Courier New", Courier, monospace;
         }
 
         /* Top section (90% height) */
@@ -312,6 +313,10 @@
             border-right: 3px solid transparent;
             border-top: 30px solid rgb(33, 47, 60) !important; /* Arrow's color */
             transform: rotate(0deg); /* Arrow pointing upwards */
+        }
+
+        ul li {
+            margin-bottom: 10px; /* Adjust the space as needed */
         }
 
 	</style>
@@ -624,34 +629,35 @@
 <div id="info-box" class="info-box">
     <p> ICEBOOST is a boosted-decision tree model. It averages equally the predictions from XGBoost and CatBoost.
     Both are trained independently for regression, using a l2 loss, and optimized globally.</p>
-    <p>TARGET</p>
+    <p><strong>MODEL TARGET</strong></p>
     <ul>
         <li>Ice thickness measurements from GlaThiDa v. 3.1.0 <a href="https://essd.copernicus.org/articles/12/3039/2020/essd-12-3039-2020.html"
            target="_blank" style="color: white;">[Welty et al. 2020]</a></li>
     </ul>
-    <p>INPUT DATA</p>
+    <p><strong>MODEL INPUTS</strong></p>
     <ul>
         <li>TanDEM-X - Edited Digital Elevation Model (EDEM) - Global, 30m from DLR  <a href="https://ieeexplore.ieee.org/document/9472608"
-           target="_blank" style="color: white;">[González et al. 2021]</a> </li>
-        <li>c.</li>
-        <li>d.</li>
-        <li>e.</li>
-        <li>f.</li>
-        <li>g.</li>
-        <li>a.</li>
-        <li>b.</li>
-        <li>c.</li>
-        <li>d.</li>
-        <li>e.</li>
-        <li>f.</li>
-        <li>g.</li>
-        <li>a.</li>
-        <li>b.</li>
-        <li>c.</li>
-        <li>d.</li>
-        <li>e.</li>
-        <li>f.</li>
-        <li>g.</li>
+           target="_blank" style="color: white;">[González et al. 2021]</a>, <a href="https://geoservice.dlr.de/web/dataguide/tdm30/"
+           target="_blank" style="color: white;">Website</a> </li>
+        <li>Surface ice velocity:
+            <ul>
+                <li>Glaciers: optical and SAR-derived map from <a href="https://www.nature.com/articles/s41561-021-00885-z"
+           target="_blank" style="color: white;">[Millan et al 2022]</a></li>
+                <li>Greenland: multi-year InSAR, SAR and Landsat8-derived, from <a href="https://nsidc.org/data/nsidc-0670/versions/1"
+           target="_blank" style="color: white;">[Joughin et al 2016]</a></li>
+                <li>Antarctica: SAR phase-derived from <a href="https://nsidc.org/data/nsidc-0754/versions/1"
+           target="_blank" style="color: white;">[Mouginot et al 2019]</a></li>
+            </ul>
+        </li>
+        <li>Temperature above 2 meter: combined ERA5 <a href="https://rmets.onlinelibrary.wiley.com/doi/10.1002/qj.3803"
+           target="_blank" style="color: white;">[Hersbach et al 2020]</a> and ERA5-Land <a href="https://essd.copernicus.org/articles/13/4349/2021/"
+           target="_blank" style="color: white;">[Muñoz-Sabater et al 2021]</a> </li>
+        <li>geodetic glacier mass banance..</li>
+        <li>mass balance maps downscaled .. (see paper)</li>
+        <li>global coastline product...</li>
+        <li>glacier geometries from rgi (v. 62 for training, v62 and v70 for deploy)...</li>
+        <li>...</li>
+        <li>...</li>
     </ul>
     <p>
         Paper accepted for publication in <i>Geoscientific Model Development</i>.
