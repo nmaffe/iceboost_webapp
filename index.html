@@ -629,7 +629,14 @@
 <div id="info-box" class="info-box">
     <p> ICEBOOST is a boosted-decision tree model. It averages equally the predictions from XGBoost and CatBoost.
     Both are trained independently for regression, using a l2 loss, and optimized globally.</p>
-    <p><strong>MODEL TARGET</strong></p>
+
+    <p><strong>MODEL DOMAIN</strong></p>
+    <p>The model runs on all glaciers defined in the Randolph Glacier Inventory <a href="https://www.cambridge.org/core/journals/journal-of-glaciology/article/randolph-glacier-inventory-a-globally-complete-inventory-of-glaciers/730D4CC76E0E3EC1832FA3F4D90691CE"
+           target="_blank" style="color: white;">[Pfeffer and The Randolph Consortium, 2017]</a>. The model is trained
+    on version v.62, which includes ice bodies with direct connection to the ice sheets. The model can be deployed on
+    v. 62 or the most recent v. 70.</p>
+
+    <p><strong>MODEL TARGET (float, ice thickness)</strong></p>
     <ul>
         <li>Ice thickness measurements from GlaThiDa v. 3.1.0 <a href="https://essd.copernicus.org/articles/12/3039/2020/essd-12-3039-2020.html"
            target="_blank" style="color: white;">[Welty et al. 2020]</a></li>
@@ -649,20 +656,23 @@
            target="_blank" style="color: white;">[Mouginot et al 2019]</a></li>
             </ul>
         </li>
-        <li>Temperature above 2 meter: combined ERA5 <a href="https://rmets.onlinelibrary.wiley.com/doi/10.1002/qj.3803"
-           target="_blank" style="color: white;">[Hersbach et al 2020]</a> and ERA5-Land <a href="https://essd.copernicus.org/articles/13/4349/2021/"
+        <li>Temperature above 2 meter: combined ERA5 0.25° <a href="https://rmets.onlinelibrary.wiley.com/doi/10.1002/qj.3803"
+           target="_blank" style="color: white;">[Hersbach et al 2020]</a> and ERA5-Land 0.1°, <a href="https://essd.copernicus.org/articles/13/4349/2021/"
            target="_blank" style="color: white;">[Muñoz-Sabater et al 2021]</a> </li>
-        <li>geodetic glacier mass banance..</li>
-        <li>mass balance maps downscaled .. (see paper)</li>
-        <li>global coastline product...</li>
-        <li>glacier geometries from rgi (v. 62 for training, v62 and v70 for deploy)...</li>
-        <li>Mass balance on ice sheets:
+        <li>Glacier-integrated mass balance from <a href="https://www.nature.com/articles/s41586-021-03436-z"
+           target="_blank" style="color: white;">[Hugonnet et al. 2021]</a></li>
+        <li>Glacier spatially-distributed mass balance
             <ul>
-                <li>Greenland: racmo .. (xx res, )</li>
-                <li>Antarctica: (xx res, )</li>
+                <li> Glaciers outside the ice sheets: method described in the paper <a href="https://egusphere.copernicus.org/preprints/2024/egusphere-2024-2455/"
+           target="_blank" style="color: white;">[Maffezzoli et al. 2025]</a>
+                <li> Glaciers inside the ice sheets: from RACMO2 (Greenland, 1km from <a href="https://zenodo.org/records/3367211"
+           target="_blank" style="color: white;">[Noël and van Kampenhout, 2019]</a>; Antarctica, 2km from <a href="https://zenodo.org/records/10007855"
+           target="_blank" style="color: white;">[Noël et al, 2023]</a>)
             </ul>
         </li>
-        <li>...</li>
+        <li>Coastlines from the Global Self-consistent Hierarchical, High-resolution Geography Database (GSHHG), from
+            Wessel P. Walter H. F. Smith, <a href="https://www.soest.hawaii.edu/pwessel/gshhg/"
+           target="_blank" style="color: white;">[Website]</a></li>
     </ul>
     <p>
         Paper accepted for publication in <i>Geoscientific Model Development</i>.
