@@ -320,6 +320,28 @@
             margin-bottom: 10px; /* Adjust the space as needed */
         }
 
+        #search-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        #search-input {
+            color: #ccc;
+            text-align: center;
+            background-color: transparent;  /* Transparent background */
+            border: none;                   /* Remove all borders */
+            border-bottom: 2px solid #457fe5; /* Add underline */
+            padding: 0px 0px;
+            font-size: 16px;
+            border-radius: 0;
+            outline: none;                  /* Optional: remove blue outline on focus */
+        }
+
+
+
 	</style>
 </head>
 
@@ -374,6 +396,10 @@
 </div>
 
 <div id="map"></div>
+
+<div id="search-container">
+    <input type="text" id="search-input" placeholder=">> Type id or name and ↵">
+</div>
 
 <div id="left-panel">
     <a href="https://nmaffe.github.io/iceboost_webapp/" style="text-decoration: none;">
