@@ -602,11 +602,15 @@
 
         features.forEach(feature => {
             if (feature && feature.properties) {
-                const { rgi_id, name, area } = feature.properties;
+                const props = feature.properties;
+                const rgi_id = 'rgi_id' in props ? props.rgi_id : 'Unknown';
+                const name = 'name' in props ? props.name : 'Unknown';
+                const area = 'area' in props ? props.area : 'Unknown';
+
                 popupContent += `
-                    <strong>Glacier IDD:</strong> ${rgi_id || 'Unknown'}<br>
-                    <strong>Name:</strong> ${name || 'Unknown'}<br>
-                    <strong>Area:</strong> ${area || 'Unknown'}<br><br>
+                    <strong>Glacier ID:</strong> ${rgi_id}<br>
+                    <strong>Name:</strong> ${name}<br>
+                    <strong>Area:</strong> ${area}<br><br>
                 `;
             }
         });
@@ -615,19 +619,6 @@
         if (!popupContent) {
             popupContent = 'Unknown';
         }
-
-        // Create an array to store the rgi_ids
-        //const rgiIds = [];
-
-        // Extract rgi_ids from the features
-        //features.forEach(feature => {
-        //    if (feature && feature.properties && feature.properties.rgi_id) {
-        //        rgiIds.push(feature.properties.rgi_id); // Add rgi_id to the array
-        //    }
-        //});
-
-        // Create and show a popup with all rgi_ids on separate lines
-        //const popupContent = rgiIds.length > 0 ? `glacier id<br>${rgiIds.join('<br>')}` : 'Unknown';
 
         console.log('Popup content:', popupContent); // Debug log
 
