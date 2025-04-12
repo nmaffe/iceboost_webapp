@@ -597,23 +597,23 @@
             popup.remove();
         }
 
-        // Build popup content with all properties per feature
-        let popupContent = '';
+        let popupContent = features.map(feature => {
+            const props = feature?.properties || {};
+            const rgi_id = props.rgi_id ?? 'Unknown';
+            const name = props.name ?? '--';
 
-        features.forEach(feature => {
-            if (feature && feature.properties) {
-                const props = feature.properties;
-                const rgi_id = 'rgi_id' in props ? props.rgi_id : 'Unknown';
-                const name = 'name' in props ? props.name : 'Unknown';
-                const area = 'area' in props ? props.area : 'Unknown';
-
-                popupContent += `
-                    <strong>Glacier ID:</strong> ${rgi_id}<br>
-                    <strong>Name:</strong> ${name}<br>
-                    <strong>Area:</strong> ${area}<br><br>
-                `;
+            let area = props.area ?? 'Unknown';
+            if (!isNaN(area)) {
+                const areaNum = parseFloat(area);
+                area = `${areaNum.toFixed(2)} km²`;
             }
-        });
+
+            return `
+                <strong>Glacier ID:</strong> ${rgi_id}<br>
+                <strong>Name:</strong> ${name}<br>
+                <strong>Area:</strong> ${area}<br><br>
+            `;
+        }).join('');
 
         // Fallback content if no valid features
         if (!popupContent) {
