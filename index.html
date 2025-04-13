@@ -330,10 +330,13 @@
         }
 
         #search-input {
+            color: white;
+            background: rgba(50, 50, 50, 0.9);
             width: 100%;
             padding: 4px;
             font-size: 14px;
             outline: none;
+            border: none;
         }
 
         #autocomplete-wrapper {
@@ -591,12 +594,13 @@
         });
 
         // Function for glacier Forward Geocoding lookup
-        document.getElementById('search-input').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                const value = this.value.trim();
-                if (value !== '') {
-                    searchGlacierNominatim(value);
-                }
+        document.getElementById('search-input').addEventListener('input', function () {
+            const value = this.value.trim();
+
+            if (value.length >= 3) { // Avoid too many API calls for short text
+                searchGlacierNominatim(value);
+            } else {
+                document.getElementById('autocomplete-results').style.display = 'none';
             }
         });
 
@@ -666,7 +670,6 @@
                 if (data.length === 0) {
                     resultsList.style.display = 'none';
                     closeBtn.style.display = 'none';
-                    alert("No results found.");
                     return;
                 }
 
