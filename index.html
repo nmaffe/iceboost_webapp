@@ -322,22 +322,57 @@
 
         #search-container {
             position: absolute;
-            top: 20px;
+            top: 5%;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 10;
+            width: 50%;
+            z-index: 100;
         }
 
         #search-input {
-            color: #ccc;
-            text-align: center;
-            background-color: transparent;  /* Transparent background */
-            border: none;                   /* Remove all borders */
-            border-bottom: 2px solid #457fe5; /* Add underline */
-            padding: 0px 0px;
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        #autocomplete-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        #close-dropdown {
+            position: absolute;
+            top: 4px;
+            right: 6px;
+            background: transparent;
+            border: none;
             font-size: 16px;
-            border-radius: 0;
-            outline: none;                  /* Optional: remove blue outline on focus */
+            cursor: pointer;
+            display: none;
+            z-index: 10;
+        }
+
+        #autocomplete-results {
+            list-style: decimal;
+            background: #ccc;
+            border: none;
+            margin-top: 2px;
+            padding: 8px;
+            max-height: 150px;
+            overflow-y: auto;
+            display: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #autocomplete-results li {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        #autocomplete-results li:hover {
+            background-color: #457fe5;
         }
 
 
@@ -398,7 +433,11 @@
 <div id="map"></div>
 
 <div id="search-container">
-    <input type="text" id="search-input" placeholder=">> Type id or name and ↵">
+    <input type="text" id="search-input" placeholder=">> Enter glacier name (e.g. K2 or Geikie Plateau)">
+    <div id="autocomplete-wrapper">
+        <button id="close-dropdown">✖</button>
+        <ul id="autocomplete-results"></ul>
+    </div>
 </div>
 
 <div id="left-panel">
@@ -551,6 +590,16 @@
             toggleDatapointsLayer('ground_truth_points', this);
         });
 
+        // Function for glacier Forward Geocoding lookup
+        document.getElementById('search-input').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const value = this.value.trim();
+                if (value !== '') {
+                    searchGlacierNominatim(value);
+                }
+            }
+        });
+
     });
 
     function toggleGeometryLayers(fillLayerId, boundaryLayerId, button) {
@@ -601,6 +650,58 @@
             // Move the points layer to the top
             moveLayerToTop(layerId);
         }
+    }
+
+    // Forward geocoding function with OpenStreetMap Nominatim
+    function searchGlacierNominatim(glacierName) {
+        const query = encodeURIComponent(glacierName + " glacier");
+
+        fetch(`https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=3`)
+            .then(response => response.json())
+            .then(data => {
+                const resultsList = document.getElementById('autocomplete-results');
+                const closeBtn = document.getElementById('close-dropdown'); // X button
+                resultsList.innerHTML = '';
+
+                if (data.length === 0) {
+                    resultsList.style.display = 'none';
+                    closeBtn.style.display = 'none';
+                    alert("No results found.");
+                    return;
+                }
+
+                data.forEach((location, index) => {
+                    const li = document.createElement('li');
+                    li.textContent = location.display_name;
+
+                    li.addEventListener('click', () => {
+                        const lat = location.lat;
+                        const lon = location.lon;
+
+                        map.flyTo({ center: [lon, lat], zoom: 10 });
+
+                        new mapboxgl.Popup()
+                            .setLngLat([lon, lat])
+                            .setHTML(`<strong>${location.display_name}</strong><br>Found with OSM Nominatim`)
+                            .addTo(map);
+                    });
+
+                    resultsList.appendChild(li);
+                });
+
+                resultsList.style.display = 'block';
+                closeBtn.style.display = 'block';
+
+                // Show the X button and attach close behavior
+                closeBtn.onclick = () => {
+                    resultsList.style.display = 'none';
+                    closeBtn.style.display = 'none';
+                };
+            })
+            .catch(error => {
+                console.error("Geocoding error:", error);
+                alert("An error occurred while searching.");
+            });
     }
 
     function handleClick(e) {
