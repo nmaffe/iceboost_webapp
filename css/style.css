@@ -4,7 +4,7 @@ body { margin: 0; padding: 0; }
 
 @font-face {
     font-family: 'StreetFont';
-    src: url('fonts/street_cred.otf') format('opentype');
+    src: url('../fonts/street_cred.otf') format('opentype');
 }
 
 #left-panel {
@@ -314,7 +314,7 @@ ul li {
 }
 
 #search-input {
-    color: white;
+    color: rgb(174, 182, 191);
     background: rgba(50, 50, 50, 0.9);
     width: 100%;
     padding: 4px;
