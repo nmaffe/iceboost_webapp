@@ -286,8 +286,8 @@ body { margin: 0; padding: 0; }
 
 /* popup */
 .mapboxgl-popup-content {
-    background-color: rgb(33, 47, 60)  !important; /* Set the background color */
-    color: white !important;               /* Customize text color */
+    background-color: rgba(50, 50, 50, 0.9)  !important;
+    color: rgb(174, 182, 191) !important;
 }
 
 /* popup triangle (tip) */
