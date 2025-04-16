@@ -380,14 +380,6 @@
             button.querySelector('.hex-item').classList.remove('active');
         } else {
             map.setLayoutProperty('mapbox-satellite-layer', 'visibility', 'visible');
-            map.setPaintProperty('mapbox-satellite-layer', 'raster-brightness-min', 1.4); // Brighten shadows
-            map.setPaintProperty('mapbox-satellite-layer', 'raster-brightness-max', 1.2); // Brighten highlights
-            // Set light to simulate "day" (with high intensity and adjusted direction)
-            map.setLight({
-                "anchor": "viewport",  // Light source position relative to the viewport
-                "intensity": 10,      // Brightness (lower values make it darker)
-                "position": [10000, 10000, 10000],  // Light direction from above (higher values give more "daylight")
-            });
             button.querySelector('.hex-item').classList.add('active');
         }
     }

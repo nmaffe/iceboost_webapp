@@ -202,6 +202,12 @@ body { margin: 0; padding: 0; }
     color: rgb(174, 182, 191);
 }
 
+/* For the satellite button */
+#button-sat .hex-item.active {
+    background-color: #2d3a59;
+    color: #E0FFFF;
+}
+
 /* Full-screen overlay */
 .welcome-screen {
     position: fixed;
