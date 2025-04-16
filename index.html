@@ -62,6 +62,13 @@
             <span>Globe</span>
         </div>
     </div>
+
+    <div class="hexagon-item" id="button-sat">
+        <div class="hex-item">
+            <i class="fa-solid fa-satellite"></i>
+            <span>SAT</span>
+        </div>
+    </div>
 </div>
 
 <div id="map"></div>
@@ -281,6 +288,11 @@
             toggleDatapointsLayer('ground_truth_points', this);
         });
 
+        // Handle button click for satellite layer
+        document.querySelector('#button-sat').addEventListener('click', function () {
+            toggleSatelliteBase(this);
+        });
+
         // Function for glacier Forward Geocoding lookup
         let debounceTimer;  // global timer for debounce
         const searchInput = document.getElementById('search-input');
@@ -358,6 +370,17 @@
 
             // Move the points layer to the top
             moveLayerToTop(layerId);
+        }
+    }
+
+    function toggleSatelliteBase(button) {
+        const vis = map.getLayoutProperty('mapbox-satellite-layer', 'visibility');
+        if (vis === 'visible') {
+            map.setLayoutProperty('mapbox-satellite-layer', 'visibility', 'none');
+            button.querySelector('.hex-item').classList.remove('active');
+        } else {
+            map.setLayoutProperty('mapbox-satellite-layer', 'visibility', 'visible');
+            button.querySelector('.hex-item').classList.add('active');
         }
     }
 
