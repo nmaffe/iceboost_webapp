@@ -342,8 +342,9 @@ ul li {
 
 #autocomplete-results {
     list-style: decimal;
-    background: #ccc;
+    background: none;
     border: none;
+    color: rgb(174, 182, 191);
     margin-top: 2px;
     padding: 8px;
     max-height: 150px;
@@ -359,5 +360,5 @@ ul li {
 }
 
 #autocomplete-results li:hover {
-    background-color: #457fe5;
+    color: #457fe5;
 }
