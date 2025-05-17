@@ -180,7 +180,7 @@ body { margin: 0; padding: 0; }
 
 /* For the RGI 62 button */
 #button-geoms-rgi62 .hex-item.active {
-    background-color: rgb(25, 99, 0);
+    background-color: rgb(107, 87, 255);
     color: rgb(174, 182, 191);
 }
 
