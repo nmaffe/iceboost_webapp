@@ -11,7 +11,7 @@ body { margin: 0; padding: 0; }
     position: absolute;
     top: 10px;
     left: 10px;
-    width: 20vw; /* 20% of the viewport width */
+    width: 25vw; /* 20% of the viewport width */
     height: 15vh; /* 15% of the viewport height */
     background-color: rgba(0, 0, 0, 0.0);
     padding: 10px;
@@ -34,6 +34,11 @@ body { margin: 0; padding: 0; }
     left: 0;              /* Aligns to the left */
     margin: 10px;         /* Optional: Adds some spacing */
     user-select: none; /* Prevents text selection */
+}
+
+#left-panel .version {
+    font-family: 'StreetFont', sans-serif;
+    font-size: 3vw;
 }
 
 #colorbar-container {
