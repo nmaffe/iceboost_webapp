@@ -91,11 +91,11 @@
 </div>
 
 <!-- Vertical colorbar for ice thickness -->
-<div id="colorbar-container">
-    <div id="colorbar"></div> <!-- Vertical colorbar gradient -->
-    <div id="side-labels">
-        <div id="colorbar-labels">
-            <span>800+</span>
+<div id="colorbar-container-1" class="colorbar-container">
+    <div class="colorbar-turbo"></div> <!-- Vertical colorbar gradient -->
+    <div class="side-labels">
+        <div class="colorbar-labels">
+            <span>&ge;800</span>
             <span>700</span>
             <span>600</span>
             <span>500</span>
@@ -105,9 +105,30 @@
             <span>100</span>
             <span>0</span>
         </div>
-        <div id="colorbar-title">ICE THICKNESS [m]</div>
+        <div class="colorbar-title">ICE THICKNESS [m]</div>
     </div>
 </div>
+
+<!-- Second colorbar for bed topography -->
+<div id="colorbar-container-2" class="colorbar-container">
+    <div class="colorbar-topo"></div>
+    <div class="side-labels">
+        <div class="colorbar-labels">
+            <span>&ge;2000</span>
+            <span>1500</span>
+            <span>1000</span>
+            <span>500</span>
+            <span>0</span>
+            <span>-500</span>
+            <span>-1000</span>
+            <span>-1500</span>
+            <span>&le;-2000</span>
+        </div>
+        <div class="colorbar-title">BED ELEV [m a.s.l]</div>
+    </div>
+</div>
+
+<!-- Lat/Lng coordinates -->
 <div id="coordinates"></div>
 
 <!-- Model info button -->
