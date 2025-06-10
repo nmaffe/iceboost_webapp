@@ -49,6 +49,12 @@
             <span>RGI 70</span>
         </div>
     </div>
+    <div class="hexagon-item" id="button-bed-rgi62">
+        <div class="hex-item">
+            <i class="fa-solid fa-border-all"></i>
+            <span>BED 62</span>
+        </div>
+    </div>
     <div class="hexagon-item" id="button-data">
         <div class="hex-item">
             <i class="fa-solid fa-bullseye"></i>
@@ -308,6 +314,11 @@
             toggleGeometryLayers('geoms-rgi70g-fill', 'geoms-rgi70g-boundary', this);
         });
 
+        // Handle button click for BED RGI62
+        document.querySelector('#button-bed-rgi62').addEventListener('click', function () {
+            toggleBedLayer('bed_rgi62_rgi7', this);
+        });
+
         // Handle button click for Ground Truth Points
         document.querySelector('#button-data').addEventListener('click', function () {
             toggleDatapointsLayer('ground_truth_points', this);
@@ -379,6 +390,22 @@
 
             // Add click interaction only on the fill layer
             map.on('click', fillLayerId, handleClick);
+        }
+    }
+
+    function toggleBedLayer(layerId, button) {
+        const visibility = map.getLayoutProperty(layerId, 'visibility');
+        if (visibility === 'visible') {
+            // Hide the points layer
+            map.setLayoutProperty(layerId, 'visibility', 'none');
+            button.querySelector('.hex-item').classList.remove('active'); // Remove active class
+        } else {
+            // Show layer
+            map.setLayoutProperty(layerId, 'visibility', 'visible');
+            button.querySelector('.hex-item').classList.add('active'); // Add active class
+
+            // Move the points layer to the top
+            moveLayerToTop(layerId);
         }
     }
 
