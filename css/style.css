@@ -66,13 +66,14 @@ body { margin: 0; padding: 0; }
     );
 
     --blue-brown-gradient: linear-gradient(to top,
-      #032f64 0%,       /* 0.00 */
-      #0b6da5 25%,      /* 0.25 */
-      #b9e4f7 50%,      /* 0.50 (end of blue scale) */
-      #1c8c37 50%,      /* 0.50 (start of green scale, immediate jump) */
-      #e2fcc7 62.5%,    /* 0.625 */
-      #9f892d 75%,      /* 0.75 */
-      #682a00 100%      /* 1.00 */
+        #0c00c1 0%,
+        #001CD8 17%,
+        #1FB3FF 33%,
+        #BEE5FB 50%,  /* 0.50 (end of blue scale) */
+        #0F7127 50%,  /* 0.50 (start of green scale, immediate jump) */
+        #DBFBBC 67%,
+        #8F7C21 83%,
+        #4B1A01 100%
     );
 
 }
