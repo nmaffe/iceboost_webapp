@@ -26,7 +26,7 @@ body { margin: 0; padding: 0; }
 
 #left-panel h1 {
     font-family: 'StreetFont', sans-serif;
-    font-size: 4vw;
+    font-size: 2vw;
     font-weight: 100;
     color: #457fe5;
     position: absolute;   /* Places it at an exact position */
@@ -38,7 +38,7 @@ body { margin: 0; padding: 0; }
 
 #left-panel .version {
     font-family: 'StreetFont', sans-serif;
-    font-size: 3vw;
+    font-size: 1.5vw;
 }
 
 .colorbar-container {
