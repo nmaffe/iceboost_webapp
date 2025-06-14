@@ -354,7 +354,7 @@ ul li {
     top: 5%;
     left: 50%;
     transform: translateX(-50%);
-    width: 50%;
+    width: 22%;
     z-index: 100;
 }
 
@@ -366,6 +366,10 @@ ul li {
     font-size: 14px;
     outline: none;
     border: none;
+}
+
+#search-input::placeholder {
+    color: rgb(174, 182, 191);
 }
 
 #autocomplete-wrapper {
