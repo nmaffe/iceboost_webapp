@@ -405,6 +405,7 @@ ul li {
     background: rgba(50, 50, 50, 0.9);
     width: 100%;
     padding: 4px;
+    border-radius: 999px;
     font-size: 14px;
     outline: none;
     border: none;
