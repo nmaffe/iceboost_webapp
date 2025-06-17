@@ -49,12 +49,6 @@
             <span>RGI 70</span>
         </div>
     </div>
-    <div class="hexagon-item" id="button-bed-rgi62">
-        <div class="hex-item">
-            <i class="fa-solid fa-border-all"></i>
-            <span>BED 62</span>
-        </div>
-    </div>
     <div class="hexagon-item" id="button-data">
         <div class="hex-item">
             <i class="fa-solid fa-bullseye"></i>
@@ -133,6 +127,24 @@
         <div class="colorbar-title">BED ELEV [m a.s.l]</div>
     </div>
 </div>
+
+
+<!-- Bottom Toggle Bar -->
+  <div class="bottom-bar">
+    <div class="radio-switch">
+        <input type="radio" id="ice62" name="model" value="ice62" data-layer="ice_rgi_62_all_20250607">
+        <label for="ice62">ICE v62</label>
+
+        <input type="radio" id="bed62" name="model" value="bed62" data-layer="bed_rgi62">
+        <label for="bed62">BED v62</label>
+
+        <input type="radio" id="ice70" name="model" value="ice70" data-layer="ice_rgi70">
+        <label for="ice70">ICE v70</label>
+
+        <input type="radio" id="bed70" name="model" value="bed70" data-layer="bed_rgi70">
+        <label for="bed70">BED v70</label>
+    </div>
+  </div>
 
 <!-- Lat/Lng coordinates -->
 <div id="coordinates"></div>
@@ -304,6 +316,28 @@
     let activeLayers = new Set(); // Set to keep track of active layers
 
     map.on('load', function() {
+
+        // I decide that the ICE v62 layer is visible at the start
+        const activeInput = document.querySelector('#ice62');
+        const initialLayer = activeInput.dataset.layer;
+
+        if (map.getLayer(initialLayer)) {
+        map.setLayoutProperty(initialLayer, 'visibility', 'visible');
+        }
+
+        // ... while the the other layers are hidden
+        ['bed62', 'ice70', 'bed70'].forEach(id => {
+        const input = document.querySelector(`#${id}`);
+        const layer = input.dataset.layer;
+        if (map.getLayer(layer)) {
+          map.setLayoutProperty(layer, 'visibility', 'none');
+        }
+        });
+
+        // Ensure the ICE v62 radio button is visually checked
+        activeInput.checked = true;
+
+
         // Handle button click for RGI62
         document.querySelector('#button-geoms-rgi62').addEventListener('click', function () {
             toggleGeometryLayers('geoms-rgi62-fill', 'geoms-rgi62-boundary', this);
@@ -312,11 +346,6 @@
         // Handle button click for RGI70G
         document.querySelector('#button-geoms-rgi70g').addEventListener('click', function () {
             toggleGeometryLayers('geoms-rgi70g-fill', 'geoms-rgi70g-boundary', this);
-        });
-
-        // Handle button click for BED RGI62
-        document.querySelector('#button-bed-rgi62').addEventListener('click', function () {
-            toggleBedLayer('bed_rgi62', this);
         });
 
         // Handle button click for Ground Truth Points
@@ -390,22 +419,6 @@
 
             // Add click interaction only on the fill layer
             map.on('click', fillLayerId, handleClick);
-        }
-    }
-
-    function toggleBedLayer(layerId, button) {
-        const visibility = map.getLayoutProperty(layerId, 'visibility');
-        if (visibility === 'visible') {
-            // Hide the points layer
-            map.setLayoutProperty(layerId, 'visibility', 'none');
-            button.querySelector('.hex-item').classList.remove('active'); // Remove active class
-        } else {
-            // Show layer
-            map.setLayoutProperty(layerId, 'visibility', 'visible');
-            button.querySelector('.hex-item').classList.add('active'); // Add active class
-
-            // Move the points layer to the top
-            moveLayerToTop(layerId);
         }
     }
 
@@ -547,6 +560,9 @@
         }
     }
 </script>
+
+<!-- script controlling the 4-radio button layer activation -->
+<script src="js/radioBarLayers.js"></script>
 
 <!-- Showing data when hoovering script -->
 <script src="js/display-points-info.js"></script>
