@@ -85,6 +85,11 @@ body { margin: 0; padding: 0; }
     border: 1px solid black; /* Optional border */
 }
 
+/* scale bar */
+.mapboxgl-ctrl-bottom-left {
+  bottom: 25px;
+}
+
 /* Second colorbar */
 .colorbar-topo {
     width: 15%;
@@ -122,13 +127,25 @@ body { margin: 0; padding: 0; }
 
 #coordinates {
     position: absolute;
-    bottom: 10vh; /* 10% of viewport height from the bottom */
+    bottom: 12vh; /* 10% of viewport height from the bottom */
     left: 1vw;    /* 1% of viewport width from the left */
     padding: 5px;
     font-family: "Courier New", Courier, monospace;
     color: rgb(174, 182, 191);
     font-size: clamp(12px, 0.9vw, 18px);
     font-weight: normal;
+}
+
+/* Mapbox attribution control */
+@media (max-width: 767px) {
+    .mapboxgl-ctrl-bottom-right {
+        bottom: auto;
+        top: 14vh;
+        right: 3px;
+    }
+    .mapboxgl-ctrl-attrib {
+        pointer-events: none;
+    }
 }
 
 .info-toggle {
@@ -244,7 +261,7 @@ body { margin: 0; padding: 0; }
 /* Bottom-centered bar */
 .bottom-bar {
 	position: fixed;
-	bottom: 20px;
+	bottom: 7px;
 	left: 50%;
     transform: translateX(-50%);
 }
@@ -262,7 +279,7 @@ body { margin: 0; padding: 0; }
 
 /* Style labels as toggle buttons */
 .radio-switch label {
-    padding: 5px 20px;
+    padding: 5px 16px;
     cursor: pointer;
     background-color: rgb(174, 182, 191);
     color: rgb(50, 50, 50);
@@ -277,7 +294,7 @@ body { margin: 0; padding: 0; }
     background-color: #007bff;
     color: white;
     border-color: #007bff;
-    box-shadow: 0 0 4px rgba(152, 245, 255, 1); /* subtle blue shadow */
+    box-shadow: 0 0 4px rgba(255, 255, 255, 1); /* subtle blue shadow */
 }
 
 /* Hide actual radio buttons */
@@ -402,7 +419,7 @@ ul li {
 
 #search-input {
     color: rgb(174, 182, 191);
-    background: rgba(50, 50, 50, 0.9);
+    background: rgb(50, 50, 50);
     width: 100%;
     padding: 4px;
     border-radius: 999px;
