@@ -243,50 +243,50 @@ body { margin: 0; padding: 0; }
 
 /* Bottom-centered bar */
 .bottom-bar {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Container for the radio options */
 .radio-switch {
-  display: inline-flex;
-  gap: 4px;
-  overflow: hidden;
-  border-radius: 999px;
-  font-family: "Courier New", Courier, monospace;
-  user-select: none;
-  background-color: rgb(174, 182, 191);
+    display: inline-flex;
+    gap: 4px;
+    overflow: hidden;
+    border-radius: 999px;
+    font-family: "Courier New", Courier, monospace;
+    user-select: none;
+    background-color: rgb(174, 182, 191);
 }
 
 /* Style labels as toggle buttons */
 .radio-switch label {
-  padding: 5px 20px;
-  cursor: pointer;
-  background-color: rgb(174, 182, 191);
-  color: rgb(50, 50, 50);
-  border-radius: 999px;
-  transition: background-color 0.2s, color 0.2s;
-  font-size: 14px;
-  white-space: nowrap;
+    padding: 5px 20px;
+    cursor: pointer;
+    background-color: rgb(174, 182, 191);
+    color: rgb(50, 50, 50);
+    border-radius: 999px;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 14px;
+    white-space: nowrap;
 }
 
 /* Style for the selected option */
 .radio-switch input[type="radio"]:checked + label {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
-  box-shadow: 0 0 4px rgba(152, 245, 255, 1); /* subtle blue shadow */
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(152, 245, 255, 1); /* subtle blue shadow */
 }
 
 /* Hide actual radio buttons */
 .radio-switch input[type="radio"] {
-  display: none;
+    display: none;
 }
 
 .radio-switch label:last-of-type {
-  border-right: none;
+    border-right: none;
 }
 
 /* Full-screen overlay */
