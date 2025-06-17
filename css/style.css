@@ -291,7 +291,7 @@ body { margin: 0; padding: 0; }
 
 /* Style for the selected option */
 .radio-switch input[type="radio"]:checked + label {
-    background-color: #007bff;
+    background-color: #111184;
     color: white;
     border-color: #007bff;
     box-shadow: 0 0 4px rgba(255, 255, 255, 1); /* subtle blue shadow */
