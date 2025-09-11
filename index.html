@@ -149,11 +149,13 @@
 <div id="coordinates"></div>
 
 <!-- Model info button -->
-<button id="info-btn" class="info-toggle">Model info</button>
+<button id="info-btn-1" class="info-toggle info-btn-1">Model info</button>
+<button id="info-btn-2" class="info-toggle info-btn-2">Training data</button>
+
 <!-- Model info box -->
-<div id="info-box" class="info-box">
+<div id="info-box-1" class="info-box">
     <p>
-        Model published in <i>Geoscientific Model Development</i>:
+        Model described in <i>Geoscientific Model Development</i>:
         <a href="https://gmd.copernicus.org/articles/18/2545/2025/"
            target="_blank" style="color: white;">https://gmd.copernicus.org/articles/18/2545/2025/</a>
     </p>
@@ -167,11 +169,6 @@
     on version v.62, which includes ice bodies with direct connection to the ice sheets. The model can be deployed on
     v. 62 or the most recent v. 70.</p>
 
-    <p><strong>MODEL TARGET</strong></p>
-    <ul>
-        <li>Ice thickness measurements, from GlaThiDa v. 3.1.0 <a href="https://essd.copernicus.org/articles/12/3039/2020/essd-12-3039-2020.html"
-           target="_blank" style="color: white;">[Welty et al. 2020]</a></li>
-    </ul>
     <p><strong>MODEL INPUTS</strong></p>
     <ul>
         <li>TanDEM-X - Edited Digital Elevation Model (EDEM) - Global, 30m from DLR  <a href="https://ieeexplore.ieee.org/document/9472608"
@@ -206,6 +203,29 @@
            target="_blank" style="color: white;">[Website]</a></li>
     </ul>
 </div>
+
+<!-- Training data box -->
+<div id="info-box-2" class="info-box">
+    <p><strong>TRAINING DATA</strong></p>
+    <ul>
+        <li>GlaThiDa v. 3.1.0 <a href="https://essd.copernicus.org/articles/12/3039/2020/essd-12-3039-2020.html"
+           target="_blank" style="color: white;">[Welty et al. 2020]</a></li>
+        <li>Ruth Glacier <a href="https://www.cambridge.org/core/journals/journal-of-glaciology/article/thickness-of-ruth-glacier-alaska-and-depth-of-its-great-gorge-from-icepenetrating-radar-and-mass-conservation/F1D6C5621B737EB7610BB6F51C75454F"
+           target="_blank" style="color: white;">[Tober et al., 2024]</a> + IceBridge Alaska <a href="https://eartharxiv.org/repository/view/9892/"
+           target="_blank" style="color: white;">[Tober et al., 2025]</a></li>
+        <li>Patagonia icefields <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019GL082485"
+           target="_blank" style="color: white;">[Millan et al. 2019, </a>  <a href="https://www.nature.com/articles/s43247-023-01193-7"
+           target="_blank" style="color: white;">Fürst et al., 2025]</a></li>
+        <li>Jostedalsbreen ice cap <a href="https://essd.copernicus.org/articles/16/5799/2024/"
+           target="_blank" style="color: white;">[Gillespie et al., 2024]</a></li>
+        <li>IceBridge surveys over Greenland, Canadian Arctic, Svalbard and Antarctica <a href="https://nsidc.org/data/irmcr2/versions/1"
+           target="_blank" style="color: white;">[IceBridge MCoRDS L2 Ice Thickness, Version 1]</a></li>
+        <li>Antarctic Peninsula <a href="https://data.cresis.ku.edu/"
+           target="_blank" style="color: white;">[CReSIS data]</a></li>
+    </ul>
+
+</div>
+
 
 <!-- Welcome Screen Script  -->
 <script>

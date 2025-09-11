@@ -150,8 +150,6 @@ body { margin: 0; padding: 0; }
 
 .info-toggle {
     position: absolute;
-    top: 13vh;
-    left: 1vw;
     z-index: 100;
     border: none; /* Remove default border */
     background: transparent;
@@ -159,6 +157,18 @@ body { margin: 0; padding: 0; }
     font-family: "Courier New", Courier, monospace;
     cursor: pointer;
     color: rgb(174, 182, 191);
+}
+
+/* positioning for the first button */
+.info-btn-1 {
+    top: 13vh;
+    left: 1vw;
+}
+
+/* positioning for the second button */
+.info-btn-2 {
+    top: 16vh; /* a bit lower */
+    left: 1vw;
 }
 
 .info-toggle:hover {

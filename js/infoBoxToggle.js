@@ -1,21 +1,23 @@
-// infoBoxToggle.js
+// js/infoBoxToggle.js
 
-// Event listener for the info button
-document.getElementById('info-btn').addEventListener('click', function(event) {
-    const box = document.getElementById('info-box');
-    // Toggle visibility of the info box
-    box.style.display = (box.style.display === 'none' || box.style.display === '') ? 'block' : 'none';
-    // Prevent the click event from propagating to the document
-    event.stopPropagation();
-});
+function setupInfoToggle(buttonId, boxId) {
+    const button = document.getElementById(buttonId);
+    const box = document.getElementById(boxId);
 
-// Close the info box if clicked outside (using mousedown event)
-document.addEventListener('mousedown', function(event) {
-    const box = document.getElementById('info-box');
-    const button = document.getElementById('info-btn');
+    // Button click → toggle box
+    button.addEventListener('click', function (event) {
+        box.style.display = (box.style.display === 'none' || box.style.display === '') ? 'block' : 'none';
+        event.stopPropagation();
+    });
 
-    // Check if the click is outside the box and button
-    if (!box.contains(event.target) && event.target !== button) {
-        box.style.display = 'none'; // Hide the info box
-    }
-});
+    // Click outside → close box
+    document.addEventListener('mousedown', function (event) {
+        if (!box.contains(event.target) && event.target !== button) {
+            box.style.display = 'none';
+        }
+    });
+}
+
+// Set up both buttons/boxes
+setupInfoToggle('info-btn-1', 'info-box-1');
+setupInfoToggle('info-btn-2', 'info-box-2');
