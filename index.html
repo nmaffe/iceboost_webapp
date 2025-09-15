@@ -69,6 +69,13 @@
             <span>SAT</span>
         </div>
     </div>
+
+    <div class="hexagon-item" id="button-animation">
+        <div class="hex-item">
+            <i class="fa-solid fa-film"></i>
+            <span>Movie</span>
+        </div>
+    </div>
 </div>
 
 <div id="map"></div>
@@ -377,6 +384,12 @@
             toggleSatelliteBase(this);
         });
 
+        // Handle button click for animation layer
+        document.querySelector('#button-animation').addEventListener('click', function () {
+            toggleAnimation(this);
+        });
+
+
         // Function for glacier Forward Geocoding lookup
         let debounceTimer;  // global timer for debounce
         const searchInput = document.getElementById('search-input');
@@ -586,11 +599,15 @@
 <!-- Showing data when hoovering script -->
 <script src="js/display-points-info.js"></script>
 
+<!-- Animations script -->
+<script src="js/map-animations.js"></script>
+
 <!-- Model info box script -->
 <script src="js/infoBoxToggle.js"></script>
 
 <!-- Simple Analytics script -->
 <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+
 
 </body>
 
