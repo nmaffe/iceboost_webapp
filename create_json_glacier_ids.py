@@ -33,8 +33,9 @@ for rgi in np.arange(1, 20):
         rounded_bbox = [round(coord, decimal_places) for coord in bbox]
         rounded_center = [round(coord, decimal_places) for coord in (cenLon, cenLat)]
 
-        is_tile = os.path.isdir(f"tiles/RGI{version}/{id}")
+        TARGET_LOOKUP_PATH = f"/media/maffe/nvme/iceboost_webapp_tiles/RGI{version}/{id}"
 
+        is_tile = os.path.isdir(TARGET_LOOKUP_PATH)
 
         #print(cenLon, cenLat)
         #print(rounded_bbox)
@@ -51,7 +52,6 @@ for rgi in np.arange(1, 20):
 
         #if ((id == 'RGI60-06.00416') or (id == 'RGI60-06.00475') or (id == 'RGI60-11.01450')):
         all_world_glaciers.append(glacier_entry)
-
 
 print(f"Fetched all glacier names: {len(all_world_glaciers)}")
 
