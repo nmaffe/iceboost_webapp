@@ -28,7 +28,7 @@ function toggleAnimation(button) {
     // Step 3: Fly to Alps
     setTimeout(() => {
         map.flyTo({
-            center: [10, 46],
+            center: [8, 46.5],
             zoom: 5,
             pitch: 30,
             duration: 6000
