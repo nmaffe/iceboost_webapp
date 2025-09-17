@@ -28,7 +28,7 @@ body { margin: 0; padding: 0; }
     font-family: 'StreetFont', sans-serif;
     font-size: 2vw;
     font-weight: 100;
-    color: #457fe5;
+    color: #FF00FF; /*#457fe5;*/
     position: absolute;   /* Places it at an exact position */
     top: 0;               /* Aligns to the top */
     left: 0;              /* Aligns to the left */
