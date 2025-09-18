@@ -28,7 +28,7 @@ body { margin: 0; padding: 0; }
     font-family: 'StreetFont', sans-serif;
     font-size: 2vw;
     font-weight: 100;
-    color: #FF00FF; /*#457fe5;*/
+    color: magenta; /*#457fe5;*/
     position: absolute;   /* Places it at an exact position */
     top: 0;               /* Aligns to the top */
     left: 0;              /* Aligns to the left */
@@ -173,9 +173,9 @@ body { margin: 0; padding: 0; }
 
 .info-toggle:hover {
     background: transparent;
-    color: rgb(255, 255, 255);
+    color: magenta; /*rgb(255, 255, 255);*/
     text-decoration: underline; /* White underline on hover */
-    text-decoration-color: rgb(255, 255, 255); /* Set underline color to white */
+    text-decoration-color: magenta; /*rgb(255, 255, 255); /* Set underline color to white */
 }
 
 .info-box {
