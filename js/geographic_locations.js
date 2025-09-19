@@ -17,6 +17,8 @@ map.on('load', () => {
                 paint: {
                     'circle-radius': 8,
                     'circle-color': ['coalesce', ['get', 'point_color'], '#ffffff'],
+                    'circle-stroke-color': 'white',   // black border
+                    'circle-stroke-width': 2,           // thickness of border
                     'circle-emissive-strength': 1
                 },
                 filter: [">=", ["zoom"], ["get", "zoom"]]

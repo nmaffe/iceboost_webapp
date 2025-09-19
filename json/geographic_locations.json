@@ -6,7 +6,7 @@
       "properties": {
         "name": "Flade Isblink",
         "label_coords": [-8, 82],
-        "point_color": "#ffffff",
+        "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
         "zoom": 3
@@ -22,7 +22,7 @@
       "properties": {
         "name": "Renland ice cap",
         "label_coords": [-20, 70.3],
-        "point_color": "#ffffff",
+        "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
         "zoom": 4
@@ -38,7 +38,7 @@
       "properties": {
         "name": "Geikie Plateau",
         "label_coords": [-20, 69],
-        "point_color": "#ffffff",
+        "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
         "zoom": 3
@@ -54,7 +54,7 @@
       "properties": {
         "name": "Kangerlussuaq Glacier",
         "label_coords": [-25, 67],
-        "point_color": "#ffffff",
+        "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
         "zoom": 4
@@ -70,7 +70,7 @@
       "properties": {
         "name": "Hutchinson Plateau",
         "label_coords": [-26, 66],
-        "point_color": "#ffffff",
+        "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
         "zoom": 4
@@ -86,7 +86,7 @@
       "properties": {
         "name": "Kangaamiut Sermiat",
         "label_coords": [-54, 67],
-        "point_color": "#ffffff",
+        "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
         "zoom": 4
@@ -102,7 +102,7 @@
       "properties": {
         "name": "Tasersiap Sermia",
         "label_coords": [-54, 65],
-        "point_color": "#ffffff",
+        "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
         "zoom": 4
@@ -118,7 +118,7 @@
       "properties": {
         "name": "Qeqertarsuaq (Disko Island)",
         "label_coords": [-56, 69],
-        "point_color": "#ffffff",
+        "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
         "zoom": 4
@@ -134,7 +134,7 @@
       "properties": {
         "name": "Pituffik Glacier",
         "label_coords": [-61, 75],
-        "point_color": "#ffffff",
+        "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
         "zoom": 4
@@ -150,7 +150,7 @@
       "properties": {
         "name": "Qaanaaq ice cap",
         "label_coords": [-71, 76],
-        "point_color": "#ffffff",
+        "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
         "zoom": 4
@@ -166,7 +166,7 @@
       "properties": {
         "name": "Hans Tausen Ice Cap",
         "label_coords": [-49, 83],
-        "point_color": "#ffffff",
+        "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
         "zoom": 3
