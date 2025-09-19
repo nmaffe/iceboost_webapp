@@ -1,0 +1,182 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Flade Isblink",
+        "label_coords": [-8, 82],
+        "point_color": "#ffffff",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-13.5, 81.5]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Renland ice cap",
+        "label_coords": [-20, 70.3],
+        "point_color": "#ffffff",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-26.7, 71.3]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Geikie Plateau",
+        "label_coords": [-20, 69],
+        "point_color": "#ffffff",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-26, 69.9]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kangerlussuaq Glacier",
+        "label_coords": [-25, 67],
+        "point_color": "#ffffff",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-33.4, 68.8]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hutchinson Plateau",
+        "label_coords": [-26, 66],
+        "point_color": "#ffffff",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-33.7, 68.2]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kangaamiut Sermiat",
+        "label_coords": [-54, 67],
+        "point_color": "#ffffff",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-52.3, 66.25]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tasersiap Sermia",
+        "label_coords": [-54, 65],
+        "point_color": "#ffffff",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-51, 66]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Qeqertarsuaq (Disko Island)",
+        "label_coords": [-56, 69],
+        "point_color": "#ffffff",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-53.3, 69.8]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pituffik Glacier",
+        "label_coords": [-61, 75],
+        "point_color": "#ffffff",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-68.4, 76.28]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Qaanaaq ice cap",
+        "label_coords": [-71, 76],
+        "point_color": "#ffffff",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-69.12, 77.58]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hans Tausen Ice Cap",
+        "label_coords": [-49, 83],
+        "point_color": "#ffffff",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-38, 82.4]
+      }
+    }
+
+
+  ]
+}
