@@ -175,6 +175,38 @@
         "type": "Point",
         "coordinates": [-38, 82.4]
       }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Devon Ice Cap",
+        "label_coords": [-75, 74.5],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-82.3, 75.2]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bylot Island",
+        "label_coords": [-75, 74],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-78.5, 73.25]
+      }
     }
 
 
