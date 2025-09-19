@@ -369,6 +369,22 @@
         "type": "Point",
         "coordinates": [-75.705, 72.357]
       }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sydkap Ice Cap",
+        "label_coords": [-84, 76],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.5, 76.83]
+      }
     }
 
 
