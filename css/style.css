@@ -131,7 +131,7 @@ body { margin: 0; padding: 0; }
     left: 1vw;    /* 1% of viewport width from the left */
     padding: 5px;
     font-family: "Courier New", Courier, monospace;
-    color: rgb(0, 236, 255);/*rgb(174, 182, 191);rgb(255,0,0);*/
+    color: magenta;/*rgb(174, 182, 191);rgb(255,0,0);*/
     font-size: clamp(12px, 0.9vw, 18px);
     font-weight: normal;
 }
