@@ -80,7 +80,7 @@ map.on('load', () => {
                 layout: {
                     'text-field': ['get', 'name'],
                     'text-font': ['Arial Unicode MS Regular'],
-                    'text-size': 20,
+                    'text-size': 16,
                     'text-anchor': 'bottom-right'
                 },
                 paint: {
