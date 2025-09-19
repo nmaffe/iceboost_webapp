@@ -149,7 +149,7 @@
       "type": "Feature",
       "properties": {
         "name": "Qaanaaq ice cap",
-        "label_coords": [-71, 76],
+        "label_coords": [-71, 77.3],
         "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
@@ -160,6 +160,72 @@
         "coordinates": [-69.12, 77.58]
       }
     },
+
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Salisbury Glacier",
+        "label_coords": [-71, 76.71],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-68.66, 76.71]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chamberlin Glacier",
+        "label_coords": [-71, 76.5],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-68.4, 76.71]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Knud Rasmussen Glacier",
+        "label_coords": [-71, 76.3],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-67.85, 76.72]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Berlingske Gletscher",
+        "label_coords": [-71, 77.1],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-69.32, 76.98]
+      }
+    },
+
 
     {
       "type": "Feature",
@@ -206,6 +272,102 @@
       "geometry": {
         "type": "Point",
         "coordinates": [-78.5, 73.25]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Barnes Ice Cap",
+        "label_coords": [-67, 73],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.5, 70.0]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Grinnell Glacier (Meta Incognita Peninsula)",
+        "label_coords": [-62, 61.5],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-66.8, 62.6]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Terra Nivea Ice Cap",
+        "label_coords": [-62, 60.5],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-66.5, 62.27]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Penny Ice Cap",
+        "label_coords": [-62, 68],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-65.83, 67]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oliver Glacier",
+        "label_coords": [-75, 72.7],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-76.82, 72.1]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Macculloch Glacier",
+        "label_coords": [-74.5, 72.6],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.705, 72.357]
       }
     }
 
