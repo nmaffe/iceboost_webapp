@@ -343,7 +343,7 @@
       "type": "Feature",
       "properties": {
         "name": "Oliver Glacier",
-        "label_coords": [-75, 72.7],
+        "label_coords": [-74, 73.1],
         "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
@@ -359,7 +359,7 @@
       "type": "Feature",
       "properties": {
         "name": "Macculloch Glacier",
-        "label_coords": [-74.5, 72.6],
+        "label_coords": [-74.0, 72.6],
         "point_color": "rgba(255, 255, 255, 0)",
         "line_color": "#ffffff",
         "text_color": "#ffffff",
@@ -512,6 +512,70 @@
       "geometry": {
         "type": "Point",
         "coordinates": [-75.02, 78.68]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Müller Icefield",
+        "label_coords": [-86, 80.5],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-92, 80]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Airdrop Glacier",
+        "label_coords": [-97, 80],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.5, 79.81]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Iceberg Glacier",
+        "label_coords": [-96.5, 79.6],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-92.25, 79.48]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Good Friday Bay Glacier",
+        "label_coords": [-95.0, 79.1],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-91.5, 78.55]
       }
     }
 
