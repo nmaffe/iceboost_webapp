@@ -433,8 +433,87 @@
         "type": "Point",
         "coordinates": [-78.5, 78.5]
       }
-    }
+    },
 
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wykeham Glacier",
+        "label_coords": [-76.3, 77.4],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-78.8, 77.9]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Trinity Glacier",
+        "label_coords": [-76.8, 77.65],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-78.6, 77.98]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cadogan Glacier",
+        "label_coords": [-75.6, 77.9],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.07, 78.23]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ekblaw Glacier",
+        "label_coords": [-73.5, 78.5],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.2, 78.5]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leffert Glacier",
+        "label_coords": [-73.0, 78.84],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.02, 78.68]
+      }
+    }
 
   ]
 }
