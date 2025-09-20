@@ -1,583 +1,343 @@
 {
-  "type": "FeatureCollection",
-  "features": [
+  "glaciers": [
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Flade Isblink",
-        "label_coords": [-8, 82],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 3
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-13.5, 81.5]
-      }
+      "name": "Flade Isblink",
+      "coords": [-13.5, 81.5],
+      "label": [-8, 82],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Renland ice cap",
-        "label_coords": [-20, 70.3],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-26.7, 71.3]
-      }
+      "name": "Renland ice cap",
+      "coords": [-26.7, 71.3],
+      "label": [-20, 70.3],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Geikie Plateau",
-        "label_coords": [-20, 69],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 3
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-26, 69.9]
-      }
+      "name": "Geikie Plateau",
+      "coords": [-26, 69.9],
+      "label": [-20, 69],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Kangerlussuaq Glacier",
-        "label_coords": [-25, 67],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-33.4, 68.8]
-      }
+      "name": "Kangerlussuaq Glacier",
+      "coords": [-33.4, 68.8],
+      "label": [-25, 67],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Hutchinson Plateau",
-        "label_coords": [-26, 66],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-33.7, 68.2]
-      }
+      "name": "Hutchinson Plateau",
+      "coords": [-33.7, 68.2],
+      "label": [-26, 66],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Kangaamiut Sermiat",
-        "label_coords": [-54, 67],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-52.3, 66.25]
-      }
+      "name": "Kangaamiut Sermiat",
+      "coords": [-52.3, 66.25],
+      "label": [-54, 67],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Tasersiap Sermia",
-        "label_coords": [-54, 65],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-51, 66]
-      }
+      "name": "Tasersiap Sermia",
+      "coords": [-51, 66],
+      "label": [-54, 65],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Qeqertarsuaq (Disko Island)",
-        "label_coords": [-56, 69],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-53.3, 69.8]
-      }
+      "name": "Qeqertarsuaq (Disko Island)",
+      "coords": [-53.3, 69.8],
+      "label": [-56, 69],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Pituffik Glacier",
-        "label_coords": [-61, 75],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-68.4, 76.28]
-      }
+      "name": "Pituffik Glacier",
+      "coords": [-68.4, 76.28],
+      "label": [-61, 75],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Qaanaaq ice cap",
-        "label_coords": [-71, 77.3],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-69.12, 77.58]
-      }
+      "name": "Qaanaaq ice cap",
+      "coords": [-69.12, 77.58],
+      "label": [-71, 77.3],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Salisbury Glacier",
-        "label_coords": [-71, 76.71],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-68.66, 76.71]
-      }
+      "name": "Salisbury Glacier",
+      "coords": [-68.66, 76.71],
+      "label": [-71, 76.71],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Chamberlin Glacier",
-        "label_coords": [-71, 76.5],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-68.4, 76.71]
-      }
+      "name": "Chamberlin Glacier",
+      "coords": [-68.4, 76.71],
+      "label": [-71, 76.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Knud Rasmussen Glacier",
-        "label_coords": [-71, 76.3],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-67.85, 76.72]
-      }
+      "name": "Knud Rasmussen Glacier",
+      "coords": [-67.85, 76.72],
+      "label": [-71, 76.3],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Berlingske Gletscher",
-        "label_coords": [-71, 77.1],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-69.32, 76.98]
-      }
+      "name": "Berlingske Gletscher",
+      "coords": [-69.32, 76.98],
+      "label": [-71, 77.1],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Hans Tausen Ice Cap",
-        "label_coords": [-49, 83],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 3
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-38, 82.4]
-      }
+      "name": "Hans Tausen Ice Cap",
+      "coords": [-38, 82.4],
+      "label": [-49, 83],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Devon Ice Cap",
-        "label_coords": [-75, 74.5],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 3
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-82.3, 75.2]
-      }
+      "name": "Devon Ice Cap",
+      "coords": [-82.3, 75.2],
+      "label": [-75, 74.5],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Bylot Island",
-        "label_coords": [-75, 74],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 3
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-78.5, 73.25]
-      }
+      "name": "Bylot Island",
+      "coords": [-78.5, 73.25],
+      "label": [-75, 74],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Barnes Ice Cap",
-        "label_coords": [-67, 73],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 3
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-73.5, 70.0]
-      }
+      "name": "Barnes Ice Cap",
+      "coords": [-73.5, 70.0],
+      "label": [-67, 73],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Grinnell Glacier (Meta Incognita Peninsula)",
-        "label_coords": [-62, 61.5],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-66.8, 62.6]
-      }
+      "name": "Grinnell Glacier (Meta Incognita Peninsula)",
+      "coords": [-66.8, 62.6],
+      "label": [-62, 61.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Terra Nivea Ice Cap",
-        "label_coords": [-62, 60.5],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-66.5, 62.27]
-      }
+      "name": "Terra Nivea Ice Cap",
+      "coords": [-66.5, 62.27],
+      "label": [-62, 60.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Penny Ice Cap",
-        "label_coords": [-62, 68],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-65.83, 67]
-      }
+      "name": "Penny Ice Cap",
+      "coords": [-65.83, 67],
+      "label": [-62, 68],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Oliver Glacier",
-        "label_coords": [-74, 73.1],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-76.82, 72.1]
-      }
+      "name": "Oliver Glacier",
+      "coords": [-76.82, 72.1],
+      "label": [-74, 73.1],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Macculloch Glacier",
-        "label_coords": [-74.0, 72.6],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-75.705, 72.357]
-      }
+      "name": "Macculloch Glacier",
+      "coords": [-75.705, 72.357],
+      "label": [-74.0, 72.6],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Sydkap Ice Cap",
-        "label_coords": [-84, 76],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-85.5, 76.83]
-      }
+      "name": "Sydkap Ice Cap",
+      "coords": [-85.5, 76.83],
+      "label": [-84, 76],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Manson Icefield",
-        "label_coords": [-78, 76],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-80, 76.7]
-      }
+      "name": "Manson Icefield",
+      "coords": [-80, 76.7],
+      "label": [-78, 76],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Mittie Glacier",
-        "label_coords": [-77.7, 76.3],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-79.3, 76.8]
-      }
+      "name": "Mittie Glacier",
+      "coords": [-79.3, 76.8],
+      "label": [-77.7, 76.3],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Price of Wales Icefield",
-        "label_coords": [-72, 79],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 3
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-78.5, 78.5]
-      }
+      "name": "Price of Wales Icefield",
+      "coords": [-78.5, 78.5],
+      "label": [-72, 79],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Wykeham Glacier",
-        "label_coords": [-76.3, 77.4],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-78.8, 77.9]
-      }
+      "name": "Wykeham Glacier",
+      "coords": [-78.8, 77.9],
+      "label": [-76.3, 77.4],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Trinity Glacier",
-        "label_coords": [-76.8, 77.65],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-78.6, 77.98]
-      }
+      "name": "Trinity Glacier",
+      "coords": [-78.6, 77.98],
+      "label": [-76.8, 77.65],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Cadogan Glacier",
-        "label_coords": [-75.6, 77.9],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-77.07, 78.23]
-      }
+      "name": "Cadogan Glacier",
+      "coords": [-77.07, 78.23],
+      "label": [-75.6, 77.9],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Ekblaw Glacier",
-        "label_coords": [-73.5, 78.5],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-77.2, 78.5]
-      }
+      "name": "Ekblaw Glacier",
+      "coords": [-77.2, 78.5],
+      "label": [-73.5, 78.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Leffert Glacier",
-        "label_coords": [-73.0, 78.84],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-75.02, 78.68]
-      }
+      "name": "Leffert Glacier",
+      "coords": [-75.02, 78.68],
+      "label": [-73.0, 78.84],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Müller Icefield",
-        "label_coords": [-86, 80.5],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 3
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-92, 80]
-      }
+      "name": "Müller Icefield",
+      "coords": [-92, 80],
+      "label": [-86, 80.5],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Airdrop Glacier",
-        "label_coords": [-97, 80],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-93.5, 79.81]
-      }
+      "name": "Airdrop Glacier",
+      "coords": [-93.5, 79.81],
+      "label": [-97, 80],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Iceberg Glacier",
-        "label_coords": [-96.5, 79.6],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-92.25, 79.48]
-      }
+      "name": "Iceberg Glacier",
+      "coords": [-92.25, 79.48],
+      "label": [-96.5, 79.6],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     },
-
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Good Friday Bay Glacier",
-        "label_coords": [-95.0, 79.1],
-        "point_color": "rgba(255, 255, 255, 0)",
-        "line_color": "#ffffff",
-        "text_color": "#ffffff",
-        "zoom": 4
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-91.5, 78.55]
-      }
+      "name": "Good Friday Bay Glacier",
+      "coords": [-91.5, 78.55],
+      "label": [-95.0, 79.1],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     }
-
   ]
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
