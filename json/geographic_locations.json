@@ -385,6 +385,54 @@
         "type": "Point",
         "coordinates": [-85.5, 76.83]
       }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Manson Icefield",
+        "label_coords": [-78, 76],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80, 76.7]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mittie Glacier",
+        "label_coords": [-77.7, 76.3],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.3, 76.8]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Price of Wales Icefield",
+        "label_coords": [-72, 79],
+        "point_color": "rgba(255, 255, 255, 0)",
+        "line_color": "#ffffff",
+        "text_color": "#ffffff",
+        "zoom": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-78.5, 78.5]
+      }
     }
 
 
