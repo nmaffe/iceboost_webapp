@@ -323,6 +323,24 @@
       "point_color": "rgba(255, 255, 255, 0)",
       "line_color": "#ffffff",
       "text_color": "#ffffff"
+    },
+    {
+      "name": "Maighen Island",
+      "coords": [-99.2, 79.98],
+      "label": [-100.2, 80.3],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Agassiz Ice Cap",
+      "coords": [-75.99, 80.25],
+      "label": [-67, 79.7],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     }
   ]
 }
