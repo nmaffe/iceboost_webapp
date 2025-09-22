@@ -476,6 +476,42 @@
       "point_color": "rgba(255, 255, 255, 0)",
       "line_color": "#ffffff",
       "text_color": "#ffffff"
+    },
+    {
+      "name": "Vatnajökull ice cap",
+      "coords": [-16.822, 64.419],
+      "label": [-13.5, 64],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Langjökull ice cap",
+      "coords": [-20.144, 64.653],
+      "label": [-13.5, 63.2],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Hofsjökull ice cap",
+      "coords": [-18.79, 64.83],
+      "label": [-13.5, 63.6],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Mýrdalsjökull ice cap",
+      "coords": [-19.173, 63.6431],
+      "label": [-15.4, 62.8],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     }
   ]
 }
