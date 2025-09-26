@@ -786,7 +786,7 @@
     {
       "name": "Windy Ice Cap",
       "coords": [64, 80.8],
-      "label": [67, 80.5],
+      "label": [68.5, 80.5],
       "zoom": 3,
       "point_color": "rgba(255, 255, 255, 0)",
       "line_color": "#ffffff",
@@ -796,7 +796,178 @@
       "name": "Kupol Vostok Chetviortyy ice dome",
       "coords": [63.2, 81.64],
       "label": [65, 81.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Rudolf Island (Остров Рудольфа)",
+      "coords": [58.65, 81.78],
+      "label": [60.6, 81.65],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Rainer Island (Остров Райнера)",
+      "coords": [58.9, 81.35],
+      "label": [60.6, 81.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "La Ronciere Island (Остров Ла-Ронсьер)",
+      "coords": [60.9, 81],
+      "label": [63, 81.2],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Hall Island (Остров Галля)",
+      "coords": [60.7, 80.63],
+      "label": [64, 80.2],
       "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Samoylovitch Ice Cap",
+      "coords": [58, 81.44],
+      "label": [56, 81.7],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Chernysheva Ice Cap (Lednik Chernysheva)",
+      "coords": [59.4, 80],
+      "label": [60.6, 79.8],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Alexandra Land (Земля Александры)",
+      "coords": [46.5, 80.6],
+      "label": [44, 80.9],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Brusilov Ice Dome (Zemlya Georga)",
+      "coords": [50.5, 80.64],
+      "label": [48, 81.2],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Bruce Island (Остров Брюса)",
+      "coords": [50, 80.15],
+      "label": [48, 79.7],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Northbrook Island (остров Нортбрук)",
+      "coords": [50.9, 80],
+      "label": [49, 79.4],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Hooker Island (остров Гукера)",
+      "coords": [53, 80.25],
+      "label": [55.4, 80],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Ushakov ice cap",
+      "coords": [79.5, 80.82],
+      "label": [76, 81],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Schmidt Ice Cap",
+      "coords": [90.8, 81.15],
+      "label": [88, 81],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Academy of Sciences Ice Cap",
+      "coords": [95, 80.5],
+      "label": [90, 80.5],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Rusanov Ice Cap",
+      "coords": [97, 80],
+      "label": [100, 80.25],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Karpinsky Ice Cap",
+      "coords": [98.4, 79.6],
+      "label": [102.5, 80],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Vavilov Ice Cap",
+      "coords": [95.6, 79.3],
+      "label": [93, 79.3],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "University Ice Cap (October Revolution Island)",
+      "coords": [99, 79],
+      "label": [105, 79.7],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Leningradskiy Ice Cap",
+      "coords": [102.5, 78.6],
+      "label": [100, 78.6],
+      "zoom": 4,
       "point_color": "rgba(255, 255, 255, 0)",
       "line_color": "#ffffff",
       "text_color": "#ffffff"
