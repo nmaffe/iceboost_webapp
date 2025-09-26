@@ -512,6 +512,132 @@
       "point_color": "rgba(255, 255, 255, 0)",
       "line_color": "#ffffff",
       "text_color": "#ffffff"
+    },
+    {
+      "name": "Austfonna ice cap",
+      "coords": [24.558, 79.835],
+      "label": [32, 79],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Kvitøyjøkulen ice cap",
+      "coords": [32.5, 80.2],
+      "label": [42.5, 79.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Vestfonna ice cap",
+      "coords": [20.286, 80.017],
+      "label": [24, 80.7],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Stonebreen",
+      "coords": [23.5, 77.8],
+      "label": [31, 78.4],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Torellbreen",
+      "coords": [14.77, 77.23],
+      "label": [13.6, 76.7],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Hansbreen",
+      "coords": [15.65, 77.07],
+      "label": [13.6, 76.6],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Olsokbreen",
+      "coords": [16.5, 76.72],
+      "label": [13.6, 76.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Recherchebreen",
+      "coords": [14.84, 77.43],
+      "label": [13.6, 76.9],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Vasilievbreen",
+      "coords": [16.8, 76.73],
+      "label": [20.5, 76.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Hambergbreen",
+      "coords": [17, 77.07],
+      "label": [20.5, 76.7],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Nathorstbreen",
+      "coords": [16.21, 77.43],
+      "label": [20.5, 76.9],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Liestølbreen",
+      "coords": [16.8, 77.43],
+      "label": [20.5, 77.1],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Doktorbreen",
+      "coords": [16.5, 77.5],
+      "label": [20.5, 77.3],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Strongbreen",
+      "coords": [17.5, 77.6],
+      "label": [20.5, 77.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     }
   ]
 }
