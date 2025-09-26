@@ -525,7 +525,7 @@
     {
       "name": "Kvitøyjøkulen ice cap",
       "coords": [32.5, 80.2],
-      "label": [42.5, 79.5],
+      "label": [35, 79.7],
       "zoom": 4,
       "point_color": "rgba(255, 255, 255, 0)",
       "line_color": "#ffffff",
@@ -635,6 +635,168 @@
       "coords": [17.5, 77.6],
       "label": [20.5, 77.5],
       "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Negribreen",
+      "coords": [19, 78.6],
+      "label": [24, 78.6],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Hochstetterbreen",
+      "coords": [20.2, 78.9],
+      "label": [24, 78.9],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Hinlopenbreen",
+      "coords": [18.98, 79.07],
+      "label": [24, 79.07],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Chydeniusbreen",
+      "coords": [18.5, 79.25],
+      "label": [24, 79.25],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Wahlenbergbreen",
+      "coords": [14.28, 78.48],
+      "label": [12, 77.8],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Sveabreen",
+      "coords": [14.13, 78.57],
+      "label": [12, 78],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Uvêrsbreen",
+      "coords": [12.36, 78.81],
+      "label": [11, 78.2],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Kongsvegen glacier",
+      "coords": [12.65, 78.85],
+      "label": [11, 79],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Kronebreen",
+      "coords": [12.7, 78.87],
+      "label": [10.9, 79.1],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Kongsbreen",
+      "coords": [13, 79],
+      "label": [10.7, 79.2],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Monacobreen",
+      "coords": [12.55, 79.5],
+      "label": [10.2, 79.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Lilliehöökbreen",
+      "coords": [11.7, 79.37],
+      "label": [10.2, 79.37],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Raudfjordbreen",
+      "coords": [12.2, 79.63],
+      "label": [10.2, 79.63],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Dunérbreen",
+      "coords": [16.83, 79.78],
+      "label": [14, 80],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Valhallfonna",
+      "coords": [17.56, 79.74],
+      "label": [14, 80.2],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Severny Island Ice Cap",
+      "coords": [60.9, 75.7],
+      "label": [57, 77],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Windy Ice Cap",
+      "coords": [64, 80.8],
+      "label": [67, 80.5],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Kupol Vostok Chetviortyy ice dome",
+      "coords": [63.2, 81.64],
+      "label": [65, 81.5],
+      "zoom": 3,
       "point_color": "rgba(255, 255, 255, 0)",
       "line_color": "#ffffff",
       "text_color": "#ffffff"
