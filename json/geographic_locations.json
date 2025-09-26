@@ -971,6 +971,15 @@
       "point_color": "rgba(255, 255, 255, 0)",
       "line_color": "#ffffff",
       "text_color": "#ffffff"
+    },
+    {
+      "name": "Aletsch Glacier",
+      "coords": [8.03, 46.50],
+      "label": [7.8, 46.6],
+      "zoom": 5,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     }
   ]
 }
