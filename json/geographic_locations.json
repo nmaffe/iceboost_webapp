@@ -1034,6 +1034,186 @@
       "point_color": "rgba(255, 255, 255, 0)",
       "line_color": "#ffffff",
       "text_color": "#ffffff"
+    },
+    {
+      "name": "Mount Veniaminof",
+      "coords": [-159.39, 56.195],
+      "label": [-160.5, 57],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Capps Glacier",
+      "coords": [-151.86, 61.33],
+      "label": [-155, 61.33],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Triumvirate Glacier",
+      "coords": [-151.9, 61.45],
+      "label": [-155, 61.45],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Blockade Glacier",
+      "coords": [-152.43, 61.05],
+      "label": [-155, 61.05],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Kahiltna Glacier",
+      "coords": [-151.23, 62.54],
+      "label": [-152, 63],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Ruth Glacier",
+      "coords": [-150.46, 62.7],
+      "label": [-152, 63.2],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Eldridge Glacier",
+      "coords": [-150, 62.98],
+      "label": [-152, 63.4],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Tustumena Glacier",
+      "coords": [-150.3, 59.97],
+      "label": [-150.9, 59.97],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Skilak Glacier",
+      "coords": [-150.07, 60.24],
+      "label": [-150.9, 60.24],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Tazlina Glacier",
+      "coords": [-146.53, 61.56],
+      "label": [-146.9, 62],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Nabesna Glacier",
+      "coords": [-143.29, 61.88],
+      "label": [-144, 62.6],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Steller Glacier",
+      "coords": [-143.7, 60.34],
+      "label": [-145, 59.8],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Bering Glacier",
+      "coords": [-143.45, 60.25],
+      "label": [-145, 59.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Agassiz Glacier",
+      "coords": [-141, 60],
+      "label": [-142.2, 59.4],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Seward Glacier",
+      "coords": [-140.6, 59.86],
+      "label": [-142, 59.0],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Kaskawulsh Glacier",
+      "coords": [-138.7, 60.78],
+      "label": [-137, 61],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Lowell Glacier",
+      "coords": [-138.2, 60.29],
+      "label": [-136, 60.6],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Brady Glacier",
+      "coords": [-136.71, 58.45],
+      "label": [-138, 58.45],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Llewellyn Glacier",
+      "coords": [-133.99, 59.09],
+      "label": [-133, 59.5],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Klinaklini Glacier",
+      "coords": [-125.85, 51.44],
+      "label": [-128, 51.44],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     }
   ]
 }
