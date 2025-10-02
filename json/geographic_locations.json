@@ -1223,6 +1223,114 @@
       "point_color": "rgba(255, 255, 255, 0)",
       "line_color": "#ffffff",
       "text_color": "#ffffff"
+    },
+    {
+      "name": "San Rafael Glacier",
+      "coords": [-73.7, -46.71],
+      "label": [-75, -46.3],
+      "zoom": 3,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "San Quintin Glacier",
+      "coords": [-73.7, -46.87],
+      "label": [-75, -46.87],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Acodado Glacier",
+      "coords": [-73.78, -47.3],
+      "label": [-75, -47.3],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Steffen Glacier",
+      "coords": [-73.72, -47.49],
+      "label": [-75, -47.7],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Nef Glacier",
+      "coords": [-73.26, -47.05],
+      "label": [-72.7, -46.8],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Colonia Glacier",
+      "coords": [-73.25, -47.24],
+      "label": [-72.7, -47],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Cerro Pared Norte Glacier",
+      "coords": [-73.29, -47.39],
+      "label": [-72.7, -47.39],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Glaciar Jorge Montt",
+      "coords": [-73.53, -48.4],
+      "label": [-74, -48.2],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Ofhidro Glacier",
+      "coords": [-73.7, -48.47],
+      "label": [-74.1, -48.47],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Bernardo Glacier",
+      "coords": [-73.81, -48.65],
+      "label": [-74.2, -48.65],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Occidental Glacier",
+      "coords": [-74.05, -48.85],
+      "label": [-74.4, -48.85],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
+    },
+    {
+      "name": "Pio XI Glacier",
+      "coords": [-73.94, -49.15],
+      "label": [-74.4, -49.15],
+      "zoom": 4,
+      "point_color": "rgba(255, 255, 255, 0)",
+      "line_color": "#ffffff",
+      "text_color": "#ffffff"
     }
   ]
 }
