@@ -80,6 +80,7 @@ function toggleAnimation(button) {
                     display: flex;
                     align-items: center;     /* vertically center text */
                     font-size: clamp(12px, 0.9vw, 18px);
+                    font-family: "Courier New", Courier, monospace;
                     color: magenta;
                     pointer-events: none;    /* text won't interfere with clicks */
                 `;
