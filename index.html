@@ -565,10 +565,45 @@
                 area = `${areaNum.toFixed(2)} km²`;
             }
 
+            let lmax = props.lmax ?? 'Unknown';
+            if (!isNaN(lmax)) {
+                const lmaxNum = parseFloat(lmax);
+                lmax = `${(lmaxNum / 1000).toFixed(2)} km`;
+            }
+
+            let perimeter = props.perimeter ?? 'Unknown';
+            if (!isNaN(perimeter)) {
+                const perimeterNum = parseFloat(perimeter);
+                perimeter = `${(perimeterNum / 1000).toFixed(2)} km`;
+            }
+
+            let zmin = props.zmin ?? 'Unknown';
+            if (!isNaN(zmin)) {
+                const zminNum = parseFloat(zmin);
+                zmin = `${zminNum.toFixed(1)} m`;
+            }
+
+            let zmax = props.zmax ?? 'Unknown';
+            if (!isNaN(zmax)) {
+                const zmaxNum = parseFloat(zmax);
+                zmax = `${zmaxNum.toFixed(1)} m`;
+            }
+
+            let zmed = props.zmed ?? 'Unknown';
+            if (!isNaN(zmed)) {
+                const zmedNum = parseFloat(zmed);
+                zmed = `${zmedNum.toFixed(1)} m`;
+            }
+
             return `
                 <strong>Glacier ID:</strong> ${rgi_id}<br>
                 <strong>Name:</strong> ${name}<br>
-                <strong>Area:</strong> ${area}<br><br>
+                <strong>Area:</strong> ${area}<br>
+                <strong>Perimeter:</strong> ${perimeter}<br>
+                <strong>Lmax:</strong> ${lmax}<br>
+                <strong>Zmin:</strong> ${zmin}<br>
+                <strong>Zmax:</strong> ${zmax}<br>
+                <strong>Zmed:</strong> ${zmed}<br><br>
             `;
         }).join('');
 
