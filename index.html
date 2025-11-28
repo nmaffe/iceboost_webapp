@@ -558,6 +558,10 @@
             const props = feature?.properties || {};
             const rgi_id = props.rgi_id ?? 'Unknown';
             const name = props.name ?? '--';
+            let version = null;
+            let region = null;
+            let downloadURL = null;
+            const amazonBUCKET = "https://amzn-s3-iceboost.s3.eu-south-1.amazonaws.com";
 
             let area = props.area ?? 'Unknown';
             if (!isNaN(area)) {
@@ -595,6 +599,23 @@
                 zmed = `${zmedNum.toFixed(1)} m`;
             }
 
+            // RGI62 format: "RGI60-06.00001"
+            if (rgi_id.startsWith("RGI60-")) {
+                version = "RGI62";
+                region = parseInt(rgi_id.split("-")[1].split(".")[0]);  // "06" → 6
+            }
+
+            // RGI70G format: "RGI2000-v7.0-G-06-00001"
+            else if (rgi_id.startsWith("RGI2000-")) {
+                version = "RGI70G";
+                const parts = rgi_id.split("-");
+                region = parseInt(parts[3]); // "06" → 6
+            }
+
+            if (version && region !== null) {
+                downloadURL = `${amazonBUCKET}/${version}/rgi${region}/${rgi_id}.tif`;
+            }
+
             return `
                 <strong>Glacier ID:</strong> ${rgi_id}<br>
                 <strong>Name:</strong> ${name}<br>
@@ -604,6 +625,10 @@
                 <strong>Elev min:</strong> ${zmin}<br>
                 <strong>Elev max:</strong> ${zmax}<br>
                 <strong>Elev med:</strong> ${zmed}<br><br>
+                <strong>Download:</strong><br>
+                <a href="${downloadURL}" target="_blank" style="color:cyan;">
+                    Download glacier tif file
+                </a><br><br>
             `;
         }).join('');
 
