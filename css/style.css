@@ -487,3 +487,16 @@ ul li {
 #autocomplete-results li:hover {
     color: #457fe5;
 }
+
+/* fullscreen button */
+#fullscreen-btn {
+    position: fixed;
+    top: 12vh;
+    right: 0.5vw;
+    font-size: 20px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}

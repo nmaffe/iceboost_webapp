@@ -136,7 +136,7 @@
 
 
 <!-- Bottom Toggle Bar -->
-  <div class="bottom-bar">
+<div class="bottom-bar">
     <div class="radio-switch">
         <input type="radio" id="ice62" name="model" value="ice62" data-layer="ice_rgi62">
         <label for="ice62">ICE v62</label>
@@ -150,10 +150,12 @@
         <input type="radio" id="bed70" name="model" value="bed70" data-layer="bed_rgi70">
         <label for="bed70">BED v70</label>
     </div>
-  </div>
+</div>
 
 <!-- Lat/Lng coordinates -->
 <div id="coordinates"></div>
+
+<button id="fullscreen-btn">⤢</button>
 
 <!-- Model info button -->
 <button id="info-btn-1" class="info-toggle info-btn-1">Model info</button>
@@ -652,6 +654,9 @@
         }
     }
 </script>
+
+<!-- script controlling the fullscreen button -->
+<script src="js/fullscreen.js"></script>
 
 <!-- script controlling the 4-radio button layer activation -->
 <script src="js/radioBarLayers.js"></script>
