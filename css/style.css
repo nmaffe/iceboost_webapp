@@ -327,9 +327,12 @@ body { margin: 0; padding: 0; }
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.85);
+    width: 100dvw;
+    height: 100dvh;
+    overflow-y: auto;/* FIX: Allows scrolling on tiny screens */
+    padding: 1rem 0.5rem;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.65);
     color: white;
     display: flex;
     flex-direction: column;
@@ -342,10 +345,12 @@ body { margin: 0; padding: 0; }
 /* Top section (90% height) */
 .welcome-screen-top {
     width: 100%;
-    height: 60vh;
+    flex: 1 0 auto;           /* FIX: Replaced height: 60vh */
+    /*height: 60vh;*/
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    /*justify-content: flex-start;*/
+    justify-content: center;   /* Changed from flex-start to center content vertically */
     align-items: center;
     font-family: "Courier New", Courier, monospace;
 }
@@ -353,7 +358,9 @@ body { margin: 0; padding: 0; }
 /* Bottom section (10% height) */
 .welcome-screen-bottom {
     width: 100%;
-    height: 40vh;
+    flex: 0 0 auto;       /* FIX: Replaced height: 40vh */
+    /*height: 40vh;*/
+    margin-top: 1.5rem;   /* FIX: Prevents touching the top section */
     display: flex;
     flex-direction: column;  /* Stack logo and text vertically */
     justify-content: flex-end;
@@ -372,12 +379,16 @@ body { margin: 0; padding: 0; }
 
 /* Logo images */
 .logo-container img {
-    height: 8vh;
+    /*height: 8vh;*/
+    /* Scales between 45px (mobile) and 80px (desktop) based on 6vw screen width */
+    height: clamp(45px, 6vw, 80px);
     width: auto;
+    max-width: 100%;       /* Prevents side-scrolling on narrow mobile screens */
+    object-fit: contain;   /* Keeps original aspect ratio intact */
 }
 
 .welcome-screen h1 {
-    font-size: 2rem;
+    font-size: clamp(1.4rem, 4vw, 2rem); /* Fluid scaling on mobile */
     font-family: "Courier New", Courier, monospace;
 }
 
@@ -394,8 +405,8 @@ body { margin: 0; padding: 0; }
     border: none; /* Removes any default border */
     cursor: pointer;
     border-radius: 5px;
-    -webkit-text-stroke: 2px white; /* Creates a white outline */
-    text-shadow: 0 0 5px blue, 0 0 10px blue, 0 0 15px blue;
+    -webkit-text-stroke: 1px white; /* Creates a white outline */
+    text-shadow: 0 0 5px magenta, 0 0 10px magenta, 0 0 15px magenta;
     outline: none; /* Prevents any focus outline */
     box-shadow: none; /* Removes any 3D shadow */
 }
